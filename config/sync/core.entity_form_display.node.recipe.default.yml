@@ -6,9 +6,12 @@ dependencies:
     - field.field.node.recipe.body
     - field.field.node.recipe.field_calories
     - field.field.node.recipe.field_date
+    - field.field.node.recipe.field_recipe_image
+    - field.field.node.recipe.field_tastes
     - node.type.recipe
   module:
     - datetime
+    - media_library
     - path
     - text
 id: node.recipe.default
@@ -42,6 +45,19 @@ content:
   field_date:
     type: datetime_default
     weight: 122
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_recipe_image:
+    type: media_library_widget
+    weight: 124
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_tastes:
+    type: options_buttons
+    weight: 125
     region: content
     settings: {  }
     third_party_settings: {  }

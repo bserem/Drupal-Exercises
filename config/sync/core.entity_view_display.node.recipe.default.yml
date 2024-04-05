@@ -6,6 +6,8 @@ dependencies:
     - field.field.node.recipe.body
     - field.field.node.recipe.field_calories
     - field.field.node.recipe.field_date
+    - field.field.node.recipe.field_recipe_image
+    - field.field.node.recipe.field_tastes
     - node.type.recipe
   module:
     - datetime
@@ -42,6 +44,23 @@ content:
       format_type: medium
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_recipe_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_tastes:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
     region: content
   links:
     settings: {  }

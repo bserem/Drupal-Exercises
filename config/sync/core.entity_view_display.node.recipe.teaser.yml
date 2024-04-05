@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.recipe.body
     - field.field.node.recipe.field_calories
     - field.field.node.recipe.field_date
+    - field.field.node.recipe.field_recipe_image
+    - field.field.node.recipe.field_tastes
     - node.type.recipe
   module:
     - text
@@ -32,3 +34,5 @@ content:
 hidden:
   field_calories: true
   field_date: true
+  field_recipe_image: true
+  field_tastes: true
