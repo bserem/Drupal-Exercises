@@ -1,0 +1,22 @@
+uuid: 6efa52e6-ed0a-4a68-b99a-35ac4b5800eb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - recipe_theme
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: recipe_theme_powered
+theme: recipe_theme
+region: header
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

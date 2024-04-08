@@ -1,0 +1,20 @@
+uuid: b2332262-4096-49e3-b432-9e5dd5d006f5
+langcode: en
+status: true
+dependencies:
+  theme:
+    - recipe_theme
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: recipe_theme_primary_admin_actions
+theme: recipe_theme
+region: highlighted
+weight: -5
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }
