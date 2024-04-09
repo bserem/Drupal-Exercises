@@ -1,0 +1,14 @@
+<?php
+
+use \Drupal\Core\Entity\EntityInterface;
+use \Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+
+function recipe_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+   if ( $entity->bundle() == 'recipe' && $entity->get('field_calories')->value == '404' ) {
+
+    throw new NotFoundHttpException();
+   }
+   
+}
