@@ -97,6 +97,7 @@
         }
     },
     "require-dev": {
+        "drupal/coder": "^8.3",
         "mglaman/drupal-check": "^1.4",
         "phpspec/phpspec": "^7.5",
         "sebastian/phpcpd": "^6.0"
