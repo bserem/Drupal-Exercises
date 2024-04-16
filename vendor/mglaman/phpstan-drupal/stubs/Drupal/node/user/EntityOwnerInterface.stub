@@ -1,6 +1,0 @@
-<?php
-
-namespace Drupal\user;
-
-interface EntityOwnerInterface {
-}

@@ -1,4 +1,0 @@
-parameters:
-	drupal:
-		bleedingEdge:
-			checkDeprecatedHooksInApiFiles: true

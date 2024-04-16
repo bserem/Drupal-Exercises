@@ -1,8 +1,0 @@
-<?php
-
-namespace Drupal\Core;
-
-use Drupal\Core\Render\BubbleableMetadata;
-
-class GeneratedUrl extends BubbleableMetadata {
-}

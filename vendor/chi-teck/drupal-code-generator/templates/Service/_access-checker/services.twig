@@ -1,9 +1,0 @@
-{% import '@lib/di.twig' as di %}
-services:
-  access_check.{{ machine_name }}.{{ requirement|trim('_') }}:
-    class: Drupal\{{ machine_name }}\Access\{{ class }}
-{% if services %}
-    arguments: [{{ di.arguments(services) }}]
-{% endif %}
-    tags:
-      - { name: access_check, applies_to: {{ requirement }} }

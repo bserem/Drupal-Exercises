@@ -1,6 +1,0 @@
-<?php
-
-namespace Drupal\Core\Access;
-
-class AccessResultNeutral extends AccessResult implements AccessResultReasonInterface {
-}
