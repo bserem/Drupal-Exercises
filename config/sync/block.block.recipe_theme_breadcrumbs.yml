@@ -1,0 +1,22 @@
+uuid: 80abfaf1-154e-4b1d-a580-d54c7cc625d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - recipe_theme
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: recipe_theme_breadcrumbs
+theme: recipe_theme
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

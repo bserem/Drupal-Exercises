@@ -1,0 +1,22 @@
+uuid: db8ed9dc-9cea-4415-b231-8ed81aab9296
+langcode: en
+status: true
+dependencies:
+  theme:
+    - recipe_theme
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: recipe_theme_primary_local_tasks
+theme: recipe_theme
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

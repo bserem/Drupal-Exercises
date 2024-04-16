@@ -1,0 +1,23 @@
+uuid: 6e037cc8-5426-40c4-9b03-20a7c015b8ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - recipe_theme
+_core:
+  default_config_hash: imMyHD6LYci0gtXq56qr9ZKGHzbEG9uFydrN5EhKtSU
+id: recipe_theme_search_form_wide
+theme: recipe_theme
+region: secondary_menu
+weight: -5
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (wide)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

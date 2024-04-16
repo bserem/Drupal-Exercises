@@ -23,6 +23,8 @@ module:
   history: 0
   image: 0
   link: 0
+  media: 0
+  media_library: 0
   menu_link_content: 0
   menu_ui: 0
   mysql: 0
@@ -31,19 +33,24 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  recipe: 0
   search: 0
   shortcut: 0
   system: 0
   taxonomy: 0
   text: 0
+  token: 0
   toolbar: 0
   tour: 0
   update: 0
   user: 0
   views_ui: 0
+  pathauto: 1
   views: 10
   minimal: 1000
 theme:
   olivero: 0
   claro: 0
+  bartik: 0
+  recipe_theme: 0
 profile: minimal

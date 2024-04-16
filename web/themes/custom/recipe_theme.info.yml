@@ -1,0 +1,6 @@
+name: recipe theme
+type: theme
+description: 'Recipe theme for my website.'
+package: Other
+core_version_requirement: ^9 || ^10
+base theme: bartik

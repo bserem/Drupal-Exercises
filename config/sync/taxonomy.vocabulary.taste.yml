@@ -1,0 +1,8 @@
+uuid: d74a097b-0e11-4cd1-9286-223a76dc202d
+langcode: en
+status: true
+dependencies: {  }
+name: Taste
+vid: taste
+description: 'List of tastes'
+weight: 0

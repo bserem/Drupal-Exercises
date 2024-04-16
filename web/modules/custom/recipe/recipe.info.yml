@@ -1,0 +1,5 @@
+name: recipe module
+type: module
+description: Recipe module to return an 404 error.
+core_version_requirement: ^9.1 || ^10
+author: Maria Boutoudi

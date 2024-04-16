@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * This is a module to return a 404 error.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+/**
+ * @param array $build
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ * @param \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display
+ * @param mixed $view_mode
+ *
+ * @return Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+ *   The 404 error.
+ */
+function recipe_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->bundle() == 'recipe' && $entity->get('field_calories')->value == '404') {
+
+    throw new NotFoundHttpException();
+  }
+}
