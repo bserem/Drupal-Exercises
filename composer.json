@@ -1,0 +1,8 @@
+{
+    "name": "rafasmour/Drupal-exercises",
+    "description": "drupal exercises",
+    "type": "project",
+    "require": {
+        "drush/drush": "^13.3"
+    }
+}
