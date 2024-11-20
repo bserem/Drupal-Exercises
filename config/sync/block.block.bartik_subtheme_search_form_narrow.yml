@@ -1,0 +1,23 @@
+uuid: c1b21192-ea86-47c8-bdbe-6bf0d294d0b2
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - bartik_subtheme
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: bartik_subtheme_search_form_narrow
+theme: bartik_subtheme
+region: primary_menu
+weight: -4
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

@@ -1,0 +1,21 @@
+uuid: 551b964d-d900-40e7-8b56-c884e38ba118
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_imerominia_kykloforias
+    - node.type.car
+  module:
+    - datetime
+id: node.car.field_imerominia_kykloforias
+field_name: field_imerominia_kykloforias
+entity_type: node
+bundle: car
+label: 'Ημερομηνία κυκλοφορίας'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

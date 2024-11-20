@@ -1,0 +1,70 @@
+uuid: f035e9e7-6996-455a-bb23-ec8a1e90f935
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.car.body
+    - field.field.node.car.field_brand
+    - field.field.node.car.field_car_profile
+    - field.field.node.car.field_imerominia_kykloforias
+    - field.field.node.car.field_timi
+    - node.type.car
+  module:
+    - datetime
+    - text
+    - user
+id: node.car.default
+targetEntityType: node
+bundle: car
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_brand:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_car_profile:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_imerominia_kykloforias:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_timi:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

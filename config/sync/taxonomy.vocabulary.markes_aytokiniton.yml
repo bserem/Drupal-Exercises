@@ -1,0 +1,9 @@
+uuid: c0cc0572-5dd5-4410-9805-df53870c1cf8
+langcode: en
+status: true
+dependencies: {  }
+name: 'Μάρκες αυτοκινήτων'
+vid: markes_aytokiniton
+description: null
+weight: 0
+new_revision: false

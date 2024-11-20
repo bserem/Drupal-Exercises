@@ -7,6 +7,7 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
+  car_404_filter: 0
   ckeditor5: 0
   comment: 0
   config: 0
@@ -24,6 +25,7 @@ module:
   history: 0
   image: 0
   link: 0
+  media: 0
   menu_link_content: 0
   menu_ui: 0
   mysql: 0
@@ -46,4 +48,6 @@ module:
 theme:
   olivero: 0
   claro: 0
+  bartik: 0
+  bartik_subtheme: 0
 profile: standard
