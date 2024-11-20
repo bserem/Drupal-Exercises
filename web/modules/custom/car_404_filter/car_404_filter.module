@@ -1,0 +1,12 @@
+<?php
+
+
+function car_404_filter_node_access($node, $op) {
+  if($node->bundle() == 'car'){
+    $field = $node->get('field_imerominia_kykloforias')->getValue();
+
+    $release_date = $field[0]['value'];
+        if(strpos($release_date, '2020') === 0)
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException(); 
+  }
+}
