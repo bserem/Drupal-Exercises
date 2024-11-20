@@ -37,9 +37,8 @@ abstract class AbstractStream
     public function write(string $bytes, bool $debug = true): void
     {
         if ($debug) {
-            $timestamp = date('c');
             foreach (explode("\n", trim($bytes)) as $line) {
-                $this->debug .= sprintf("[%s] > %s\n", $timestamp, $line);
+                $this->debug .= sprintf("> %s\n", $line);
             }
         }
 
@@ -93,7 +92,7 @@ abstract class AbstractStream
             }
         }
 
-        $this->debug .= sprintf('[%s] < %s', date('c'), $line);
+        $this->debug .= sprintf('< %s', $line);
 
         return $line;
     }

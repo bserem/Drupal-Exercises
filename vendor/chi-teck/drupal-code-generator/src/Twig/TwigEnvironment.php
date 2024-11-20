@@ -65,7 +65,7 @@ final class TwigEnvironment extends Environment {
   public static function sortNamespaces(string $input): string {
     $lines = \explode(\PHP_EOL, $input);
     $lines = \array_unique($lines);
-    \usort($lines, 'strcmp');
+    \sort($lines, \SORT_FLAG_CASE | \SORT_NATURAL);
     return \trim(\implode(\PHP_EOL, $lines)) . \PHP_EOL;
   }
 

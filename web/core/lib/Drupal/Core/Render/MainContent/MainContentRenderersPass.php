@@ -16,7 +16,7 @@ class MainContentRenderersPass implements CompilerPassInterface {
    * Collects the available main content renderer service IDs into the
    * main_content_renderers parameter, keyed by format.
    */
-  public function process(ContainerBuilder $container): void {
+  public function process(ContainerBuilder $container) {
     $main_content_renderers = [];
     foreach ($container->findTaggedServiceIds('render.main_content_renderer') as $id => $attributes_list) {
       foreach ($attributes_list as $attributes) {

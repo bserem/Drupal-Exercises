@@ -29,12 +29,18 @@ class ServiceCircularReferenceException extends RuntimeException
         $this->path = $path;
     }
 
-    public function getServiceId(): string
+    /**
+     * @return string
+     */
+    public function getServiceId()
     {
         return $this->serviceId;
     }
 
-    public function getPath(): array
+    /**
+     * @return array
+     */
+    public function getPath()
     {
         return $this->path;
     }

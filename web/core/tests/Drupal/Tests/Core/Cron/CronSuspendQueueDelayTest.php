@@ -61,13 +61,13 @@ final class CronSuspendQueueDelayTest extends UnitTestCase {
       ->method('acquire')
       ->willReturn(TRUE);
     $this->cronConstructorArguments = [
-      'moduleHandler' => $this->createMock(ModuleHandlerInterface::class),
+      'module_handler' => $this->createMock(ModuleHandlerInterface::class),
       'lock' => $lock,
-      'queueFactory' => $this->createMock(QueueFactory::class),
+      'queue_factory' => $this->createMock(QueueFactory::class),
       'state' => $this->createMock(StateInterface::class),
-      'accountSwitcher' => $this->createMock(AccountSwitcherInterface::class),
+      'account_switcher' => $this->createMock(AccountSwitcherInterface::class),
       'logger' => $this->createMock(LoggerInterface::class),
-      'queueManager' => $this->createMock(QueueWorkerManagerInterface::class),
+      'queue_manager' => $this->createMock(QueueWorkerManagerInterface::class),
       'time' => $this->createMock(TimeInterface::class),
       'queue_config' => [],
     ];
@@ -125,8 +125,8 @@ final class CronSuspendQueueDelayTest extends UnitTestCase {
    */
   public function testSuspendQueue(): void {
     [
-      'queueFactory' => $queueFactory,
-      'queueManager' => $queueManager,
+      'queue_factory' => $queueFactory,
+      'queue_manager' => $queueManager,
       'time' => $time,
     ] = $this->cronConstructorArguments;
 
@@ -230,8 +230,8 @@ final class CronSuspendQueueDelayTest extends UnitTestCase {
       'suspendMaximumWait' => $threshold,
     ];
     [
-      'queueFactory' => $queueFactory,
-      'queueManager' => $queueManager,
+      'queue_factory' => $queueFactory,
+      'queue_manager' => $queueManager,
     ] = $this->cronConstructorArguments;
 
     $cron = $this->getMockBuilder(Cron::class)
@@ -307,8 +307,8 @@ final class CronSuspendQueueDelayTest extends UnitTestCase {
    */
   public function testSuspendQueueOrder(): void {
     [
-      'queueFactory' => $queueFactory,
-      'queueManager' => $queueManager,
+      'queue_factory' => $queueFactory,
+      'queue_manager' => $queueManager,
       'time' => $time,
     ] = $this->cronConstructorArguments;
 

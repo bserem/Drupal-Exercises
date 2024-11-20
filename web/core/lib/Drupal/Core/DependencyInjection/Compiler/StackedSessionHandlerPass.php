@@ -14,7 +14,7 @@ class StackedSessionHandlerPass implements CompilerPassInterface {
   /**
    * {@inheritdoc}
    */
-  public function process(ContainerBuilder $container): void {
+  public function process(ContainerBuilder $container) {
 
     if ($container->hasDefinition('session_handler')) {
       return;

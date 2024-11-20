@@ -19,10 +19,10 @@ internal.backbone:
 
 ckeditor5:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     # This file is not aggregated to force the creation of a new aggregate file
@@ -36,10 +36,10 @@ ckeditor5:
 
 ckeditor5.editorClassic:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/editor-classic/editor-classic.js: { minified: true }
@@ -48,10 +48,10 @@ ckeditor5.editorClassic:
 
 ckeditor5.editorDecoupled:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/editor-decoupled/editor-decoupled.js: { minified: true }
@@ -74,10 +74,10 @@ ckeditor5.essentials:
 
 ckeditor5.heading:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/heading/heading.js: { minified: true }
@@ -87,10 +87,10 @@ ckeditor5.heading:
 
 ckeditor5.basic:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/basic-styles/basic-styles.js: { minified: true }
@@ -100,10 +100,10 @@ ckeditor5.basic:
 
 ckeditor5.specialCharacters:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/special-characters/special-characters.js: { minified: true }
@@ -113,10 +113,10 @@ ckeditor5.specialCharacters:
 
 ckeditor5.blockquote:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/block-quote/block-quote.js: { minified: true }
@@ -126,10 +126,10 @@ ckeditor5.blockquote:
 
 ckeditor5.image:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/image/image.js: { minified: true }
@@ -139,10 +139,10 @@ ckeditor5.image:
 
 ckeditor5.link:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/link/link.js: { minified: true }
@@ -152,10 +152,10 @@ ckeditor5.link:
 
 ckeditor5.list:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/list/list.js: { minified: true }
@@ -165,10 +165,10 @@ ckeditor5.list:
 
 ckeditor5.horizontalLine:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/horizontal-line/horizontal-line.js: { minified: true }
@@ -178,10 +178,10 @@ ckeditor5.horizontalLine:
 
 ckeditor5.htmlSupport:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/html-support/html-support.js: { minified: true }
@@ -191,10 +191,10 @@ ckeditor5.htmlSupport:
 
 ckeditor5.alignment:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/alignment/alignment.js: { minified: true }
@@ -204,10 +204,10 @@ ckeditor5.alignment:
 
 ckeditor5.removeFormat:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/remove-format/remove-format.js: { minified: true }
@@ -217,10 +217,10 @@ ckeditor5.removeFormat:
 
 ckeditor5.pasteFromOffice:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/paste-from-office/paste-from-office.js: { minified: true }
@@ -229,10 +229,10 @@ ckeditor5.pasteFromOffice:
 
 ckeditor5.indent:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/indent/indent.js: { minified: true }
@@ -242,10 +242,10 @@ ckeditor5.indent:
 
 ckeditor5.sourceEditing:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/source-editing/source-editing.js: { minified: true }
@@ -255,10 +255,10 @@ ckeditor5.sourceEditing:
 
 ckeditor5.table:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/table/table.js: { minified: true }
@@ -268,10 +268,10 @@ ckeditor5.table:
 
 ckeditor5.language:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/language/language.js: { minified: true }
@@ -281,10 +281,10 @@ ckeditor5.language:
 
 ckeditor5.codeBlock:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/code-block/code-block.js: { minified: true }
@@ -294,7 +294,7 @@ ckeditor5.codeBlock:
 
 ckeditor5.showBlocks:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
     url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v37.1.0/LICENSE.md
@@ -307,10 +307,10 @@ ckeditor5.showBlocks:
 
 ckeditor5.style:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/style/style.js: { minified: true }
@@ -329,15 +329,20 @@ ckeditor5.translations:
 
 ckeditor5.autoformat:
   remote: https://github.com/ckeditor/ckeditor5
-  version: "43.1.1"
+  version: "41.3.1"
   license:
     name: GPL-2.0-or-later
-    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v43.1.1/LICENSE.md
+    url: https://raw.githubusercontent.com/ckeditor/ckeditor5/v41.3.1/LICENSE.md
     gpl-compatible: true
   js:
     assets/vendor/ckeditor5/autoformat/autoformat.js: { minified: true }
   dependencies:
     - core/ckeditor5
+
+css.escape:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
 
 drupal:
   version: VERSION
@@ -381,6 +386,15 @@ drupal.ajax:
   css:
     component:
       misc/components/ajax-progress.module.css: { weight: -10 }
+  moved_files:
+    system/base:
+      deprecation_version: 10.3.0
+      removed_version: 11.0.0
+      deprecation_link: https://www.drupal.org/node/3432346
+      css:
+        component:
+          css/components/ajax-progress.module.css:
+            component: misc/components/ajax-progress.module.css
 
   drupalSettings:
     # These placeholder values will be set by system_js_settings_alter().
@@ -426,12 +440,16 @@ internal.jquery_ui:
     assets/vendor/jquery.ui/ui/labels-min.js: { weight: -11.7, minified: true }
     assets/vendor/jquery.ui/ui/data-min.js: { weight: -11.8, minified: true }
     assets/vendor/jquery.ui/ui/disable-selection-min.js: { weight: -11.8, minified: true }
+    assets/vendor/jquery.ui/ui/form-min.js: { weight: -11.8, minified: true }
     assets/vendor/jquery.ui/ui/jquery-patch-min.js: { weight: -11.8, minified: true }
     assets/vendor/jquery.ui/ui/scroll-parent-min.js: { weight: -11.8, minified: true }
     assets/vendor/jquery.ui/ui/unique-id-min.js: { weight: -11.8, minified: true }
     assets/vendor/jquery.ui/ui/focusable-min.js: { weight: -11.8, minified: true }
+    assets/vendor/jquery.ui/ui/ie-min.js: { weight: -11.8, minified: true }
     assets/vendor/jquery.ui/ui/keycode-min.js: { weight: -11.8, minified: true }
     assets/vendor/jquery.ui/ui/plugin-min.js: { weight: -11.8, minified: true }
+    assets/vendor/jquery.ui/ui/safe-active-element-min.js: { weight: -11.8, minified: true }
+    assets/vendor/jquery.ui/ui/safe-blur-min.js: { weight: -11.8, minified: true }
     assets/vendor/jquery.ui/ui/widget-min.js: { weight: -11.8, minified: true }
     assets/vendor/jquery.ui/ui/version-min.js: { weight: -11.9, minified: true }
   css:
@@ -459,15 +477,33 @@ drupal.autocomplete:
       assets/vendor/jquery.ui/themes/base/autocomplete.css: { weight: -11.7 }
       assets/vendor/jquery.ui/themes/base/menu.css: { weight: -11.7 }
       misc/components/autocomplete-loading.module.css: { weight: -10 }
-
+  moved_files:
+    system/base:
+      deprecation_version: 10.3.0
+      removed_version: 11.0.0
+      deprecation_link: https://www.drupal.org/node/3432346
+      css:
+        component:
+          css/components/autocomplete-loading.module.css:
+            component: misc/components/autocomplete-loading.module.css
   dependencies:
     - core/jquery
     - core/internal.jquery_ui
     - core/drupal
     - core/drupalSettings
     - core/drupal.ajax
+    - core/tabbable.jquery.shim
     - core/drupal.jquery.position
-    - core/tabbable
+
+drupal.array.find:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
+
+drupal.array.includes:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
 
 drupal.batch:
   version: VERSION
@@ -499,6 +535,11 @@ drupal.collapse:
     - core/drupal
     - core/drupal.form
     - core/once
+
+drupal.customevent:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
 
 drupal.debounce:
   version: VERSION
@@ -544,9 +585,9 @@ drupal.dialog:
     - core/drupalSettings
     - core/drupal.debounce
     - core/drupal.displace
+    - core/tabbable.jquery.shim
     - core/once
     - core/drupal.jquery.position
-    - core/tabbable
 
 drupal.dialog.ajax:
   version: VERSION
@@ -581,6 +622,16 @@ drupal.dropbutton:
     - core/drupal
     - core/drupalSettings
     - core/once
+
+drupal.element.closest:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
+
+drupal.element.matches:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
 
 drupal.entity-form:
   version: VERSION
@@ -619,6 +670,16 @@ drupal.message:
     - core/drupal
     - core/drupal.announce
 
+drupal.nodelist.foreach:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
+
+drupal.object.assign:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
+
 drupal.progress:
   version: VERSION
   js:
@@ -626,7 +687,15 @@ drupal.progress:
   css:
     component:
       misc/components/progress.module.css: { weight: -10 }
-
+  moved_files:
+    system/base:
+      deprecation_version: 10.3.0
+      removed_version: 11.0.0
+      deprecation_link: https://www.drupal.org/node/3432346
+      css:
+        component:
+          css/components/progress.module.css:
+            component: misc/components/progress.module.css
   dependencies:
     - core/drupal
     - core/jquery
@@ -641,6 +710,11 @@ drupal.states:
     - core/drupal
     - core/drupalSettings
     - core/once
+
+drupal.string.includes:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
 
 drupal.tabbingmanager:
   version: VERSION
@@ -659,7 +733,17 @@ drupal.tabledrag:
     component:
       misc/components/tabledrag.module.css: { weight: -10 }
       misc/components/tree-child.module.css: { weight: -10 }
-
+  moved_files:
+    system/base:
+      deprecation_version: 10.3.0
+      removed_version: 11.0.0
+      deprecation_link: https://www.drupal.org/node/3432346
+      css:
+        component:
+          css/components/tabledrag.module.css:
+            component: misc/components/tabledrag.module.css
+          css/components/tree-child.module.css:
+            component: misc/components/tree-child.module.css
   dependencies:
     - core/jquery
     - core/drupal
@@ -680,6 +764,17 @@ drupal.tableheader:
   css:
     component:
       misc/components/sticky-header.module.css: { weight: -10 }
+  moved_files:
+    system/base:
+      deprecation_version: 10.3.0
+      removed_version: 11.0.0
+      deprecation_link: https://www.drupal.org/node/3440477
+      css:
+        component:
+          css/components/sticky-header.module.css:
+            component: misc/components/sticky-header.module.css
+      js:
+        misc/tableheader.js: false
 
 drupal.tableresponsive:
   version: VERSION
@@ -721,6 +816,8 @@ drupal.touchevents-test:
   header: true
   version: VERSION
   js:
+    # Set weight to -21 so it loads alongside Modernizr, the library previously
+    # responsible for this detection.
     misc/touchevents-test.js: { weight: -21 }
 
 drupal.vertical-tabs:
@@ -738,12 +835,17 @@ drupal.vertical-tabs:
     - core/drupalSettings
     - core/drupal.form
 
+es6-promise:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
+
 internal.floating-ui:
   remote: https://github.com/floating-ui/floating-ui
-  version: "1.6.8"
+  version: "1.1.1"
   license:
     name: MIT
-    url: https://github.com/floating-ui/floating-ui/blob/@floating-ui/dom@1.6.8/LICENSE
+    url: https://github.com/floating-ui/floating-ui/blob/master/LICENSE
     gpl-compatible: true
   js:
     assets/vendor/floating-ui/floating-ui.core.umd.min.js: { minified: true }
@@ -751,10 +853,10 @@ internal.floating-ui:
 
 jquery:
   remote: https://github.com/jquery/jquery
-  version: "4.0.0-beta.2"
+  version: "3.7.1"
   license:
     name: MIT
-    url: https://raw.githubusercontent.com/jquery/jquery/4.0.0-beta.2/LICENSE.txt
+    url: https://raw.githubusercontent.com/jquery/jquery/3.7.1/LICENSE.txt
     gpl-compatible: true
   js:
     assets/vendor/jquery/jquery.min.js: { minified: true, weight: -20 }
@@ -771,6 +873,17 @@ internal.jquery.form:
   dependencies:
     - core/jquery
 
+internal.shepherd:
+  remote: https://github.com/shipshapecode/shepherd
+  version: "10.0.1"
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/shipshapecode/shepherd/v10.0.1/LICENSE
+    gpl-compatible: true
+  js:
+    assets/vendor/shepherd/shepherd.min.js: { minified: true }
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.3.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3442299
+
 drupal.jquery.position:
   # This is a modified version of jQuery UI position for that does not require
   # any jQuery UI assets, only jQuery. It is provided by core for use with
@@ -780,6 +893,19 @@ drupal.jquery.position:
     misc/position.js: {}
   dependencies:
     - core/jquery
+
+modernizr:
+  # Block the page from being loaded until Modernizr is initialized.
+  header: true
+  remote: https://github.com/Modernizr/Modernizr
+  license:
+    name: MIT
+    url: https://modernizr.com/license/
+    gpl-compatible: true
+  version: "3.11.7"
+  js:
+    assets/vendor/modernizr/modernizr.min.js: { preprocess: 0, weight: -21, minified: true }
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.1.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3333253
 
 normalize:
   remote: https://github.com/necolas/normalize.css
@@ -801,6 +927,11 @@ once:
     gpl-compatible: true
   js:
     assets/vendor/once/once.min.js: { weight: -19, minified: true }
+
+picturefill:
+  version: VERSION
+  drupalSettings: {}
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.0.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3280410
 
 sortable:
   remote: https://github.com/SortableJS/Sortable
@@ -832,6 +963,16 @@ transliteration:
   js:
     assets/vendor/transliteration/bundle.umd.min.js: { minified: true }
 
+tabbable.jquery.shim:
+  version: VERSION
+  js:
+    misc/jquery.tabbable.shim.js: {}
+  dependencies:
+    - core/drupal
+    - core/tabbable
+    - core/jquery
+  deprecated: The %library_id% asset library is deprecated in Drupal 10.3.0 and will be removed in Drupal 11.0.0. See https://www.drupal.org/node/3441616
+
 internal.underscore:
   # Internal library. Do not depend on it outside core nor add new core usage.
   # The library will be removed as soon as the following issues are fixed:
@@ -840,10 +981,10 @@ internal.underscore:
   #  - https://www.drupal.org/project/drupal/issues/3204011
   #  - https://www.drupal.org/project/drupal/issues/3204015
   remote: https://github.com/jashkenas/underscore
-  version: "1.13.7"
+  version: "1.13.6"
   license:
     name: MIT
-    url: https://raw.githubusercontent.com/jashkenas/underscore/1.13.7/LICENSE
+    url: https://raw.githubusercontent.com/jashkenas/underscore/1.13.6/LICENSE
     gpl-compatible: true
   js:
     assets/vendor/underscore/underscore-min.js: { weight: -20, minified: true }

@@ -13,8 +13,11 @@ class RegisterSerializationClassesCompilerPass implements CompilerPassInterface 
 
   /**
    * {@inheritdoc}
+   *
+   * phpcs:ignore Drupal.Commenting.FunctionComment.VoidReturn
+   * @return void
    */
-  public function process(ContainerBuilder $container): void {
+  public function process(ContainerBuilder $container) {
     $definition = $container->getDefinition('serializer');
 
     // Retrieve registered Normalizers and Encoders from the container.

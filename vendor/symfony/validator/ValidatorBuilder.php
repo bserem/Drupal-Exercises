@@ -11,12 +11,18 @@
 
 namespace Symfony\Component\Validator;
 
+use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\PsrCachedReader;
+use Doctrine\Common\Annotations\Reader;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Validator\Context\ExecutionContextFactory;
+use Symfony\Component\Validator\Exception\LogicException;
 use Symfony\Component\Validator\Exception\ValidatorException;
 use Symfony\Component\Validator\Mapping\Factory\LazyLoadingMetadataFactory;
 use Symfony\Component\Validator\Mapping\Factory\MetadataFactoryInterface;
+use Symfony\Component\Validator\Mapping\Loader\AnnotationLoader;
 use Symfony\Component\Validator\Mapping\Loader\AttributeLoader;
 use Symfony\Component\Validator\Mapping\Loader\LoaderChain;
 use Symfony\Component\Validator\Mapping\Loader\LoaderInterface;
@@ -44,6 +50,7 @@ class ValidatorBuilder
     private array $xmlMappings = [];
     private array $yamlMappings = [];
     private array $methodMappings = [];
+    private ?Reader $annotationReader = null;
     private bool $enableAttributeMapping = false;
     private ?MetadataFactoryInterface $metadataFactory = null;
     private ConstraintValidatorFactoryInterface $validatorFactory;
@@ -183,6 +190,18 @@ class ValidatorBuilder
     }
 
     /**
+     * @deprecated since Symfony 6.4, use "enableAttributeMapping()" instead.
+     *
+     * @return $this
+     */
+    public function enableAnnotationMapping(): static
+    {
+        trigger_deprecation('symfony/validator', '6.4', 'Method "%s()" is deprecated, use "enableAttributeMapping()" instead.', __METHOD__);
+
+        return $this->enableAttributeMapping();
+    }
+
+    /**
      * Enables attribute-based constraint mapping.
      *
      * @return $this
@@ -199,13 +218,54 @@ class ValidatorBuilder
     }
 
     /**
+     * @deprecated since Symfony 6.4, use "disableAttributeMapping()" instead
+     *
+     * @return $this
+     */
+    public function disableAnnotationMapping(): static
+    {
+        trigger_deprecation('symfony/validator', '6.4', 'Method "%s()" is deprecated, use "disableAttributeMapping()" instead.', __METHOD__);
+
+        return $this->disableAttributeMapping();
+    }
+
+    /**
      * Disables attribute-based constraint mapping.
      *
      * @return $this
      */
     public function disableAttributeMapping(): static
     {
+        $this->annotationReader = null;
         $this->enableAttributeMapping = false;
+
+        return $this;
+    }
+
+    /**
+     * @deprecated since Symfony 6.4 without replacement
+     *
+     * @return $this
+     */
+    public function setDoctrineAnnotationReader(?Reader $reader): static
+    {
+        trigger_deprecation('symfony/validator', '6.4', 'Method "%s()" is deprecated without replacement.', __METHOD__);
+
+        $this->annotationReader = $reader;
+
+        return $this;
+    }
+
+    /**
+     * @deprecated since Symfony 6.4 without replacement
+     *
+     * @return $this
+     */
+    public function addDefaultDoctrineAnnotationReader(): static
+    {
+        trigger_deprecation('symfony/validator', '6.4', 'Method "%s()" is deprecated without replacement.', __METHOD__);
+
+        $this->annotationReader = $this->createAnnotationReader();
 
         return $this;
     }
@@ -321,7 +381,9 @@ class ValidatorBuilder
             $loaders[] = new StaticMethodLoader($methodName);
         }
 
-        if ($this->enableAttributeMapping) {
+        if ($this->enableAttributeMapping && $this->annotationReader) {
+            $loaders[] = new AnnotationLoader($this->annotationReader);
+        } elseif ($this->enableAttributeMapping) {
             $loaders[] = new AttributeLoader();
         }
 
@@ -365,5 +427,18 @@ class ValidatorBuilder
         $contextFactory = new ExecutionContextFactory($translator, $this->translationDomain);
 
         return new RecursiveValidator($contextFactory, $metadataFactory, $validatorFactory, $this->initializers, $this->groupProviderLocator);
+    }
+
+    private function createAnnotationReader(): Reader
+    {
+        if (!class_exists(AnnotationReader::class)) {
+            throw new LogicException('Enabling annotation based constraint mapping requires the packages doctrine/annotations and symfony/cache to be installed.');
+        }
+
+        if (class_exists(ArrayAdapter::class)) {
+            return new PsrCachedReader(new AnnotationReader(), new ArrayAdapter());
+        }
+
+        throw new LogicException('Enabling annotation based constraint mapping requires the packages doctrine/annotations and symfony/cache to be installed.');
     }
 }

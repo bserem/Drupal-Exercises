@@ -3,8 +3,8 @@
  * Copy files for JS vendor dependencies from node_modules to the assets/vendor
  * folder.
  *
- * This script handles all dependencies except CKEditor, which require a custom
- * build step.
+ * This script handles all dependencies except CKEditor and Modernizr, which
+ * require a custom build step.
  */
 
 const path = require('path');
@@ -106,6 +106,15 @@ const assetsFolder = `${coreFolder}/assets/vendor`;
         { from: 'dist/once.min.js.map', to: 'once.min.js.map' },
       ],
     },
+    {
+      pack: 'shepherd.js',
+      folder: 'shepherd',
+      library: 'internal.shepherd',
+      files: [
+        { from: 'dist/js/shepherd.min.js', to: 'shepherd.min.js' },
+        { from: 'dist/js/shepherd.min.js.map', to: 'shepherd.min.js.map' },
+      ],
+    },
     { pack: 'sortablejs', folder: 'sortable', files: ['Sortable.min.js'] },
     {
       pack: 'tabbable',
@@ -166,10 +175,14 @@ const assetsFolder = `${coreFolder}/assets/vendor`;
         'ui/disable-selection.js',
         'ui/focusable.js',
         'ui/form-reset-mixin.js',
+        'ui/form.js',
+        'ui/ie.js',
         'ui/jquery-patch.js',
         'ui/keycode.js',
         'ui/labels.js',
         'ui/plugin.js',
+        'ui/safe-active-element.js',
+        'ui/safe-blur.js',
         'ui/scroll-parent.js',
         'ui/unique-id.js',
         'ui/version.js',
@@ -183,15 +196,6 @@ const assetsFolder = `${coreFolder}/assets/vendor`;
         'ui/widgets/menu.js',
         'ui/widgets/mouse.js',
         'ui/widgets/resizable.js',
-      ],
-    },
-    {
-      pack: '@floating-ui/dom',
-      folder: 'floating-ui',
-      library: 'internal.floating-ui',
-      files: [
-        { from: '../core/dist/floating-ui.core.umd.min.js', to: 'floating-ui.core.umd.min.js' },
-        { from: 'dist/floating-ui.dom.umd.min.js', to: 'floating-ui.dom.umd.min.js' },
       ],
     },
     // CKEditor 5 builds the list of files dynamically based on what exists

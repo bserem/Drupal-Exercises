@@ -4,7 +4,6 @@ namespace Drupal\Core\Test;
 
 use Drupal\Core\Database\Database;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\TestTools\Extension\DeprecationBridge\DeprecationHandler;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Component\Process\Process;
@@ -19,7 +18,7 @@ use Symfony\Component\Process\Process;
  *
  * @code
  * $runner = PhpUnitTestRunner::create(\Drupal::getContainer());
- * $results = $runner->execute($test_run, $test_class_name);
+ * $results = $runner->execute($test_run, $test_list['phpunit']);
  * @endcode
  *
  * @internal
@@ -96,9 +95,10 @@ class PhpUnitTestRunner implements ContainerInjectionInterface {
   /**
    * Executes the PHPUnit command.
    *
-   * @param string $test_class_name
-   *   A fully qualified test class name.
-   * @param string $log_junit_file_path
+   * @param string[] $unescaped_test_classnames
+   *   An array of test class names, including full namespaces, to be passed as
+   *   a regular expression to PHPUnit's --filter option.
+   * @param string $phpunit_file
    *   A filepath to use for PHPUnit's --log-junit option.
    * @param int $status
    *   (optional) The exit status code of the PHPUnit process will be assigned
@@ -109,7 +109,7 @@ class PhpUnitTestRunner implements ContainerInjectionInterface {
    *
    * @internal
    */
-  protected function runCommand(string $test_class_name, string $log_junit_file_path, ?int &$status = NULL, ?array &$output = NULL): void {
+  public function runCommand(array $unescaped_test_classnames, string $phpunit_file, ?int &$status = NULL, ?array &$output = NULL): void {
     global $base_url;
     // Setup an environment variable containing the database connection so that
     // functional tests can connect to the database.
@@ -127,24 +127,30 @@ class PhpUnitTestRunner implements ContainerInjectionInterface {
     }
     $phpunit_bin = $this->phpUnitCommand();
 
-    // Build the command line for the PHPUnit CLI invocation.
     $command = [
       $phpunit_bin,
       '--log-junit',
-      $log_junit_file_path,
+      $phpunit_file,
     ];
 
-    // If the deprecation handler bridge is active, we need to fail when there
-    // are deprecations that get reported (i.e. not ignored or expected).
-    if (DeprecationHandler::getConfiguration() !== FALSE) {
-      $command[] = '--fail-on-deprecation';
+    // Optimized for running a single test.
+    if (count($unescaped_test_classnames) == 1) {
+      $class = new \ReflectionClass($unescaped_test_classnames[0]);
+      $command[] = $class->getFileName();
+    }
+    else {
+      // Double escape namespaces so they'll work in a regexp.
+      $escaped_test_classnames = array_map(function ($class) {
+        return addslashes($class);
+      }, $unescaped_test_classnames);
+
+      $filter_string = implode("|", $escaped_test_classnames);
+      $command = array_merge($command, [
+        '--filter',
+        $filter_string,
+      ]);
     }
 
-    // Add to the command the file containing the test class to be run.
-    $reflectedClass = new \ReflectionClass($test_class_name);
-    $command[] = $reflectedClass->getFileName();
-
-    // Invoke PHPUnit CLI with the built command line.
     $process = new Process($command, \Drupal::root() . "/core", $process_environment_variables);
     $process->setTimeout(NULL);
     $process->run();
@@ -157,8 +163,9 @@ class PhpUnitTestRunner implements ContainerInjectionInterface {
    *
    * @param \Drupal\Core\Test\TestRun $test_run
    *   The test run object.
-   * @param string $test_class_name
-   *   A fully qualified test class name.
+   * @param string[] $unescaped_test_classnames
+   *   An array of test class names, including full namespaces, to be passed as
+   *   a regular expression to PHPUnit's --filter option.
    * @param int $status
    *   (optional) The exit status code of the PHPUnit process will be assigned
    *   to this variable.
@@ -169,25 +176,25 @@ class PhpUnitTestRunner implements ContainerInjectionInterface {
    *
    * @internal
    */
-  public function execute(TestRun $test_run, string $test_class_name, ?int &$status = NULL): array {
-    $log_junit_file_path = $this->xmlLogFilePath($test_run->id());
+  public function execute(TestRun $test_run, array $unescaped_test_classnames, ?int &$status = NULL): array {
+    $phpunit_file = $this->xmlLogFilePath($test_run->id());
     // Store output from our test run.
     $output = [];
-    $this->runCommand($test_class_name, $log_junit_file_path, $status, $output);
+    $this->runCommand($unescaped_test_classnames, $phpunit_file, $status, $output);
 
     if ($status == TestStatus::PASS) {
-      return JUnitConverter::xmlToRows($test_run->id(), $log_junit_file_path);
+      return JUnitConverter::xmlToRows($test_run->id(), $phpunit_file);
     }
     return [
       [
         'test_id' => $test_run->id(),
-        'test_class' => $test_class_name,
+        'test_class' => implode(",", $unescaped_test_classnames),
         'status' => TestStatus::label($status),
         'message' => 'PHPUnit Test failed to complete; Error: ' . implode("\n", $output),
         'message_group' => 'Other',
-        'function' => $test_class_name,
+        'function' => implode(",", $unescaped_test_classnames),
         'line' => '0',
-        'file' => $log_junit_file_path,
+        'file' => $phpunit_file,
       ],
     ];
   }

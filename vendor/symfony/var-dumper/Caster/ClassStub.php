@@ -85,7 +85,10 @@ class ClassStub extends ConstStub
         }
     }
 
-    public static function wrapCallable(mixed $callable): mixed
+    /**
+     * @return mixed
+     */
+    public static function wrapCallable(mixed $callable)
     {
         if (\is_object($callable) || !\is_callable($callable)) {
             return $callable;

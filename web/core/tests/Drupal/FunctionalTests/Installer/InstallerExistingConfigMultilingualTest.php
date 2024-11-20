@@ -11,7 +11,7 @@ use Drupal\Core\Logger\RfcLogLevel;
  *
  * @group Installer
  */
-class InstallerExistingConfigMultilingualTest extends InstallerConfigDirectoryTestBase {
+class InstallerExistingConfigMultilingualTest extends InstallerExistingConfigTestBase {
 
   /**
    * {@inheritdoc}
@@ -21,8 +21,8 @@ class InstallerExistingConfigMultilingualTest extends InstallerConfigDirectoryTe
   /**
    * {@inheritdoc}
    */
-  protected function getConfigLocation() {
-    return __DIR__ . '/../../../fixtures/config_install/multilingual';
+  protected function getConfigTarball() {
+    return __DIR__ . '/../../../fixtures/config_install/multilingual.tar.gz';
   }
 
   /**

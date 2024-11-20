@@ -88,11 +88,12 @@ class IndexedReader implements Reader
     /**
      * Proxies all methods to the delegate.
      *
+     * @param string  $method
      * @param mixed[] $args
      *
      * @return mixed
      */
-    public function __call(string $method, array $args)
+    public function __call($method, $args)
     {
         return call_user_func_array([$this->delegate, $method], $args);
     }

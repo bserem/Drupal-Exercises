@@ -66,8 +66,10 @@ interface ExecutionContextInterface
      *
      * @param string|\Stringable $message The error message as a string or a stringable object
      * @param array              $params  The parameters substituted in the error message
+     *
+     * @return void
      */
-    public function addViolation(string $message, array $params = []): void;
+    public function addViolation(string $message, array $params = []);
 
     /**
      * Returns a builder for adding a violation with extended information.
@@ -121,20 +123,26 @@ interface ExecutionContextInterface
      *
      * @param object|null $object       The currently validated object
      * @param string      $propertyPath The property path to the current value
+     *
+     * @return void
      */
-    public function setNode(mixed $value, ?object $object, ?MetadataInterface $metadata, string $propertyPath): void;
+    public function setNode(mixed $value, ?object $object, ?MetadataInterface $metadata, string $propertyPath);
 
     /**
      * Warning: Should not be called by user code, to be used by the validator engine only.
      *
      * @param string|null $group The validated group
+     *
+     * @return void
      */
-    public function setGroup(?string $group): void;
+    public function setGroup(?string $group);
 
     /**
      * Warning: Should not be called by user code, to be used by the validator engine only.
+     *
+     * @return void
      */
-    public function setConstraint(Constraint $constraint): void;
+    public function setConstraint(Constraint $constraint);
 
     /**
      * Warning: Should not be called by user code, to be used by the validator engine only.
@@ -142,8 +150,10 @@ interface ExecutionContextInterface
      * @param string $cacheKey  The hash of the object
      * @param string $groupHash The group's name or hash, if it is group
      *                          sequence
+     *
+     * @return void
      */
-    public function markGroupAsValidated(string $cacheKey, string $groupHash): void;
+    public function markGroupAsValidated(string $cacheKey, string $groupHash);
 
     /**
      * Warning: Should not be called by user code, to be used by the validator engine only.
@@ -159,8 +169,10 @@ interface ExecutionContextInterface
      *
      * @param string $cacheKey       The hash of the object
      * @param string $constraintHash The hash of the constraint
+     *
+     * @return void
      */
-    public function markConstraintAsValidated(string $cacheKey, string $constraintHash): void;
+    public function markConstraintAsValidated(string $cacheKey, string $constraintHash);
 
     /**
      * Warning: Should not be called by user code, to be used by the validator engine only.

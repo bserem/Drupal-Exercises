@@ -10,11 +10,12 @@ use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\StringTranslation\PluralTranslatableMarkup;
-use Drupal\TestTools\Extension\DeprecationBridge\ExpectDeprecationTrait;
+use Drupal\Tests\Traits\PhpUnitWarnings;
 use Drupal\TestTools\TestVarDumper;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\VarDumper\VarDumper;
+use Symfony\Bridge\PhpUnit\ExpectDeprecationTrait;
 
 /**
  * Provides a base class and helpers for Drupal unit tests.
@@ -26,6 +27,7 @@ use Symfony\Component\VarDumper\VarDumper;
  */
 abstract class UnitTestCase extends TestCase {
 
+  use PhpUnitWarnings;
   use PhpUnitCompatibilityTrait;
   use ProphecyTrait;
   use ExpectDeprecationTrait;
@@ -62,7 +64,17 @@ abstract class UnitTestCase extends TestCase {
     FileCacheFactory::setPrefix('prefix');
 
     $this->root = dirname(substr(__DIR__, 0, -strlen(__NAMESPACE__)), 2);
-    chdir($this->root);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __get(string $name) {
+    if ($name === 'randomGenerator') {
+      @trigger_error('Accessing the randomGenerator property is deprecated in drupal:10.2.0 and is removed from drupal:11.0.0. Use getRandomGenerator() instead. See https://www.drupal.org/node/3358445', E_USER_DEPRECATED);
+
+      return $this->getRandomGenerator();
+    }
   }
 
   /**

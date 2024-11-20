@@ -14,7 +14,10 @@ namespace Symfony\Component\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Validates a credit card number for a given credit card company.
+ * Metadata for the CardSchemeValidator.
+ *
+ * @Annotation
+ * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
  *
  * @author Tim Nagel <t.nagel@infinite.net.au>
  * @author Bernhard Schussek <bschussek@gmail.com>
@@ -43,14 +46,14 @@ class CardScheme extends Constraint
         self::INVALID_FORMAT_ERROR => 'INVALID_FORMAT_ERROR',
     ];
 
-    public string $message = 'Unsupported card type or invalid card number.';
-    public array|string|null $schemes = null;
-
     /**
-     * @param string|string[]|array<string,mixed>|null $schemes Name(s) of the number scheme(s) used to validate the credit card number
-     * @param string[]|null                            $groups
-     * @param array<string,mixed>                      $options
+     * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
      */
+    protected static $errorNames = self::ERROR_NAMES;
+
+    public $message = 'Unsupported card type or invalid card number.';
+    public $schemes;
+
     public function __construct(array|string|null $schemes, ?string $message = null, ?array $groups = null, mixed $payload = null, array $options = [])
     {
         if (\is_array($schemes) && \is_string(key($schemes))) {

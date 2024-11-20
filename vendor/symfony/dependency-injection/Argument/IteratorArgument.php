@@ -30,7 +30,10 @@ class IteratorArgument implements ArgumentInterface
         return $this->values;
     }
 
-    public function setValues(array $values): void
+    /**
+     * @return void
+     */
+    public function setValues(array $values)
     {
         $this->values = $values;
     }

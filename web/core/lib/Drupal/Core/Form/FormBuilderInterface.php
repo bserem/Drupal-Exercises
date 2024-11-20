@@ -46,20 +46,25 @@ interface FormBuilderInterface {
    *   The value must be one of the following:
    *   - The name of a class that implements \Drupal\Core\Form\FormInterface.
    *   - An instance of a class that implements \Drupal\Core\Form\FormInterface.
+   * phpcs:disable Drupal.Commenting
+   * @todo Uncomment new method parameters before drupal:11.0.0.
+   * @see https://www.drupal.org/project/drupal/issues/3354672
+   *
    * @param mixed ...$args
-   *   Additional arguments are passed on to the functions called by
+   *   Any additional arguments are passed on to the functions called by
    *   \Drupal::formBuilder()->getForm(), including the unique form constructor
-   *   function. For example, the node preview form requires that a node object
-   *   is passed in here when it is called. These are available to
-   *   implementations of hook_form_alter() and hook_form_FORM_ID_alter() as the
-   *   array $form_state->getBuildInfo()['args'].
+   *   function. For example, the node_edit form requires that a node object is
+   *   passed in here when it is called. These are available to implementations
+   *   of hook_form_alter() and hook_form_FORM_ID_alter() as the array
+   *   $form_state->getBuildInfo()['args'].
+   * phpcs:enable
    *
    * @return array
    *   The form array.
    *
    * @see \Drupal\Core\Form\FormBuilderInterface::buildForm()
    */
-  public function getForm($form_arg, mixed ...$args);
+  public function getForm($form_arg /* , mixed ...$args */);
 
   /**
    * Builds and processes a form for a given form ID.
@@ -158,20 +163,31 @@ interface FormBuilderInterface {
    *   checkbox or other control that browsers submit by not having a
    *   \Drupal::request()->request entry, include the key, but set the value to
    *   NULL.
+   * phpcs:disable Drupal.Commenting
+   * @todo Uncomment new method parameters before drupal:11.0.0.
+   * @see https://www.drupal.org/project/drupal/issues/3354672
+   *
    * @param mixed ...$args
-   *   Arguments that need to be passed by reference should not be included
-   *   here, but rather placed directly in the $form_state build info array so
-   *   that the reference can be preserved. For example, a form whose ID is
-   *   my_module_form, built from a class for which its buildForm() method
-   *   expects a &$object argument would be called via self::submitForm() as
-   *   follows:
+   *   Any additional arguments are passed on to the functions called by
+   *   self::submitForm(), including the unique form constructor function.
+   *   For example, the node_edit form requires that a node object be passed
+   *   in here when it is called. Arguments that need to be passed by reference
+   *   should not be included here, but rather placed directly in the
+   *   $form_state build info array so that the reference can be preserved. For
+   *   example, a form builder function with the following signature:
+   *   @code
+   *   function my_module_form($form, FormStateInterface &$form_state, &$object) {
+   *   }
+   *   @endcode
+   *   would be called via self::submitForm() as follows:
    *   @code
    *   $form_state->setValues($my_form_values);
    *   $form_state->addBuildInfo('args', [&$object]);
    *   \Drupal::formBuilder()->submitForm('my_module_form', $form_state);
    *   @endcode
+   * phpcs:enable
    */
-  public function submitForm($form_arg, FormStateInterface &$form_state, mixed ...$args);
+  public function submitForm($form_arg, FormStateInterface &$form_state /* , mixed ...$args */);
 
   /**
    * Retrieves the structured array that defines a given form.

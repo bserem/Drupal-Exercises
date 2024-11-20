@@ -79,7 +79,7 @@ class ModerationStateConstraintValidator extends ConstraintValidator implements 
   /**
    * {@inheritdoc}
    */
-  public function validate($value, Constraint $constraint): void {
+  public function validate($value, Constraint $constraint) {
     /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
     $entity = $value->getEntity();
 

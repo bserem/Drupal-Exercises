@@ -78,8 +78,6 @@ class MenuLinkTreeElement {
    * This is merged (\Drupal\Component\Utility\NestedArray::mergeDeep()) with
    * \Drupal\Core\Menu\MenuLinkInterface::getOptions(), to allow menu link tree
    * manipulators to add or override link options.
-   *
-   * @var string[]
    */
   public $options = [];
 

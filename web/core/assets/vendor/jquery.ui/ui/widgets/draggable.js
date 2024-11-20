@@ -1,5 +1,5 @@
 /*!
- * jQuery UI Draggable 1.14.0
+ * jQuery UI Draggable 1.13.3
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -25,6 +25,8 @@
 			"./mouse",
 			"../data",
 			"../plugin",
+			"../safe-active-element",
+			"../safe-blur",
 			"../scroll-parent",
 			"../version",
 			"../widget"
@@ -38,7 +40,7 @@
 "use strict";
 
 $.widget( "ui.draggable", $.ui.mouse, {
-	version: "1.14.0",
+	version: "1.13.3",
 	widgetEventPrefix: "drag",
 	options: {
 		addClasses: true,
@@ -145,7 +147,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 	},
 
 	_blurActiveElement: function( event ) {
-		var activeElement = this.document[ 0 ].activeElement,
+		var activeElement = $.ui.safeActiveElement( this.document[ 0 ] ),
 			target = $( event.target );
 
 		// Don't blur if the event occurred on an element that is within
@@ -156,7 +158,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		}
 
 		// Blur any element that currently has focus, see #4261
-		$( activeElement ).trigger( "blur" );
+		$.ui.safeBlur( activeElement );
 	},
 
 	_mouseStart: function( event ) {

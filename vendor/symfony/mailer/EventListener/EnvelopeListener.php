@@ -20,7 +20,6 @@ use Symfony\Component\Mime\Message;
  * Manipulates the Envelope of a Message.
  *
  * @author Fabien Potencier <fabien@symfony.com>
- * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */
 class EnvelopeListener implements EventSubscriberInterface
 {
@@ -33,13 +32,9 @@ class EnvelopeListener implements EventSubscriberInterface
 
     /**
      * @param array<Address|string> $recipients
-     * @param string[]              $allowedRecipients An array of regex to match the allowed recipients
      */
-    public function __construct(
-        Address|string|null $sender = null,
-        ?array $recipients = null,
-        private array $allowedRecipients = [],
-    ) {
+    public function __construct(Address|string|null $sender = null, ?array $recipients = null)
+    {
         if (null !== $sender) {
             $this->sender = Address::create($sender);
         }
@@ -62,27 +57,7 @@ class EnvelopeListener implements EventSubscriberInterface
         }
 
         if ($this->recipients) {
-            $recipients = $this->recipients;
-            if ($this->allowedRecipients) {
-                foreach ($event->getEnvelope()->getRecipients() as $recipient) {
-                    foreach ($this->allowedRecipients as $allowedRecipient) {
-                        if (!preg_match('{\A'.$allowedRecipient.'\z}', $recipient->getAddress())) {
-                            continue;
-                        }
-                        // dedup
-                        foreach ($recipients as $r) {
-                            if ($r->getName() === $recipient->getName() && $r->getAddress() === $recipient->getAddress()) {
-                                continue 2;
-                            }
-                        }
-
-                        $recipients[] = $recipient;
-                        continue 2;
-                    }
-                }
-            }
-
-            $event->getEnvelope()->setRecipients($recipients);
+            $event->getEnvelope()->setRecipients($this->recipients);
         }
     }
 

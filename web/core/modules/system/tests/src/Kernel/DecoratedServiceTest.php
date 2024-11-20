@@ -9,7 +9,7 @@ use Drupal\decorated_service_test\TestServiceDecorator;
 use Drupal\KernelTests\KernelTestBase;
 
 /**
- * Test handling of decorated services with the reverse container.
+ * Test handling of decorated services in DependencySerializationTraitPass.
  *
  * @group system
  */

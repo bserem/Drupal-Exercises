@@ -99,7 +99,7 @@ class SearchExcerptTest extends KernelTestBase {
     $result = $this->doSearchExcerpt('"Number 1234567890"', $text);
     $this->assertStringContainsString('<strong>Number: 123456.7890</strong>', $result, 'Phrase with punctuated and numeric keyword is highlighted with simplified match');
 
-    $result = $this->doSearchExcerpt('"Hyphenated OneTwo"', $text);
+    $result = $this->doSearchExcerpt('"Hyphenated onetwo"', $text);
     $this->assertStringContainsString('<strong>Hyphenated: one-two</strong>', $result, 'Phrase with punctuated and hyphenated keyword is highlighted with simplified match');
 
     $result = $this->doSearchExcerpt('"abc def"', $text);

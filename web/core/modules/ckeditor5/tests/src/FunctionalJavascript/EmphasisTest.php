@@ -72,9 +72,6 @@ class EmphasisTest extends WebDriverTestBase {
     Editor::create([
       'editor' => 'ckeditor5',
       'format' => 'test_format',
-      'image_upload' => [
-        'status' => FALSE,
-      ],
       'settings' => [
         'toolbar' => [
           'items' => [

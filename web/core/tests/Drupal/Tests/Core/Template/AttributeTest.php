@@ -148,16 +148,12 @@ class AttributeTest extends UnitTestCase {
    * @covers ::addClass
    */
   public function testAddClasses(): void {
-    // Add a class with the array syntax without first initializing the 'class'
-    // attribute.
+    // Add empty Attribute object with no classes.
     $attribute = new Attribute();
-    $attribute['class'][] = 'test-class';
-    $this->assertEquals(new AttributeArray('class', ['test-class']), $attribute['class']);
 
-    $attribute = new Attribute();
     // Add no class on empty attribute.
     $attribute->addClass();
-    $this->assertEmpty($attribute['class']->value());
+    $this->assertEmpty($attribute['class']);
 
     // Test various permutations of adding values to empty Attribute objects.
     foreach ([NULL, FALSE, '', []] as $value) {

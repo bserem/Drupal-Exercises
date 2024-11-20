@@ -13,7 +13,7 @@ class TestValidatedReferenceConstraintValidator extends ConstraintValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate($items, Constraint $constraint): void {
+  public function validate($items, Constraint $constraint) {
     if (!isset($items)) {
       return;
     }

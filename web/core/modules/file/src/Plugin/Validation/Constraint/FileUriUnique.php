@@ -20,7 +20,7 @@ class FileUriUnique extends SymfonyConstraint {
   /**
    * {@inheritdoc}
    */
-  public function validatedBy(): string {
+  public function validatedBy() {
     return '\Drupal\Core\Validation\Plugin\Validation\Constraint\UniqueFieldValueValidator';
   }
 

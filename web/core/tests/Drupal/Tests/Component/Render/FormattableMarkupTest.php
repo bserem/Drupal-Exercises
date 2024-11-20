@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Drupal\Tests\Component\Render;
 
 use Drupal\Component\Render\FormattableMarkup;
-use Drupal\TestTools\Extension\DeprecationBridge\ExpectDeprecationTrait;
 use PHPUnit\Framework\TestCase;
+use Symfony\Bridge\PhpUnit\ExpectDeprecationTrait;
 
 /**
  * Tests the TranslatableMarkup class.
@@ -52,6 +52,29 @@ class FormattableMarkupTest extends TestCase {
     $string = 'Can I have a @replacement';
     $formattable_string = new FormattableMarkup($string, ['@replacement' => 'kitten']);
     $this->assertEquals(strlen($string), $formattable_string->count());
+  }
+
+  /**
+   * @covers ::__toString
+   * @dataProvider providerTestNullPlaceholder
+   * @group legacy
+   */
+  public function testNullPlaceholder(string $expected, string $string, array $arguments, string $expected_deprecation): void {
+    $this->expectDeprecation($expected_deprecation);
+    $this->assertEquals($expected, (string) new FormattableMarkup($string, $arguments));
+  }
+
+  /**
+   * Data provider for FormattableMarkupTest::testNullPlaceholder().
+   *
+   * @return array
+   */
+  public static function providerTestNullPlaceholder() {
+    return [
+      ['', '@empty', ['@empty' => NULL], 'Deprecated NULL placeholder value for key (@empty) in: "@empty". This will throw a PHP error in drupal:11.0.0. See https://www.drupal.org/node/3318826'],
+      ['', ':empty', [':empty' => NULL], 'Deprecated NULL placeholder value for key (:empty) in: ":empty". This will throw a PHP error in drupal:11.0.0. See https://www.drupal.org/node/3318826'],
+      ['<em class="placeholder"></em>', '%empty', ['%empty' => NULL], 'Deprecated NULL placeholder value for key (%%empty) in: "%%empty". This will throw a PHP error in drupal:11.0.0. See https://www.drupal.org/node/3318826'],
+    ];
   }
 
   /**

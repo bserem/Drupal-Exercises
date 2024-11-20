@@ -5,6 +5,7 @@
 
 @import "../base/media-queries.pcss.css";
 
+.forum table,
 .text-content table,
 .views-table,
 .draggable-table {

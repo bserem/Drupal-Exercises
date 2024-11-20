@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\Core\Test;
 
+use Drupal\Component\Utility\Random;
 use Drupal\Tests\DrupalTestBrowser;
 use Drupal\Tests\UnitTestCase;
 use Drupal\Tests\BrowserTestBase;
@@ -89,6 +90,19 @@ class BrowserTestBaseTest extends UnitTestCase {
     $btb->expects($this->never())->method($method);
     $ref_tearDown = new \ReflectionMethod($btb, 'tearDown');
     $ref_tearDown->invoke($btb);
+  }
+
+  /**
+   * Tests the deprecation of accessing the randomGenerator property directly.
+   *
+   * @group legacy
+   */
+  public function testGetRandomGeneratorPropertyDeprecation(): void {
+    $this->expectDeprecation('Accessing the randomGenerator property is deprecated in drupal:10.2.0 and is removed from drupal:11.0.0. Use getRandomGenerator() instead. See https://www.drupal.org/node/3358445');
+    // We purposely test accessing an undefined property here. We need to tell
+    // PHPStan to ignore that.
+    // @phpstan-ignore-next-line
+    $this->assertInstanceOf(Random::class, $this->randomGenerator);
   }
 
 }

@@ -11,14 +11,12 @@
 
 namespace Symfony\Component\Validator\Constraints;
 
-use Symfony\Component\Validator\Constraint;
-
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
 abstract class Existence extends Composite
 {
-    public array|Constraint $constraints = [];
+    public $constraints = [];
 
     public function getDefaultOption(): ?string
     {

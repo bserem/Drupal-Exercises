@@ -17,7 +17,7 @@ final class FullyValidatableConstraintValidator extends ConstraintValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate(mixed $value, Constraint $constraint): void {
+  public function validate(mixed $value, Constraint $constraint) {
     // No-op.
   }
 

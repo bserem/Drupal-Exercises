@@ -17,6 +17,20 @@ use function preg_replace;
 final class PhpParser
 {
     /**
+     * Parses a class.
+     *
+     * @deprecated use parseUseStatements instead
+     *
+     * @param ReflectionClass $class A <code>ReflectionClass</code> object.
+     *
+     * @return array<string, class-string> A list with use statements in the form (Alias => FQN).
+     */
+    public function parseClass(ReflectionClass $class)
+    {
+        return $this->parseUseStatements($class);
+    }
+
+    /**
      * Parse a class or function for use statements.
      *
      * @param ReflectionClass|ReflectionFunction $reflection
@@ -56,7 +70,7 @@ final class PhpParser
      *
      * @return string|null The content of the file or null if the file does not exist.
      */
-    private function getFileContent(string $filename, $lineNumber)
+    private function getFileContent($filename, $lineNumber)
     {
         if (! is_file($filename)) {
             return null;

@@ -3,6 +3,7 @@
 namespace Drupal\Core\DependencyInjection;
 
 use Drupal\Component\DependencyInjection\ContainerInterface;
+use Drupal\Component\DependencyInjection\ServiceIdHashTrait;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder as SymfonyContainerBuilder;
 use Symfony\Component\DependencyInjection\Container as SymfonyContainer;
@@ -17,6 +18,8 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
  * @ingroup container
  */
 class ContainerBuilder extends SymfonyContainerBuilder implements ContainerInterface {
+
+  use ServiceIdHashTrait;
 
   /**
    * {@inheritdoc}
@@ -33,11 +36,14 @@ class ContainerBuilder extends SymfonyContainerBuilder implements ContainerInter
    * override Symfony's ContainerBuilder's restriction on setting services in a
    * frozen builder.
    *
+   * phpcs:ignore Drupal.Commenting.FunctionComment.VoidReturn
+   * @return void
+   *
    * @todo Restrict this to synthetic services only. Ideally, the upstream
    *   ContainerBuilder class should be fixed to allow setting synthetic
    *   services in a frozen builder.
    */
-  public function set($id, $service): void {
+  public function set($id, $service) {
     SymfonyContainer::set($id, $service);
   }
 
@@ -64,8 +70,11 @@ class ContainerBuilder extends SymfonyContainerBuilder implements ContainerInter
 
   /**
    * {@inheritdoc}
+   *
+   * phpcs:ignore Drupal.Commenting.FunctionComment.VoidReturn
+   * @return void
    */
-  public function setParameter($name, $value): void {
+  public function setParameter($name, $value) {
     if (strtolower($name) !== $name) {
       throw new \InvalidArgumentException("Parameter names must be lowercase: $name");
     }
@@ -75,7 +84,7 @@ class ContainerBuilder extends SymfonyContainerBuilder implements ContainerInter
   /**
    * {@inheritdoc}
    */
-  public function __sleep(): array {
+  public function __sleep() {
     assert(FALSE, 'The container was serialized.');
     return array_keys(get_object_vars($this));
   }

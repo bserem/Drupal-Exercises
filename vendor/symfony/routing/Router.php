@@ -37,15 +37,50 @@ use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
  */
 class Router implements RouterInterface, RequestMatcherInterface
 {
-    protected UrlMatcherInterface|RequestMatcherInterface $matcher;
-    protected UrlGeneratorInterface $generator;
-    protected RequestContext $context;
-    protected LoaderInterface $loader;
-    protected RouteCollection $collection;
-    protected mixed $resource;
-    protected array $options = [];
-    protected ?LoggerInterface $logger;
-    protected ?string $defaultLocale;
+    /**
+     * @var UrlMatcherInterface|null
+     */
+    protected $matcher;
+
+    /**
+     * @var UrlGeneratorInterface|null
+     */
+    protected $generator;
+
+    /**
+     * @var RequestContext
+     */
+    protected $context;
+
+    /**
+     * @var LoaderInterface
+     */
+    protected $loader;
+
+    /**
+     * @var RouteCollection|null
+     */
+    protected $collection;
+
+    /**
+     * @var mixed
+     */
+    protected $resource;
+
+    /**
+     * @var array
+     */
+    protected $options = [];
+
+    /**
+     * @var LoggerInterface|null
+     */
+    protected $logger;
+
+    /**
+     * @var string|null
+     */
+    protected $defaultLocale;
 
     private ConfigCacheFactoryInterface $configCacheFactory;
 
@@ -81,9 +116,11 @@ class Router implements RouterInterface, RequestMatcherInterface
      *   * strict_requirements:    Configure strict requirement checking for generators
      *                             implementing ConfigurableRequirementsInterface (default is true)
      *
+     * @return void
+     *
      * @throws \InvalidArgumentException When unsupported option is provided
      */
-    public function setOptions(array $options): void
+    public function setOptions(array $options)
     {
         $this->options = [
             'cache_dir' => null,
@@ -114,9 +151,11 @@ class Router implements RouterInterface, RequestMatcherInterface
     /**
      * Sets an option.
      *
+     * @return void
+     *
      * @throws \InvalidArgumentException
      */
-    public function setOption(string $key, mixed $value): void
+    public function setOption(string $key, mixed $value)
     {
         if (!\array_key_exists($key, $this->options)) {
             throw new \InvalidArgumentException(sprintf('The Router does not support the "%s" option.', $key));
@@ -139,12 +178,18 @@ class Router implements RouterInterface, RequestMatcherInterface
         return $this->options[$key];
     }
 
-    public function getRouteCollection(): RouteCollection
+    /**
+     * @return RouteCollection
+     */
+    public function getRouteCollection()
     {
         return $this->collection ??= $this->loader->load($this->resource, $this->options['resource_type']);
     }
 
-    public function setContext(RequestContext $context): void
+    /**
+     * @return void
+     */
+    public function setContext(RequestContext $context)
     {
         $this->context = $context;
 
@@ -163,8 +208,10 @@ class Router implements RouterInterface, RequestMatcherInterface
 
     /**
      * Sets the ConfigCache factory to use.
+     *
+     * @return void
      */
-    public function setConfigCacheFactory(ConfigCacheFactoryInterface $configCacheFactory): void
+    public function setConfigCacheFactory(ConfigCacheFactoryInterface $configCacheFactory)
     {
         $this->configCacheFactory = $configCacheFactory;
     }
@@ -269,7 +316,10 @@ class Router implements RouterInterface, RequestMatcherInterface
         return $this->generator;
     }
 
-    public function addExpressionLanguageProvider(ExpressionFunctionProviderInterface $provider): void
+    /**
+     * @return void
+     */
+    public function addExpressionLanguageProvider(ExpressionFunctionProviderInterface $provider)
     {
         $this->expressionLanguageProviders[] = $provider;
     }

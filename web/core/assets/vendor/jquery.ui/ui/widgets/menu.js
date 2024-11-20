@@ -1,5 +1,5 @@
 /*!
- * jQuery UI Menu 1.14.0
+ * jQuery UI Menu 1.13.3
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -26,6 +26,7 @@
 			"jquery",
 			"../keycode",
 			"../position",
+			"../safe-active-element",
 			"../unique-id",
 			"../version",
 			"../widget"
@@ -39,7 +40,7 @@
 "use strict";
 
 return $.widget( "ui.menu", {
-	version: "1.14.0",
+	version: "1.13.3",
 	defaultElement: "<ul>",
 	delay: 300,
 	options: {
@@ -86,7 +87,7 @@ return $.widget( "ui.menu", {
 			},
 			"click .ui-menu-item": function( event ) {
 				var target = $( event.target );
-				var active = $( this.document[ 0 ].activeElement );
+				var active = $( $.ui.safeActiveElement( this.document[ 0 ] ) );
 				if ( !this.mouseHandled && target.not( ".ui-state-disabled" ).length ) {
 					this.select( event );
 
@@ -130,7 +131,7 @@ return $.widget( "ui.menu", {
 				this._delay( function() {
 					var notContained = !$.contains(
 						this.element[ 0 ],
-						this.document[ 0 ].activeElement
+						$.ui.safeActiveElement( this.document[ 0 ] )
 					);
 					if ( notContained ) {
 						this.collapseAll( event );

@@ -31,9 +31,15 @@ abstract class ConstraintValidator implements ConstraintValidatorInterface
      */
     public const OBJECT_TO_STRING = 2;
 
-    protected ExecutionContextInterface $context;
+    /**
+     * @var ExecutionContextInterface
+     */
+    protected $context;
 
-    public function initialize(ExecutionContextInterface $context): void
+    /**
+     * @return void
+     */
+    public function initialize(ExecutionContextInterface $context)
     {
         $this->context = $context;
     }

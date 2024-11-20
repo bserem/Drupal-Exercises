@@ -17,7 +17,18 @@ class MenuListBuilder extends ConfigEntityListBuilder {
   /**
    * {@inheritdoc}
    */
-  protected const SORT_KEY = 'label';
+  protected function getEntityIds() {
+    $query = $this
+      ->getStorage()
+      ->getQuery()
+      ->sort('label', 'ASC');
+
+    // Only add the pager if a limit is specified.
+    if ($this->limit) {
+      $query->pager($this->limit);
+    }
+    return $query->execute();
+  }
 
   /**
    * {@inheritdoc}

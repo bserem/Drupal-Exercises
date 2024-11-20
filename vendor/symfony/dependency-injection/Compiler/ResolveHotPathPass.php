@@ -27,7 +27,10 @@ class ResolveHotPathPass extends AbstractRecursivePass
 
     private array $resolvedIds = [];
 
-    public function process(ContainerBuilder $container): void
+    /**
+     * @return void
+     */
+    public function process(ContainerBuilder $container)
     {
         try {
             parent::process($container);

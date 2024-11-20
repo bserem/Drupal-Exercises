@@ -31,8 +31,10 @@ class RequestStack
      *
      * This method should generally not be called directly as the stack
      * management should be taken care of by the application itself.
+     *
+     * @return void
      */
-    public function push(Request $request): void
+    public function push(Request $request)
     {
         $this->requests[] = $request;
     }

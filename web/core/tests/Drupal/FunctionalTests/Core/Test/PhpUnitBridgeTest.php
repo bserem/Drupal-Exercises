@@ -8,7 +8,7 @@ use Drupal\Core\Url;
 use Drupal\Tests\BrowserTestBase;
 
 /**
- * Tests Drupal's extension to manage code deprecation.
+ * Tests Drupal's integration with Symfony PHPUnit Bridge.
  *
  * @group Test
  * @group legacy

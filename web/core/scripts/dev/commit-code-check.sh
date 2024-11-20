@@ -205,18 +205,25 @@ fi
 cd "$TOP_LEVEL/core"
 
 # Ensure JavaScript development dependencies are installed.
-yarn --version
-yarn >/dev/null
+yarn check -s 2>/dev/null
+if [ "$?" -ne "0" ]; then
+  printf "Drupal's JavaScript development dependencies are not installed or cannot be resolved. Run 'yarn install' inside the core directory, or 'yarn check -s' to list other errors.\n"
+  DEPENDENCIES_NEED_INSTALLING=1;
+fi
+
+if [ $DEPENDENCIES_NEED_INSTALLING -ne 0 ]; then
+  exit 1;
+fi
 
 # Check all files for spelling in one go for better performance.
 if [[ $CSPELL_DICTIONARY_FILE_CHANGED == "1" ]] ; then
   printf "\nRunning spellcheck on *all* files.\n"
-  yarn run spellcheck:core --no-must-find-files --no-progress
+  yarn run -s spellcheck:core --no-must-find-files --no-progress
 else
   # Check all files for spelling in one go for better performance. We pipe the
   # list files in so we obey the globs set on the spellcheck:core command in
   # core/package.json.
-  echo "${ABS_FILES}" | tr ' ' '\n' | yarn run spellcheck:core --no-must-find-files --file-list stdin
+  echo "${ABS_FILES}" | tr ' ' '\n' | yarn run -s spellcheck:core --no-must-find-files --file-list stdin
 fi
 
 if [ "$?" -ne "0" ]; then
@@ -278,7 +285,7 @@ fi
 # When the eslint config has been changed, then eslint must check all files.
 if [[ $ESLINT_CONFIG_PASSING_FILE_CHANGED == "1" ]]; then
   cd "$TOP_LEVEL/core"
-  yarn run lint:core-js-passing "$TOP_LEVEL/core"
+  yarn run -s lint:core-js-passing "$TOP_LEVEL/core"
   CORRECTJS=$?
   if [ "$CORRECTJS" -ne "0" ]; then
     # If there are failures set the status to a number other than 0.
@@ -297,7 +304,7 @@ fi
 # When the stylelint config has been changed, then stylelint must check all files.
 if [[ $STYLELINT_CONFIG_FILE_CHANGED == "1" ]]; then
   cd "$TOP_LEVEL/core"
-  yarn run lint:css
+  yarn run -s lint:css
   if [ "$?" -ne "0" ]; then
     # If there are failures set the status to a number other than 0.
     FINAL_STATUS=1
@@ -318,7 +325,7 @@ fi
 # is in sync and conform to expectations.
 if [[ "$DRUPALCI" == "1" ]] && [[ $CKEDITOR5_PLUGINS_CHANGED == "1" ]]; then
   cd "$TOP_LEVEL/core"
-  yarn run check:ckeditor5
+  yarn run -s check:ckeditor5
   if [ "$?" -ne "0" ]; then
     # If there are failures set the status to a number other than 0.
     FINAL_STATUS=1

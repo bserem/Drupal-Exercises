@@ -25,6 +25,7 @@ use Drupal\Core\Test\TestRun;
 use Drupal\Core\Test\TestRunnerKernel;
 use Drupal\Core\Test\TestRunResultsStorageInterface;
 use Drupal\Core\Test\TestDiscovery;
+use Drupal\TestTools\PhpUnitCompatibility\ClassWriter;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Runner\Version;
 use Symfony\Component\Console\Output\ConsoleOutput;
@@ -510,6 +511,7 @@ function simpletest_script_init() {
   $autoloader = require_once __DIR__ . '/../../autoload.php';
   // The PHPUnit compatibility layer needs to be available to autoload tests.
   $autoloader->add('Drupal\\TestTools', __DIR__ . '/../tests');
+  ClassWriter::mutateTestBase($autoloader);
 
   // Get URL from arguments.
   if (!empty($args['url'])) {
@@ -815,16 +817,18 @@ function simpletest_script_execute_batch(TestRunResultsStorageInterface $test_ru
  * Run a PHPUnit-based test.
  */
 function simpletest_script_run_phpunit(TestRun $test_run, $class) {
-  $runner = PhpUnitTestRunner::create(\Drupal::getContainer());
-  $start = microtime(TRUE);
-  $results = $runner->execute($test_run, $class, $status);
-  $time = microtime(TRUE) - $start;
+  $reflection = new \ReflectionClass($class);
+  if ($reflection->hasProperty('runLimit')) {
+    set_time_limit($reflection->getStaticPropertyValue('runLimit'));
+  }
 
+  $runner = PhpUnitTestRunner::create(\Drupal::getContainer());
+  $results = $runner->execute($test_run, [$class], $status);
   $runner->processPhpUnitResults($test_run, $results);
 
   $summaries = $runner->summarizeResults($results);
   foreach ($summaries as $class => $summary) {
-    simpletest_script_reporter_display_summary($class, $summary, $time);
+    simpletest_script_reporter_display_summary($class, $summary);
   }
   return $status;
 }
@@ -1080,17 +1084,14 @@ function simpletest_script_reporter_init() {
  *   The test class name that was run.
  * @param array $results
  *   The assertion results using #pass, #fail, #exception, #debug array keys.
- * @param int|null $duration
- *   The time taken for the test to complete.
  */
-function simpletest_script_reporter_display_summary($class, $results, $duration = NULL) {
+function simpletest_script_reporter_display_summary($class, $results) {
   // Output all test results vertically aligned.
   // Cut off the class name after 60 chars, and pad each group with 3 digits
   // by default (more than 999 assertions are rare).
-  $output = vsprintf('%-60.60s %10s %5s %9s %14s %12s', [
+  $output = vsprintf('%-60.60s %10s %9s %14s %12s', [
     $class,
     $results['#pass'] . ' passes',
-    isset($duration) ? ceil($duration) . 's' : '',
     !$results['#fail'] ? '' : $results['#fail'] . ' fails',
     !$results['#exception'] ? '' : $results['#exception'] . ' exceptions',
     !$results['#debug'] ? '' : $results['#debug'] . ' messages',

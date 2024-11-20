@@ -23,6 +23,8 @@ use Symfony\Component\Validator\Exception\MappingException;
  */
 abstract class FileLoader extends AbstractLoader
 {
+    protected $file;
+
     /**
      * Creates a new loader.
      *
@@ -30,9 +32,8 @@ abstract class FileLoader extends AbstractLoader
      *
      * @throws MappingException If the file does not exist or is not readable
      */
-    public function __construct(
-        protected string $file,
-    ) {
+    public function __construct(string $file)
+    {
         if (!is_file($file)) {
             throw new MappingException(sprintf('The mapping file "%s" does not exist.', $file));
         }
@@ -44,5 +45,7 @@ abstract class FileLoader extends AbstractLoader
         if (!stream_is_local($this->file)) {
             throw new MappingException(sprintf('The mapping file "%s" is not a local file.', $file));
         }
+
+        $this->file = $file;
     }
 }

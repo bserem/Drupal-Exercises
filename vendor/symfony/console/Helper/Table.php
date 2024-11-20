@@ -45,6 +45,7 @@ class Table
     private array $rows = [];
     private array $effectiveColumnWidths = [];
     private int $numberOfColumns;
+    private OutputInterface $output;
     private TableStyle $style;
     private array $columnStyles = [];
     private array $columnWidths = [];
@@ -54,9 +55,10 @@ class Table
 
     private static array $styles;
 
-    public function __construct(
-        private OutputInterface $output,
-    ) {
+    public function __construct(OutputInterface $output)
+    {
+        $this->output = $output;
+
         self::$styles ??= self::initStyles();
 
         $this->setStyle('default');
@@ -64,8 +66,10 @@ class Table
 
     /**
      * Sets a style definition.
+     *
+     * @return void
      */
-    public static function setStyleDefinition(string $name, TableStyle $style): void
+    public static function setStyleDefinition(string $name, TableStyle $style)
     {
         self::$styles ??= self::initStyles();
 
@@ -190,7 +194,7 @@ class Table
     /**
      * @return $this
      */
-    public function setRows(array $rows): static
+    public function setRows(array $rows)
     {
         $this->rows = [];
 
@@ -308,8 +312,10 @@ class Table
      *     | 9971-5-0210-0 | A Tale of Two Cities  | Charles Dickens  |
      *     | 960-425-059-0 | The Lord of the Rings | J. R. R. Tolkien |
      *     +---------------+-----------------------+------------------+
+     *
+     * @return void
      */
-    public function render(): void
+    public function render()
     {
         $divider = new TableSeparator();
         $isCellWithColspan = static fn ($cell) => $cell instanceof TableCell && $cell->getColspan() >= 2;
@@ -719,7 +725,7 @@ class Table
 
         foreach ($unmergedRows as $unmergedRowKey => $unmergedRow) {
             // we need to know if $unmergedRow will be merged or inserted into $rows
-            if (isset($rows[$unmergedRowKey]) && \is_array($rows[$unmergedRowKey]) && ($this->getNumberOfColumns($rows[$unmergedRowKey]) + $this->getNumberOfColumns($unmergedRow) <= $this->numberOfColumns)) {
+            if (isset($rows[$unmergedRowKey]) && \is_array($rows[$unmergedRowKey]) && ($this->getNumberOfColumns($rows[$unmergedRowKey]) + $this->getNumberOfColumns($unmergedRows[$unmergedRowKey]) <= $this->numberOfColumns)) {
                 foreach ($unmergedRow as $cellKey => $cell) {
                     // insert cell into row at cellKey position
                     array_splice($rows[$unmergedRowKey], $cellKey, 0, [$cell]);
@@ -727,8 +733,8 @@ class Table
             } else {
                 $row = $this->copyRow($rows, $unmergedRowKey - 1);
                 foreach ($unmergedRow as $column => $cell) {
-                    if ($cell) {
-                        $row[$column] = $cell;
+                    if (!empty($cell)) {
+                        $row[$column] = $unmergedRow[$column];
                     }
                 }
                 array_splice($rows, $unmergedRowKey, 0, [$row]);

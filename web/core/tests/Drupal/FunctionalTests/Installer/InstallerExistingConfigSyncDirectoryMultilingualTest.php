@@ -13,7 +13,7 @@ use Drupal\Component\Serialization\Yaml;
  *
  * @group Installer
  */
-class InstallerExistingConfigSyncDirectoryMultilingualTest extends InstallerConfigDirectoryTestBase {
+class InstallerExistingConfigSyncDirectoryMultilingualTest extends InstallerExistingConfigTestBase {
 
   /**
    * {@inheritdoc}
@@ -43,8 +43,8 @@ class InstallerExistingConfigSyncDirectoryMultilingualTest extends InstallerConf
   /**
    * {@inheritdoc}
    */
-  protected function getConfigLocation() {
-    return __DIR__ . '/../../../fixtures/config_install/multilingual';
+  protected function getConfigTarball() {
+    return __DIR__ . '/../../../fixtures/config_install/multilingual.tar.gz';
   }
 
   /**

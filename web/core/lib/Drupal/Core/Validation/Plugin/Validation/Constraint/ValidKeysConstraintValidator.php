@@ -20,7 +20,7 @@ class ValidKeysConstraintValidator extends ConstraintValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate(mixed $value, Constraint $constraint): void {
+  public function validate(mixed $value, Constraint $constraint) {
     assert($constraint instanceof ValidKeysConstraint);
 
     if (!is_array($value)) {

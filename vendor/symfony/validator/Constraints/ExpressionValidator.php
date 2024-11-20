@@ -31,7 +31,10 @@ class ExpressionValidator extends ConstraintValidator
         }
     }
 
-    public function validate(mixed $value, Constraint $constraint): void
+    /**
+     * @return void
+     */
+    public function validate(mixed $value, Constraint $constraint)
     {
         if (!$constraint instanceof Expression) {
             throw new UnexpectedTypeException($constraint, Expression::class);

@@ -35,8 +35,10 @@ class ResolveInvalidReferencesPass implements CompilerPassInterface
 
     /**
      * Process the ContainerBuilder to resolve invalid references.
+     *
+     * @return void
      */
-    public function process(ContainerBuilder $container): void
+    public function process(ContainerBuilder $container)
     {
         $this->container = $container;
         $this->signalingException = new RuntimeException('Invalid reference.');

@@ -15,7 +15,7 @@ class UserNameConstraintValidator extends ConstraintValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate($items, Constraint $constraint): void {
+  public function validate($items, Constraint $constraint) {
     if (empty($items) || ($items instanceof FieldItemListInterface && $items->isEmpty())) {
       $this->context->addViolation($constraint->emptyMessage);
       return;

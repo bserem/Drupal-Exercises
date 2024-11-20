@@ -52,8 +52,11 @@ class StackedKernelPass implements CompilerPassInterface {
 
   /**
    * {@inheritdoc}
+   *
+   * phpcs:ignore Drupal.Commenting.FunctionComment.VoidReturn
+   * @return void
    */
-  public function process(ContainerBuilder $container): void {
+  public function process(ContainerBuilder $container) {
 
     if (!$container->hasDefinition('http_kernel')) {
       return;

@@ -33,9 +33,11 @@ class CheckDefinitionValidityPass implements CompilerPassInterface
     /**
      * Processes the ContainerBuilder to validate the Definition.
      *
+     * @return void
+     *
      * @throws RuntimeException When the Definition is invalid
      */
-    public function process(ContainerBuilder $container): void
+    public function process(ContainerBuilder $container)
     {
         foreach ($container->getDefinitions() as $id => $definition) {
             // synthetic service is public

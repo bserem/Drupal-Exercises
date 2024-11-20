@@ -20,5 +20,8 @@ interface ArgumentInterface
 {
     public function getValues(): array;
 
-    public function setValues(array $values): void;
+    /**
+     * @return void
+     */
+    public function setValues(array $values);
 }

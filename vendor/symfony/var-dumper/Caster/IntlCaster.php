@@ -21,7 +21,10 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class IntlCaster
 {
-    public static function castMessageFormatter(\MessageFormatter $c, array $a, Stub $stub, bool $isNested): array
+    /**
+     * @return array
+     */
+    public static function castMessageFormatter(\MessageFormatter $c, array $a, Stub $stub, bool $isNested)
     {
         $a += [
             Caster::PREFIX_VIRTUAL.'locale' => $c->getLocale(),
@@ -31,7 +34,10 @@ class IntlCaster
         return self::castError($c, $a);
     }
 
-    public static function castNumberFormatter(\NumberFormatter $c, array $a, Stub $stub, bool $isNested, int $filter = 0): array
+    /**
+     * @return array
+     */
+    public static function castNumberFormatter(\NumberFormatter $c, array $a, Stub $stub, bool $isNested, int $filter = 0)
     {
         $a += [
             Caster::PREFIX_VIRTUAL.'locale' => $c->getLocale(),
@@ -108,7 +114,10 @@ class IntlCaster
         return self::castError($c, $a);
     }
 
-    public static function castIntlTimeZone(\IntlTimeZone $c, array $a, Stub $stub, bool $isNested): array
+    /**
+     * @return array
+     */
+    public static function castIntlTimeZone(\IntlTimeZone $c, array $a, Stub $stub, bool $isNested)
     {
         $a += [
             Caster::PREFIX_VIRTUAL.'display_name' => $c->getDisplayName(),
@@ -125,7 +134,10 @@ class IntlCaster
         return self::castError($c, $a);
     }
 
-    public static function castIntlCalendar(\IntlCalendar $c, array $a, Stub $stub, bool $isNested, int $filter = 0): array
+    /**
+     * @return array
+     */
+    public static function castIntlCalendar(\IntlCalendar $c, array $a, Stub $stub, bool $isNested, int $filter = 0)
     {
         $a += [
             Caster::PREFIX_VIRTUAL.'type' => $c->getType(),
@@ -142,7 +154,10 @@ class IntlCaster
         return self::castError($c, $a);
     }
 
-    public static function castIntlDateFormatter(\IntlDateFormatter $c, array $a, Stub $stub, bool $isNested, int $filter = 0): array
+    /**
+     * @return array
+     */
+    public static function castIntlDateFormatter(\IntlDateFormatter $c, array $a, Stub $stub, bool $isNested, int $filter = 0)
     {
         $a += [
             Caster::PREFIX_VIRTUAL.'locale' => $c->getLocale(),

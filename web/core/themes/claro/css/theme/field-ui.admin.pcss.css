@@ -32,7 +32,6 @@
 
 /* Settings edit. */
 .field-plugin-settings-edit-wrapper {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -45,9 +44,8 @@
 }
 
 .field-plugin-settings-edit-wrapper .ajax-progress--throbber {
-  position: absolute;
-  inset-block-start: 25px;
-  margin-inline: 0;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 /* Settings editing subform. */

@@ -15,7 +15,8 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Exception\InvalidArgumentException;
 
 /**
- * Validates that a value is a valid CSS color.
+ * @Annotation
+ * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
  *
  * @author Mathieu Santostefano <msantostefano@protonmail.com>
  */
@@ -41,6 +42,11 @@ class CssColor extends Constraint
     ];
 
     /**
+     * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
+     */
+    protected static $errorNames = self::ERROR_NAMES;
+
+    /**
      * @var string[]
      */
     private static array $validationModes = [
@@ -58,15 +64,13 @@ class CssColor extends Constraint
         self::HSLA,
     ];
 
-    public string $message = 'This value is not a valid CSS color.';
-    public array|string $formats;
+    public $message = 'This value is not a valid CSS color.';
+    public $formats;
 
     /**
-     * @param string[]|string|array<string,mixed> $formats The types of CSS colors allowed ({@see https://symfony.com/doc/current/reference/constraints/CssColor.html#formats})
-     * @param string[]|null                       $groups
-     * @param array<string,mixed>|null            $options
+     * @param array|string $formats The types of CSS colors allowed (e.g. hexadecimal only, RGB and HSL only, etc.).
      */
-    public function __construct(array|string $formats = [], ?string $message = null, ?array $groups = null, $payload = null, ?array $options = null)
+    public function __construct($formats = [], ?string $message = null, ?array $groups = null, $payload = null, ?array $options = null)
     {
         $validationModesAsString = implode(', ', self::$validationModes);
 
@@ -81,7 +85,7 @@ class CssColor extends Constraint
 
             $options['value'] = $formats;
         } elseif (\is_string($formats)) {
-            if (!\in_array($formats, self::$validationModes, true)) {
+            if (!\in_array($formats, self::$validationModes)) {
                 throw new InvalidArgumentException(sprintf('The "formats" parameter value is not valid. It must contain one or more of the following values: "%s".', $validationModesAsString));
             }
 

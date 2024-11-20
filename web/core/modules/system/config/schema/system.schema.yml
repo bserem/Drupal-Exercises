@@ -226,6 +226,10 @@ system.performance:
         gzip:
           type: boolean
           label: 'Compress JavaScript files.'
+    stale_file_threshold:
+      type: integer
+      label: 'Stale file threshold'
+      deprecated: 'The system.performance.stale_file_threshold config key is deprecated in drupal:10.2.0 and is removed from drupal:11.0.0. See https://www.drupal.org/node/3301744'
 
 system.rss:
   type: config_object
@@ -325,6 +329,11 @@ system.file:
     path:
       type: mapping
       label: 'Path settings'
+      mapping:
+        temporary:
+          deprecated: "The 'system.file:path.temporary' config property path is deprecated in drupal:8.8.0 and is removed from drupal 11.0.0. Use settings.php instead. See https://www.drupal.org/node/3039255."
+          type: string
+          label: 'Temporary directory'
     temporary_maximum_age:
       type: integer
       label: 'Maximum age for temporary files'

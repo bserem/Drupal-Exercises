@@ -6,7 +6,9 @@ use Drupal\Core\Database\Connection as DatabaseConnection;
 use Drupal\Core\Database\Database;
 use Drupal\Core\Database\DatabaseAccessDeniedException;
 use Drupal\Core\Database\DatabaseConnectionRefusedException;
+use Drupal\Core\Database\DatabaseException;
 use Drupal\Core\Database\DatabaseNotFoundException;
+use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Database\StatementWrapperIterator;
 use Drupal\Core\Database\SupportsTemporaryTablesInterface;
 use Drupal\Core\Database\Transaction\TransactionManagerInterface;
@@ -42,6 +44,18 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
   protected $statementWrapperClass = StatementWrapperIterator::class;
 
   /**
+   * Flag to indicate if the cleanup function in __destruct() should run.
+   *
+   * @var bool
+   *
+   * @deprecated in drupal:10.2.0 and is removed from drupal:11.0.0. There's no
+   *    replacement.
+   *
+   * @see https://www.drupal.org/node/3349345
+   */
+  protected $needsCleanup = FALSE;
+
+  /**
    * Stores the server version after it has been retrieved from the database.
    *
    * @var string
@@ -54,7 +68,7 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
    * The minimal possible value for the max_allowed_packet setting of MySQL.
    *
    * @link https://mariadb.com/kb/en/mariadb/server-system-variables/#max_allowed_packet
-   * @link https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_max_allowed_packet
+   * @link https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_allowed_packet
    *
    * @var int
    */
@@ -73,8 +87,11 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
     // combination mode), then MySQL doesn't interpret a double quote as an
     // identifier quote, in which case use the non-ANSI-standard backtick.
     //
-    // @see https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html#sqlmode_ansi_quotes
-    $ansi_quotes_modes = ['ANSI_QUOTES', 'ANSI'];
+    // Because we still support MySQL 5.7, check for the deprecated combination
+    // modes as well.
+    //
+    // @see https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_ansi_quotes
+    $ansi_quotes_modes = ['ANSI_QUOTES', 'ANSI', 'DB2', 'MAXDB', 'MSSQL', 'ORACLE', 'POSTGRESQL'];
     $is_ansi_quotes_mode = FALSE;
     if (isset($connection_options['init_commands']['sql_mode'])) {
       foreach ($ansi_quotes_modes as $mode) {
@@ -212,6 +229,16 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
     return $pdo;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function __destruct() {
+    if ($this->needsCleanup) {
+      $this->nextIdDelete();
+    }
+    parent::__destruct();
+  }
+
   public function queryRange($query, $from, $count, array $args = [], array $options = []) {
     return $this->query($query . ' LIMIT ' . (int) $from . ', ' . (int) $count, $args, $options);
   }
@@ -313,8 +340,64 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
   /**
    * {@inheritdoc}
    */
+  public function nextId($existing_id = 0) {
+    @trigger_error('Drupal\Core\Database\Connection::nextId() is deprecated in drupal:10.2.0 and is removed from drupal:11.0.0. Modules should use instead the keyvalue storage for the last used id. See https://www.drupal.org/node/3349345', E_USER_DEPRECATED);
+    $this->query('INSERT INTO {sequences} () VALUES ()');
+    $new_id = $this->lastInsertId();
+    // This should only happen after an import or similar event.
+    if ($existing_id >= $new_id) {
+      // If we INSERT a value manually into the sequences table, on the next
+      // INSERT, MySQL will generate a larger value. However, there is no way
+      // of knowing whether this value already exists in the table. MySQL
+      // provides an INSERT IGNORE which would work, but that can mask problems
+      // other than duplicate keys. Instead, we use INSERT ... ON DUPLICATE KEY
+      // UPDATE in such a way that the UPDATE does not do anything. This way,
+      // duplicate keys do not generate errors but everything else does.
+      $this->query('INSERT INTO {sequences} (value) VALUES (:value) ON DUPLICATE KEY UPDATE value = value', [':value' => $existing_id]);
+      $this->query('INSERT INTO {sequences} () VALUES ()');
+      $new_id = $this->lastInsertId();
+    }
+    $this->needsCleanup = TRUE;
+    return $new_id;
+  }
+
+  public function nextIdDelete() {
+    @trigger_error(__METHOD__ . '() is deprecated in drupal:10.2.0 and is removed from drupal:11.0.0. Modules should use instead the keyvalue storage for the last used id. See https://www.drupal.org/node/3349345', E_USER_DEPRECATED);
+    // While we want to clean up the table to keep it up from occupying too
+    // much storage and memory, we must keep the highest value in the table
+    // because InnoDB uses an in-memory auto-increment counter as long as the
+    // server runs. When the server is stopped and restarted, InnoDB
+    // re-initializes the counter for each table for the first INSERT to the
+    // table based solely on values from the table so deleting all values would
+    // be a problem in this case. Also, TRUNCATE resets the auto increment
+    // counter.
+    try {
+      $max_id = $this->query('SELECT MAX(value) FROM {sequences}')->fetchField();
+      // We know we are using MySQL here, no need for the slower ::delete().
+      $this->query('DELETE FROM {sequences} WHERE value < :value', [':value' => $max_id]);
+    }
+    // During testing, this function is called from shutdown with the
+    // simpletest prefix stored in $this->connection, and those tables are gone
+    // by the time shutdown is called so we need to ignore the database
+    // errors. There is no problem with completely ignoring errors here: if
+    // these queries fail, the sequence will work just fine, just use a bit
+    // more database storage and memory.
+    catch (DatabaseException $e) {
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function exceptionHandler() {
     return new ExceptionHandler();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function select($table, $alias = NULL, array $options = []) {
+    return new Select($this, $table, $alias, $options);
   }
 
   /**
@@ -327,8 +410,36 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
   /**
    * {@inheritdoc}
    */
+  public function merge($table, array $options = []) {
+    return new Merge($this, $table, $options);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function upsert($table, array $options = []) {
     return new Upsert($this, $table, $options);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function update($table, array $options = []) {
+    return new Update($this, $table, $options);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function delete($table, array $options = []) {
+    return new Delete($this, $table, $options);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function truncate($table, array $options = []) {
+    return new Truncate($this, $table, $options);
   }
 
   /**
@@ -344,8 +455,22 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
   /**
    * {@inheritdoc}
    */
+  public function condition($conjunction) {
+    return new Condition($conjunction);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   protected function driverTransactionManager(): TransactionManagerInterface {
     return new TransactionManager($this);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function startTransaction($name = '') {
+    return $this->transactionManager()->push($name);
   }
 
 }

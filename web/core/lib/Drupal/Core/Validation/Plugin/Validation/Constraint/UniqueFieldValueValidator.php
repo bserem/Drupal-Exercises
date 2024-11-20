@@ -38,7 +38,7 @@ class UniqueFieldValueValidator extends ConstraintValidator implements Container
   /**
    * {@inheritdoc}
    */
-  public function validate($items, Constraint $constraint): void {
+  public function validate($items, Constraint $constraint) {
     if (!$items->first()) {
       return;
     }

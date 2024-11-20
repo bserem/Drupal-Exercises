@@ -73,9 +73,6 @@ class CKEditor5PluginManagerTest extends KernelTestBase {
     Editor::create([
       'format' => 'basic_html',
       'editor' => 'ckeditor5',
-      'image_upload' => [
-        'status' => FALSE,
-      ],
     ])->save();
     FilterFormat::create(
       Yaml::parseFile('core/profiles/standard/config/install/filter.format.full_html.yml')
@@ -83,9 +80,6 @@ class CKEditor5PluginManagerTest extends KernelTestBase {
     Editor::create([
       'format' => 'full_html',
       'editor' => 'ckeditor5',
-      'image_upload' => [
-        'status' => FALSE,
-      ],
     ])->save();
     $this->manager = $this->container->get('plugin.manager.ckeditor5.plugin');
     $this->typedConfig = $this->container->get('config.typed');
@@ -1065,9 +1059,6 @@ PHP,
     $text_editor = Editor::create([
       'format' => 'dummy',
       'editor' => 'ckeditor5',
-      'image_upload' => [
-        'status' => FALSE,
-      ],
       'settings' => [
         'plugins' => [
           $sneaky_plugin_id => ['configured_subset' => $configured_subset],

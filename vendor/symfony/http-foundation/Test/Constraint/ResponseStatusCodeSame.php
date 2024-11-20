@@ -18,7 +18,7 @@ final class ResponseStatusCodeSame extends Constraint
 {
     private int $statusCode;
 
-    public function __construct(int $statusCode, private readonly bool $verbose = true)
+    public function __construct(int $statusCode)
     {
         $this->statusCode = $statusCode;
     }
@@ -49,6 +49,6 @@ final class ResponseStatusCodeSame extends Constraint
      */
     protected function additionalFailureDescription($response): string
     {
-        return $this->verbose ? (string) $response : explode("\r\n\r\n", (string) $response)[0];
+        return (string) $response;
     }
 }

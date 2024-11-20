@@ -279,6 +279,51 @@ class WorkspacesContentModerationStateTest extends ContentModerationStateTest {
   /**
    * {@inheritdoc}
    */
+  public function testContentModerationStateDataRemoval($entity_type_id = NULL): void {
+    // Deliberately empty body. This test will be skipped in the setUp() of this
+    // class. However, for it to be picked up there, in PHPUnit 9, it still
+    // needs to be defined in this class.
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function testModerationWithFieldConfigOverride(): void {
+    // Deliberately empty body. This test will be skipped in the setUp() of this
+    // class. However, for it to be picked up there, in PHPUnit 9, it still
+    // needs to be defined in this class.
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function testWorkflowDependencies(): void {
+    // Deliberately empty body. This test will be skipped in the setUp() of this
+    // class. However, for it to be picked up there, in PHPUnit 9, it still
+    // needs to be defined in this class.
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function testWorkflowNonConfigBundleDependencies(): void {
+    // Deliberately empty body. This test will be skipped in the setUp() of this
+    // class. However, for it to be picked up there, in PHPUnit 9, it still
+    // needs to be defined in this class.
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function testGetCurrentUserId(): void {
+    // Deliberately empty body. This test will be skipped in the setUp() of this
+    // class. However, for it to be picked up there, in PHPUnit 9, it still
+    // needs to be defined in this class.
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   protected function createEntity($entity_type_id, $moderation_state = 'published', $create_workflow = TRUE) {
     $entity = $this->workspaceManager->executeOutsideWorkspace(function () use ($entity_type_id, $moderation_state, $create_workflow) {
       return parent::createEntity($entity_type_id, $moderation_state, $create_workflow);

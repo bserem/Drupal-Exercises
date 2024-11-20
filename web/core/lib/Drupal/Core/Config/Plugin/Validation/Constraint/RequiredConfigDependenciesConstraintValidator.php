@@ -48,7 +48,7 @@ class RequiredConfigDependenciesConstraintValidator extends ConstraintValidator 
   /**
    * {@inheritdoc}
    */
-  public function validate(mixed $entity, Constraint $constraint): void {
+  public function validate(mixed $entity, Constraint $constraint) {
     assert($constraint instanceof RequiredConfigDependenciesConstraint);
 
     // Only config entities can have config dependencies.

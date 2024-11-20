@@ -11,6 +11,7 @@ use Composer\InstalledVersions;
 use Drupal\Component\FileSystem\FileSystem as DrupalFilesystem;
 use Drupal\Tests\DrupalTestBrowser;
 use Drupal\Tests\PhpUnitCompatibilityTrait;
+use Drupal\Tests\Traits\PhpUnitWarnings;
 use Drupal\TestTools\Extension\RequiresComposerTrait;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
@@ -54,6 +55,7 @@ use Symfony\Component\Process\Process;
 abstract class BuildTestBase extends TestCase {
 
   use RequiresComposerTrait;
+  use PhpUnitWarnings;
   use PhpUnitCompatibilityTrait;
 
   /**

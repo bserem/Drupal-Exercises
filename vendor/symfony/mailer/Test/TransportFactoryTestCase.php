@@ -31,9 +31,9 @@ abstract class TransportFactoryTestCase extends TestCase
     protected const USER = 'u$er';
     protected const PASSWORD = 'pa$s';
 
-    protected EventDispatcherInterface $dispatcher;
-    protected HttpClientInterface $client;
-    protected LoggerInterface $logger;
+    protected $dispatcher;
+    protected $client;
+    protected $logger;
 
     abstract public function getFactory(): TransportFactoryInterface;
 

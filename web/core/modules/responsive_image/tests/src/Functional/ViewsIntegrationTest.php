@@ -43,8 +43,6 @@ class ViewsIntegrationTest extends ViewTestBase {
 
   /**
    * The test views to enable.
-   *
-   * @var string[]
    */
   public static $testViews = ['entity_test_row'];
 

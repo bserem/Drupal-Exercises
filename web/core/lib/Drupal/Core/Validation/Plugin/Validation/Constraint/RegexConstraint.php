@@ -19,8 +19,14 @@ class RegexConstraint extends Regex {
 
   /**
    * {@inheritdoc}
+   *
+   * @return string
+   *   The name of the class that validates this constraint.
+   *
+   * @todo Add method return type declaration.
+   * @see https://www.drupal.org/project/drupal/issues/3425150
    */
-  public function validatedBy(): string {
+  public function validatedBy() {
     return '\Symfony\Component\Validator\Constraints\RegexValidator';
   }
 

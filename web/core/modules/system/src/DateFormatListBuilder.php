@@ -18,24 +18,32 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class DateFormatListBuilder extends ConfigEntityListBuilder {
 
   /**
+   * The date formatter service.
+   *
+   * @var \Drupal\Core\Datetime\DateFormatterInterface
+   */
+  protected $dateFormatter;
+
+  /**
    * Constructs a new DateFormatListBuilder object.
    *
    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
    *   The entity type definition.
    * @param \Drupal\Core\Entity\EntityStorageInterface $storage
    *   The entity storage class.
-   * @param \Drupal\Core\Datetime\DateFormatterInterface $dateFormatter
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
    *   The date formatter service.
-   * @param \Drupal\Component\Datetime\TimeInterface $time
+   * @param \Drupal\Component\Datetime\TimeInterface|null $time
    *   The time service.
    */
-  public function __construct(
-    EntityTypeInterface $entity_type,
-    EntityStorageInterface $storage,
-    protected DateFormatterInterface $dateFormatter,
-    protected TimeInterface $time,
-  ) {
+  public function __construct(EntityTypeInterface $entity_type, EntityStorageInterface $storage, DateFormatterInterface $date_formatter, protected ?TimeInterface $time = NULL) {
     parent::__construct($entity_type, $storage);
+
+    $this->dateFormatter = $date_formatter;
+    if ($this->time === NULL) {
+      @trigger_error('Calling ' . __METHOD__ . ' without the $time argument is deprecated in drupal:10.3.0 and it will be required in drupal:11.0.0. See https://www.drupal.org/node/3112298', E_USER_DEPRECATED);
+      $this->time = \Drupal::service('datetime.time');
+    }
   }
 
   /**

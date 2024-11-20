@@ -14,9 +14,10 @@ namespace Symfony\Component\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Validates that a value (typically a credit card number) passes the Luhn algorithm.
+ * Metadata for the LuhnValidator.
  *
- * @see https://en.wikipedia.org/wiki/Luhn_algorithm
+ * @Annotation
+ * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
  *
  * @author Tim Nagel <t.nagel@infinite.net.au>
  * @author Greg Knapp http://gregk.me/2011/php-implementation-of-bank-card-luhn-algorithm/
@@ -33,17 +34,18 @@ class Luhn extends Constraint
         self::CHECKSUM_FAILED_ERROR => 'CHECKSUM_FAILED_ERROR',
     ];
 
-    public string $message = 'Invalid card number.';
-
     /**
-     * @param array<string,mixed>|null $options
-     * @param string[]|null            $groups
+     * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
      */
+    protected static $errorNames = self::ERROR_NAMES;
+
+    public $message = 'Invalid card number.';
+
     public function __construct(
         ?array $options = null,
         ?string $message = null,
         ?array $groups = null,
-        mixed $payload = null,
+        mixed $payload = null
     ) {
         parent::__construct($options, $groups, $payload);
 

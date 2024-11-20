@@ -209,7 +209,7 @@ class ImageStyleTest extends UnitTestCase {
     $stream_wrapper_manager = $this->createMock('\Drupal\Core\StreamWrapper\StreamWrapperManagerInterface');
     $stream_wrapper_manager->expects($this->any())
       ->method('getWrappers')
-      ->willReturn([]);
+      ->will($this->returnValue([]));
     $theme_registry = $this->createMock('\Drupal\Core\Theme\Registry');
 
     $container = new ContainerBuilder();

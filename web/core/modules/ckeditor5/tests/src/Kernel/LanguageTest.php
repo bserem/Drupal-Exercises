@@ -52,9 +52,6 @@ class LanguageTest extends KernelTestBase {
     Editor::create([
       'format' => 'basic_html',
       'editor' => 'ckeditor5',
-      'image_upload' => [
-        'status' => FALSE,
-      ],
     ])->save();
 
     $this->installConfig(['language']);

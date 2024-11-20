@@ -31,7 +31,10 @@ class ContextualizedDumper implements DataDumperInterface
         $this->contextProviders = $contextProviders;
     }
 
-    public function dump(Data $data): ?string
+    /**
+     * @return string|null
+     */
+    public function dump(Data $data)
     {
         $context = $data->getContext();
         foreach ($this->contextProviders as $contextProvider) {

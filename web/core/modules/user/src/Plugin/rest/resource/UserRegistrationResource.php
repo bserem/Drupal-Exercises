@@ -36,6 +36,27 @@ class UserRegistrationResource extends ResourceBase {
   use EntityResourceAccessTrait;
 
   /**
+   * User settings config instance.
+   *
+   * @var \Drupal\Core\Config\ImmutableConfig
+   */
+  protected $userSettings;
+
+  /**
+   * The current user.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $currentUser;
+
+  /**
+   * The password generator.
+   *
+   * @var \Drupal\Core\Password\PasswordGeneratorInterface
+   */
+  protected $passwordGenerator;
+
+  /**
    * Constructs a new UserRegistrationResource instance.
    *
    * @param array $configuration
@@ -48,24 +69,23 @@ class UserRegistrationResource extends ResourceBase {
    *   The available serialization formats.
    * @param \Psr\Log\LoggerInterface $logger
    *   A logger instance.
-   * @param \Drupal\Core\Config\ImmutableConfig $userSettings
+   * @param \Drupal\Core\Config\ImmutableConfig $user_settings
    *   A user settings config instance.
-   * @param \Drupal\Core\Session\AccountInterface $currentUser
+   * @param \Drupal\Core\Session\AccountInterface $current_user
    *   The current user.
-   * @param \Drupal\Core\Password\PasswordGeneratorInterface $passwordGenerator
+   * @param \Drupal\Core\Password\PasswordGeneratorInterface|null $password_generator
    *   The password generator.
    */
-  public function __construct(
-    array $configuration,
-    $plugin_id,
-    $plugin_definition,
-    array $serializer_formats,
-    LoggerInterface $logger,
-    protected ImmutableConfig $userSettings,
-    protected AccountInterface $currentUser,
-    protected PasswordGeneratorInterface $passwordGenerator,
-  ) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, array $serializer_formats, LoggerInterface $logger, ImmutableConfig $user_settings, AccountInterface $current_user, ?PasswordGeneratorInterface $password_generator = NULL) {
+    if (is_null($password_generator)) {
+      @trigger_error('Calling ' . __METHOD__ . '() without the $password_generator argument is deprecated in drupal:10.3.0 and will be required in drupal:11.0.0. See https://www.drupal.org/node/3405799', E_USER_DEPRECATED);
+      $password_generator = \Drupal::service('password_generator');
+    }
+
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger);
+    $this->userSettings = $user_settings;
+    $this->currentUser = $current_user;
+    $this->passwordGenerator = $password_generator;
   }
 
   /**

@@ -57,17 +57,6 @@ class RequireDependency extends Base
     }
 
     /**
-     * adds `no-update` option to composer
-     *
-     * @return $this
-     */
-    public function noUpdate(): self
-    {
-        $this->option('--no-update');
-        return $this;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function run()

@@ -30,7 +30,10 @@ interface ContainerInterface extends PsrContainerInterface
     public const IGNORE_ON_INVALID_REFERENCE = 3;
     public const IGNORE_ON_UNINITIALIZED_REFERENCE = 4;
 
-    public function set(string $id, ?object $service): void;
+    /**
+     * @return void
+     */
+    public function set(string $id, ?object $service);
 
     /**
      * @template B of self::*_REFERENCE
@@ -54,11 +57,16 @@ interface ContainerInterface extends PsrContainerInterface
     public function initialized(string $id): bool;
 
     /**
+     * @return array|bool|string|int|float|\UnitEnum|null
+     *
      * @throws ParameterNotFoundException if the parameter is not defined
      */
-    public function getParameter(string $name): array|bool|string|int|float|\UnitEnum|null;
+    public function getParameter(string $name);
 
     public function hasParameter(string $name): bool;
 
-    public function setParameter(string $name, array|bool|string|int|float|\UnitEnum|null $value): void;
+    /**
+     * @return void
+     */
+    public function setParameter(string $name, array|bool|string|int|float|\UnitEnum|null $value);
 }

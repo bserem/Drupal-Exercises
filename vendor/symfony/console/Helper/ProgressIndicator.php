@@ -31,11 +31,13 @@ class ProgressIndicator
         'very_verbose_no_ansi' => ' %message% (%elapsed:6s%, %memory:6s%)',
     ];
 
+    private OutputInterface $output;
     private int $startTime;
     private ?string $format = null;
     private ?string $message = null;
     private array $indicatorValues;
     private int $indicatorCurrent;
+    private int $indicatorChangeInterval;
     private float $indicatorUpdateTime;
     private bool $started = false;
 
@@ -48,12 +50,9 @@ class ProgressIndicator
      * @param int        $indicatorChangeInterval Change interval in milliseconds
      * @param array|null $indicatorValues         Animated indicator characters
      */
-    public function __construct(
-        private OutputInterface $output,
-        ?string $format = null,
-        private int $indicatorChangeInterval = 100,
-        ?array $indicatorValues = null,
-    ) {
+    public function __construct(OutputInterface $output, ?string $format = null, int $indicatorChangeInterval = 100, ?array $indicatorValues = null)
+    {
+        $this->output = $output;
 
         $format ??= $this->determineBestFormat();
         $indicatorValues ??= ['-', '\\', '|', '/'];
@@ -64,14 +63,17 @@ class ProgressIndicator
         }
 
         $this->format = self::getFormatDefinition($format);
+        $this->indicatorChangeInterval = $indicatorChangeInterval;
         $this->indicatorValues = $indicatorValues;
         $this->startTime = time();
     }
 
     /**
      * Sets the current indicator message.
+     *
+     * @return void
      */
-    public function setMessage(?string $message): void
+    public function setMessage(?string $message)
     {
         $this->message = $message;
 
@@ -80,8 +82,10 @@ class ProgressIndicator
 
     /**
      * Starts the indicator output.
+     *
+     * @return void
      */
-    public function start(string $message): void
+    public function start(string $message)
     {
         if ($this->started) {
             throw new LogicException('Progress indicator already started.');
@@ -98,8 +102,10 @@ class ProgressIndicator
 
     /**
      * Advances the indicator.
+     *
+     * @return void
      */
-    public function advance(): void
+    public function advance()
     {
         if (!$this->started) {
             throw new LogicException('Progress indicator has not yet been started.');
@@ -123,8 +129,10 @@ class ProgressIndicator
 
     /**
      * Finish the indicator with message.
+     *
+     * @return void
      */
-    public function finish(string $message): void
+    public function finish(string $message)
     {
         if (!$this->started) {
             throw new LogicException('Progress indicator has not yet been started.');
@@ -148,8 +156,10 @@ class ProgressIndicator
      * Sets a placeholder formatter for a given name.
      *
      * This method also allow you to override an existing placeholder.
+     *
+     * @return void
      */
-    public static function setPlaceholderFormatterDefinition(string $name, callable $callable): void
+    public static function setPlaceholderFormatterDefinition(string $name, callable $callable)
     {
         self::$formatters ??= self::initPlaceholderFormatters();
 

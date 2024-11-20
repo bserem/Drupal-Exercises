@@ -46,8 +46,10 @@ class CacheAttributeListener implements EventSubscriberInterface
 
     /**
      * Handles HTTP validation headers.
+     *
+     * @return void
      */
-    public function onKernelControllerArguments(ControllerArgumentsEvent $event): void
+    public function onKernelControllerArguments(ControllerArgumentsEvent $event)
     {
         $request = $event->getRequest();
 
@@ -90,8 +92,10 @@ class CacheAttributeListener implements EventSubscriberInterface
 
     /**
      * Modifies the response to apply HTTP cache headers when needed.
+     *
+     * @return void
      */
-    public function onKernelResponse(ResponseEvent $event): void
+    public function onKernelResponse(ResponseEvent $event)
     {
         $request = $event->getRequest();
 

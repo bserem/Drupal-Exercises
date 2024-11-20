@@ -326,14 +326,15 @@
         const id = e.currentTarget.value;
 
         // Update the selection.
+        const position = currentSelection.indexOf(id);
         if (e.currentTarget.checked) {
           // Check if the ID is not already in the selection and add if needed.
-          if (!currentSelection.includes(id)) {
+          if (position === -1) {
             currentSelection.push(id);
           }
-        } else if (currentSelection.includes(id)) {
+        } else if (position !== -1) {
           // Remove the ID when it is in the current selection.
-          currentSelection.splice(currentSelection.indexOf(id), 1);
+          currentSelection.splice(position, 1);
         }
 
         const mediaLibraryModalSelection = document.querySelector(

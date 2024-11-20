@@ -14,7 +14,6 @@ namespace Symfony\Component\DependencyInjection\Compiler;
 use Symfony\Component\Config\Definition\BaseNode;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
-use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -30,7 +29,10 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
  */
 class MergeExtensionConfigurationPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container): void
+    /**
+     * @return void
+     */
+    public function process(ContainerBuilder $container)
     {
         $parameters = $container->getParameterBag()->all();
         $definitions = $container->getDefinitions();
@@ -57,14 +59,7 @@ class MergeExtensionConfigurationPass implements CompilerPassInterface
                     BaseNode::setPlaceholderUniquePrefix($resolvingBag->getEnvPlaceholderUniquePrefix());
                 }
             }
-
-            try {
-                $config = $resolvingBag->resolveValue($config);
-            } catch (ParameterNotFoundException $e) {
-                $e->setSourceExtensionName($name);
-
-                throw $e;
-            }
+            $config = $resolvingBag->resolveValue($config);
 
             try {
                 $tmpContainer = new MergeExtensionConfigurationContainerBuilder($extension, $resolvingBag);
@@ -173,12 +168,12 @@ class MergeExtensionConfigurationContainerBuilder extends ContainerBuilder
         throw new LogicException(sprintf('You cannot add compiler pass "%s" from extension "%s". Compiler passes must be registered before the container is compiled.', get_debug_type($pass), $this->extensionClass));
     }
 
-    public function registerExtension(ExtensionInterface $extension): void
+    public function registerExtension(ExtensionInterface $extension)
     {
         throw new LogicException(sprintf('You cannot register extension "%s" from "%s". Extensions must be registered before the container is compiled.', get_debug_type($extension), $this->extensionClass));
     }
 
-    public function compile(bool $resolveEnvPlaceholders = false): void
+    public function compile(bool $resolveEnvPlaceholders = false)
     {
         throw new LogicException(sprintf('Cannot compile the container in extension "%s".', $this->extensionClass));
     }

@@ -118,7 +118,7 @@ class SecurityAdvisoryTest extends BrowserTestBase {
   public function testPsa(): void {
     $assert = $this->assertSession();
     // Setup test PSA endpoint.
-    AdvisoryTestClientMiddleware::setTestEndpoint($this->workingEndpointMixed, TRUE);
+    AdvisoryTestClientMiddleware::setTestEndpoint($this->workingEndpointMixed);
     $mixed_advisory_links = [
       'Critical Release - SA-2019-02-19',
       'Critical Release - PSA-Really Old',

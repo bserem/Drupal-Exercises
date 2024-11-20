@@ -162,7 +162,6 @@ class InstallCommand extends Command {
    *   The command exit status.
    */
   protected function install($class_loader, SymfonyStyle $io, $profile, $langcode, $site_path, $site_name, string $recipe) {
-    $sqliteDriverNamespace = 'Drupal\\sqlite\\Driver\\Database\\sqlite';
     $password = Crypt::randomBytesBase64(12);
     $parameters = [
       'interactive' => FALSE,
@@ -173,8 +172,8 @@ class InstallCommand extends Command {
       ],
       'forms' => [
         'install_settings_form' => [
-          'driver' => $sqliteDriverNamespace,
-          $sqliteDriverNamespace => [
+          'driver' => 'sqlite',
+          'sqlite' => [
             'database' => $site_path . '/files/.sqlite',
           ],
         ],

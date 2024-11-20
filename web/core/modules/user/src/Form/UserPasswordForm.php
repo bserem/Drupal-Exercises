@@ -4,12 +4,14 @@ namespace Drupal\user\Form;
 
 use Drupal\Component\Utility\EmailValidatorInterface;
 use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\DependencyInjection\DeprecatedServicePropertyTrait;
 use Drupal\Core\Flood\FloodInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\WorkspaceSafeFormInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Render\Element\Email;
+use Drupal\Core\TypedData\TypedDataManagerInterface;
 use Drupal\user\UserInterface;
 use Drupal\user\UserStorageInterface;
 use Drupal\user\UserNameValidator;
@@ -23,6 +25,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @internal
  */
 class UserPasswordForm extends FormBase implements WorkspaceSafeFormInterface {
+
+  use DeprecatedServicePropertyTrait;
+
+  /**
+   * The deprecated properties.
+   */
+  protected array $deprecatedProperties = [
+    'typedDataManager' => 'typed_data_manager',
+  ];
 
   /**
    * The user storage.
@@ -63,7 +74,7 @@ class UserPasswordForm extends FormBase implements WorkspaceSafeFormInterface {
    *   The config factory.
    * @param \Drupal\Core\Flood\FloodInterface $flood
    *   The flood service.
-   * @param \Drupal\user\UserNameValidator $userNameValidator
+   * @param \Drupal\user\UserNameValidator|\Drupal\Core\TypedData\TypedDataManagerInterface $userNameValidator
    *   The user validator service.
    * @param \Drupal\Component\Utility\EmailValidatorInterface $email_validator
    *   The email validator service.
@@ -73,7 +84,7 @@ class UserPasswordForm extends FormBase implements WorkspaceSafeFormInterface {
     LanguageManagerInterface $language_manager,
     ConfigFactory $config_factory,
     FloodInterface $flood,
-    protected UserNameValidator $userNameValidator,
+    protected UserNameValidator|TypedDataManagerInterface $userNameValidator,
     EmailValidatorInterface $email_validator,
   ) {
     $this->userStorage = $user_storage;
@@ -81,6 +92,10 @@ class UserPasswordForm extends FormBase implements WorkspaceSafeFormInterface {
     $this->configFactory = $config_factory;
     $this->flood = $flood;
     $this->emailValidator = $email_validator;
+    if (!$userNameValidator instanceof UserNameValidator) {
+      @\trigger_error('Passing $userNameValidator as \Drupal\Core\TypedData\TypedDataManagerInterface to ' . __METHOD__ . ' () is deprecated in drupal:10.3.0 and is removed in drupal:11.0.0. Pass a Drupal\user\UserValidator instead. See https://www.drupal.org/node/3431205', E_USER_DEPRECATED);
+      $this->userNameValidator = \Drupal::service('user.name_validator');
+    }
   }
 
   /**

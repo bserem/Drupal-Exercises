@@ -50,7 +50,10 @@ class LintCommand extends Command
         $this->isReadableProvider = null === $isReadableProvider ? null : $isReadableProvider(...);
     }
 
-    protected function configure(): void
+    /**
+     * @return void
+     */
+    protected function configure()
     {
         $this
             ->addArgument('filename', InputArgument::IS_ARRAY, 'A file, a directory or "-" for reading from STDIN')

@@ -34,27 +34,42 @@ class FrozenParameterBag extends ParameterBag
         $this->resolved = true;
     }
 
-    public function clear(): never
+    /**
+     * @return never
+     */
+    public function clear()
     {
         throw new LogicException('Impossible to call clear() on a frozen ParameterBag.');
     }
 
-    public function add(array $parameters): never
+    /**
+     * @return never
+     */
+    public function add(array $parameters)
     {
         throw new LogicException('Impossible to call add() on a frozen ParameterBag.');
     }
 
-    public function set(string $name, array|bool|string|int|float|\UnitEnum|null $value): never
+    /**
+     * @return never
+     */
+    public function set(string $name, array|bool|string|int|float|\UnitEnum|null $value)
     {
         throw new LogicException('Impossible to call set() on a frozen ParameterBag.');
     }
 
-    public function deprecate(string $name, string $package, string $version, string $message = 'The parameter "%s" is deprecated.'): never
+    /**
+     * @return never
+     */
+    public function deprecate(string $name, string $package, string $version, string $message = 'The parameter "%s" is deprecated.')
     {
         throw new LogicException('Impossible to call deprecate() on a frozen ParameterBag.');
     }
 
-    public function remove(string $name): never
+    /**
+     * @return never
+     */
+    public function remove(string $name)
     {
         throw new LogicException('Impossible to call remove() on a frozen ParameterBag.');
     }

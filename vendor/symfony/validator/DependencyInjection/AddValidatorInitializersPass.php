@@ -21,7 +21,10 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class AddValidatorInitializersPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container): void
+    /**
+     * @return void
+     */
+    public function process(ContainerBuilder $container)
     {
         if (!$container->hasDefinition('validator.builder')) {
             return;

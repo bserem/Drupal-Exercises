@@ -9,7 +9,7 @@ namespace Drupal\FunctionalTests\Installer;
  *
  * @group Installer
  */
-class InstallerExistingConfigNoConfigTest extends InstallerConfigDirectoryTestBase {
+class InstallerExistingConfigNoConfigTest extends InstallerExistingConfigTestBase {
 
   /**
    * {@inheritdoc}
@@ -28,8 +28,8 @@ class InstallerExistingConfigNoConfigTest extends InstallerConfigDirectoryTestBa
   /**
    * {@inheritdoc}
    */
-  protected function getConfigLocation() {
-    return __DIR__ . '/../../../fixtures/config_install/testing_config_install_no_config';
+  protected function getConfigTarball() {
+    return __DIR__ . '/../../../fixtures/config_install/testing_config_install_no_config.tar.gz';
   }
 
   /**

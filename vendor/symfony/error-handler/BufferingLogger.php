@@ -40,7 +40,10 @@ class BufferingLogger extends AbstractLogger
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    public function __wakeup(): void
+    /**
+     * @return void
+     */
+    public function __wakeup()
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
