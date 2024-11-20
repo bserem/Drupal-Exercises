@@ -1,5 +1,5 @@
 <?php
-
+$settings['config_sync_directory'] = '../config/sync';
 // phpcs:ignoreFile
 
 // DDEV-created Drupal 10 settings.php from upstream default.settings.php
