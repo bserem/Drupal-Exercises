@@ -1,0 +1,75 @@
+# Schema for the configuration files of the Navigation module.
+
+navigation.settings:
+  type: config_object
+  label: 'Navigation settings'
+  constraints:
+    FullyValidatable: ~
+  mapping:
+    logo:
+      type: mapping
+      label: 'Logo settings'
+      mapping:
+        provider:
+          type: string
+          label: 'Select Navigation logo handling'
+          constraints:
+            Choice:
+              - default
+              - hide
+              - custom
+        managed:
+          type: integer
+          label: 'Custom logo'
+          nullable: true
+          constraints:
+            Range:
+              min: 0
+        max:
+          type: mapping
+          label: 'Logo maximum settings'
+          mapping:
+            filesize:
+              type: integer
+              label: 'Maximum file sizes (bytes)'
+              constraints:
+                NotNull: [ ]
+                Range:
+                  min: 0
+            height:
+              type: integer
+              label: 'Logo expected height'
+              constraints:
+                NotNull: [ ]
+                Range:
+                  min: 0
+            width:
+              type: integer
+              label: 'Logo expected width'
+              constraints:
+                NotNull: [ ]
+                Range:
+                  min: 0
+          constraints:
+            ValidKeys: '<infer>'
+      constraints:
+        ValidKeys: '<infer>'
+
+navigation.block_layout:
+  type: config_object
+  mapping:
+    sections:
+      type: sequence
+      sequence:
+        type: layout_builder.section
+
+block.settings.navigation_menu:*:
+  type: block_settings
+  label: 'Menu block'
+  mapping:
+    level:
+      type: integer
+      label: 'Starting level'
+    depth:
+      type: integer
+      label: 'Maximum number of levels'
