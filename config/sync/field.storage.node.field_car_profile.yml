@@ -1,0 +1,20 @@
+uuid: 007d812d-c154-4e9a-8bbd-831b6c534305
+langcode: en
+status: true
+dependencies:
+  module:
+    - image
+    - node
+id: node.field_car_profile
+field_name: field_car_profile
+entity_type: node
+type: entity_reference
+settings:
+  target_type: image_style
+module: core
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

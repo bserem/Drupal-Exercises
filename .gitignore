@@ -1,0 +1,56 @@
+*
+
+!.gitignore
+#ddev installation
+!.ddev
+
+#sync directory at ../config/sync
+!web/sites/default/settings.php
+
+#downloaded drush
+!composer.json
+
+#made content type car
+!config/sync/node.type.car.yml
+!config/sync/field.field.node.car.body.yml
+
+#added circulation date and price
+!config/sync/field.field.node.car.field_imerominia_kykloforias.yml
+!config/sync/field.storage.node.field_imerominia_kykloforias.yml
+!config/sync/field.field.node.car.field_timi.yml
+!config/sync/field.storage.node.field_timi.yml
+
+#essential files for car content type, view, brand vocabulary
+!config/sync/taxonomy.vocabulary.markes_aytokiniton.yml
+!config/sync/views.view.car_view.yml
+
+#downloaded bartik
+!web/themes/contrib/bartik/bartik.theme
+
+
+#made car view
+!config/sync/core.entity_view_display.node.car.default.yml
+!config/sync/core.entity_view_display.node.car.teaser.yml
+
+#search sort in views.view.car_view.yml to see sort filter
+#search field_imerominia_kykloforias_value in views.view.car_view.yml to see the exposed filter
+!config/sync/views.view.car_view.yml
+
+#added image field with media_type/image_style
+!config/sync/field.field.node.car.field_car_profile.yml
+!config/sync/field.storage.node.field_car_profile.yml
+
+#added taxonomy term with reference to vocabulary
+!config/sync/field.field.node.car.field_brand.yml
+!config/sync/taxonomy.vocabulary.markes_aytokiniton.yml
+
+#Bartik SubTheme, includes note--car.html.twig which overrides default template
+!web/themes/bartik_subtheme/**/*
+!config/sync/block.block.bartik_subtheme*
+
+#exclude 2020 cars module
+!web/modules/custom/car_404_filter
+
+
+!config/sync/field.storage.node.field_tags.yml
+

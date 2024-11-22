@@ -1,0 +1,23 @@
+uuid: 51de6e76-43ec-4158-96b1-1045c78b70a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_car_profile
+    - node.type.car
+id: node.car.field_car_profile
+field_name: field_car_profile
+entity_type: node
+bundle: car
+label: 'Car Profile'
+description: 'Add Images'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:image_style'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference
