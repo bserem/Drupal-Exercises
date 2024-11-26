@@ -48,4 +48,5 @@ module:
 theme:
   olivero: 0
   claro: 0
+  stark: 0
 profile: standard

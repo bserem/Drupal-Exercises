@@ -1,0 +1,23 @@
+uuid: d149df45-811d-4dff-8d6a-55099a0fbf2b
+langcode: el
+status: true
+dependencies:
+  module:
+    - node
+  theme:
+    - stark
+_core:
+  default_config_hash: 0gq3VPg-_UM69FCCWurLFIrrnIjC2HLKhwo9iQNtcUo
+id: stark_syndicate
+theme: stark
+region: sidebar_first
+weight: 0
+provider: null
+plugin: node_syndicate_block
+settings:
+  id: node_syndicate_block
+  label: 'Ροή RSS'
+  label_display: '0'
+  provider: node
+  block_count: 10
+visibility: {  }
