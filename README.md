@@ -1,5 +1,7 @@
-# drupal-tasks-fork-attempt
 
-Αυτή είναι μια δοκιμαστική αλλαγή(παλι)! στο README.md για το fork.
+# drupal-tasks
+
+git commit -m "Επίλυση conflict στο README.md"
+
 
 
