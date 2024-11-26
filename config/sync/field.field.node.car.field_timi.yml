@@ -1,0 +1,23 @@
+uuid: e1d75c8c-cd5c-47dd-b95d-9e76b238ad92
+langcode: el
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_timi
+    - node.type.car
+id: node.car.field_timi
+field_name: field_timi
+entity_type: node
+bundle: car
+label: Τιμή
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

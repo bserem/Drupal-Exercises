@@ -1,0 +1,11 @@
+uuid: 76f7801a-5669-4e16-98f9-ef951c1aba19
+langcode: el
+status: true
+dependencies:
+  config:
+    - node.type.car
+id: node.car
+target_entity_type_id: node
+target_bundle: car
+default_langcode: site_default
+language_alterable: false

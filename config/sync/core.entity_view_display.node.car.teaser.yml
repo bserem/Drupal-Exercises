@@ -1,0 +1,35 @@
+uuid: 49e532c1-d237-408d-8176-eec32479d4bc
+langcode: el
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.car.body
+    - field.field.node.car.field_imerominia_kykloforias
+    - field.field.node.car.field_timi
+    - node.type.car
+  module:
+    - text
+    - user
+id: node.car.teaser
+targetEntityType: node
+bundle: car
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_imerominia_kykloforias: true
+  field_timi: true
+  langcode: true
