@@ -1,0 +1,10 @@
+uuid: b128e2af-e08c-445c-adf6-f2aa3fe8ed58
+langcode: el
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: OjekiQuX9RbVQ2_8jOHBL94RgYLePqX7wpfNGgcQzrk
+id: html_year
+label: 'HTML Έτος'
+locked: true
+pattern: 'Y'

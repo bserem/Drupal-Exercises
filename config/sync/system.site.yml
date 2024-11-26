@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
+langcode: el
+uuid: 4d342b7e-3055-49d5-a354-68135405f8ec
+name: Drupal-exc-mary
+mail: oikonomoum75@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: el
+mail_notification: null

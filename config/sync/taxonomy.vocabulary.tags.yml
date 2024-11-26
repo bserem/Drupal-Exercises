@@ -1,0 +1,11 @@
+uuid: d5013b2a-6ef9-4a00-85aa-bde951fa2c04
+langcode: el
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: iTEzwrEQ_4JIb-OYGiqzyF2TmMgWyWayresXcWgwGWM
+name: Ετικέτες
+vid: tags
+description: 'Χρησιμοποιήστε ετικέτες για να ομαδοποιήσετε τα άρθρα σε κατηγορίες με παρόμοιο θέμα.'
+weight: 0
+new_revision: false

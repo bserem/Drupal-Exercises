@@ -1,0 +1,10 @@
+uuid: db075675-1e0f-41cc-a55d-f98e8f815d4a
+langcode: el
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: M_Bh81osDyUQ4wV0GgU_NdBNqkzM87sLxjaCdFj9mnw
+id: account
+label: 'Μενού λογαριασμού χρήστη'
+description: 'Σύνδεσμοι σχετικοί με τον ενεργό λογαριασμό χρήστη'
+locked: true

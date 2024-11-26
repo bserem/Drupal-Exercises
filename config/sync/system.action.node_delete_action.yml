@@ -1,0 +1,13 @@
+uuid: 15c3aa44-b273-43fd-bb27-e20422713c14
+langcode: el
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: t43OqwzP3CTbcAagSsWKNy6KwMm_zShXo3c4-So6rQg
+id: node_delete_action
+label: 'Διαγραφή περιεχομένου'
+type: node
+plugin: 'entity:delete_action:node'
+configuration: {  }

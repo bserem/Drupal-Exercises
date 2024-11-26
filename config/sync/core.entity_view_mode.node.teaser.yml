@@ -1,0 +1,13 @@
+uuid: 450f66bb-da8e-4c16-bb7e-c93a908c1db4
+langcode: el
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: KgGJDZFpMaz_8bTv6fN1bXS3Qi5LWmRJI9R53kEGsNQ
+id: node.teaser
+label: 'Περικομμένη μορφή'
+description: ''
+targetEntityType: node
+cache: true
