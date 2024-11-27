@@ -1,0 +1,22 @@
+uuid: 1c69df8f-3979-49ac-ac32-4023907be8a4
+langcode: el
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - stark
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: stark_powered
+theme: stark
+region: sidebar_first
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Βασισμένο στο Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }
