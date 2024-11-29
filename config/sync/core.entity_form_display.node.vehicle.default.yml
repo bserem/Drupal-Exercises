@@ -4,8 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.vehicle.body
+    - field.field.node.vehicle.field_release_date
+    - field.field.node.vehicle.field_timi
     - node.type.vehicle
   module:
+    - datetime
     - path
     - text
 id: node.vehicle.default
@@ -28,6 +31,19 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_release_date:
+    type: datetime_default
+    weight: 122
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_timi:
+    type: number
+    weight: 123
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path

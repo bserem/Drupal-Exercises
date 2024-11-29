@@ -5,6 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.vehicle.body
+    - field.field.node.vehicle.field_release_date
+    - field.field.node.vehicle.field_timi
     - node.type.vehicle
   module:
     - text
@@ -27,4 +29,6 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_release_date: true
+  field_timi: true
