@@ -13,6 +13,7 @@
 /vendor
 /web/core
 /web/vendor
+/.gitattributes
 
 # Ignore Composer dependencies
 /asset-packages

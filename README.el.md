@@ -19,10 +19,10 @@
 
 ## Drupal Site Building
 
-- [ ] Να κάνεις fork αυτό το repository και να κάνεις commit και push στο fork σου (κρίνε κάθε πότε πρέπει να κάνεις commit)
-- [ ] Να στήσεις το Drupal τοπικά (με το DDEV)
-- [ ] Να κάνεις την standard εγκατάσταση
-- [ ] Να κάνεις track το codebase σου με το git (προσοχή τι κάνεις track!)
+- [X] Να κάνεις fork αυτό το repository και να κάνεις commit και push στο fork σου (κρίνε κάθε πότε πρέπει να κάνεις commit)
+- [X] Να στήσεις το Drupal τοπικά (με το DDEV)
+- [X] Να κάνεις την standard εγκατάσταση
+- [X] Να κάνεις track το codebase σου με το git (προσοχή τι κάνεις track!)
 - [ ] Να κάνεις merge/pull request με τις αλλαγές σου προς το αρχικό gitlab repo
 - [ ] Να σετάρεις το configuration export folder στο `../config/sync`
 - [ ] Να εγκαταστήσεις το drush
