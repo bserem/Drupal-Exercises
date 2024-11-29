@@ -22,7 +22,7 @@ If you are working on these tasks as part of an interview/hiring process, your w
 - [X] Set up Drupal locally (using DDEV)
 - [X] Perform a standard installation
 - [X] Track your codebase with Git (be mindful of what to track!)
-- [ ] Create a merge/pull request with your changes to the original GitLab repo
+- [X] Create a merge/pull request with your changes to the original GitLab repo
 - [ ] Set the configuration export folder to `../config/sync`
 - [ ] Install Drush
 - [ ] Export the configuration and commit it to Git (do this regularly!)

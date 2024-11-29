@@ -23,7 +23,7 @@
 - [X] Να στήσεις το Drupal τοπικά (με το DDEV)
 - [X] Να κάνεις την standard εγκατάσταση
 - [X] Να κάνεις track το codebase σου με το git (προσοχή τι κάνεις track!)
-- [ ] Να κάνεις merge/pull request με τις αλλαγές σου προς το αρχικό gitlab repo
+- [X] Να κάνεις merge/pull request με τις αλλαγές σου προς το αρχικό gitlab repo
 - [ ] Να σετάρεις το configuration export folder στο `../config/sync`
 - [ ] Να εγκαταστήσεις το drush
 - [ ] Να κάνεις export το config και να το βάλεις και αυτό στο git (πρέπει να το κάνεις τακτικά αυτό το βήμα!)
