@@ -1,0 +1,28 @@
+uuid: 95f82275-c558-46a8-848b-0f8b1fef7ca3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.vehicle.body
+    - node.type.vehicle
+  module:
+    - text
+    - user
+id: node.vehicle.default
+targetEntityType: node
+bundle: vehicle
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }
