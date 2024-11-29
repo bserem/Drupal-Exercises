@@ -1,0 +1,17 @@
+name: 'Bartik Subtheme'
+type: theme
+description: 'A subtheme of Bartik.'
+core_version_requirement: ^10
+base theme: bartik
+package: Custom
+dependencies:
+  - drupal:bartik
+libraries:
+  - bartik_subtheme/global-styling
+regions:
+  header: Header
+  featured: Featured
+  content: Content
+  sidebar_first: First sidebar
+  sidebar_second: Second sidebar
+  footer: Footer
