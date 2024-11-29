@@ -41,7 +41,6 @@ pnpm-lock.yaml
 /web/sites/default/files/css/*
 /web/sites/default/files/js/*
 /web/sites/default/files/.htaccess
-
-
+/web/themes/contrib/bartik
 
 
