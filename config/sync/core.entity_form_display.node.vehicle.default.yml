@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.vehicle.body
     - field.field.node.vehicle.field_release_date
     - field.field.node.vehicle.field_timi
+    - field.field.node.vehicle.field_vehicle_image
     - node.type.vehicle
   module:
     - datetime
@@ -43,6 +44,16 @@ content:
     weight: 123
     region: content
     settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_vehicle_image:
+    type: entity_reference_autocomplete
+    weight: 124
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   path:
