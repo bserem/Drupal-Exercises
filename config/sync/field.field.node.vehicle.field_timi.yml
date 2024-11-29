@@ -9,7 +9,7 @@ id: node.vehicle.field_timi
 field_name: field_timi
 entity_type: node
 bundle: vehicle
-label: Τιμή
+label: price
 description: ''
 required: false
 translatable: false
