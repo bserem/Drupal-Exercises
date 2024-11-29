@@ -30,19 +30,19 @@ If you are working on these tasks as part of an interview/hiring process, your w
 - [X] Add fields: `release date` (date) and `price` (float)
 - [X] Install the open-source theme named `bartik`
 - [X] Create a View displaying vehicles in a table sorted by release date
-- [ ] Add an exposed filter to the View to show vehicles newer than a user-specified date
-- [ ] Add images to the content type (bonus point if done with media)
-- [ ] Add taxonomy terms to the content type for the brand (e.g., Ferrari, Mercedes, McLaren) in a `brand` vocabulary
+- [X] Add an exposed filter to the View to show vehicles newer than a user-specified date
+- [X] Add images to the content type (bonus point if done with media)
+- [X] Add taxonomy terms to the content type for the brand (e.g., Ferrari, Mercedes, McLaren) in a `brand` vocabulary
 
 ## Frontend Drupal Tasks
 
-- [ ] Create a subtheme of `bartik`
-- [ ] Override the content type's template
+- [X] Create a subtheme of `bartik`
+- [X] Override the content type's template
 - [ ] * Create a Single Directory Component and map it to the `vehicle` content type
 
 ## Backend Drupal Tasks
 
-- [ ] Create a custom module that returns a 404 error for any vehicle with a release date in 2020
+- [X] Create a custom module that returns a 404 error for any vehicle with a release date in 2020
 
 ## Drupal Migrations
 

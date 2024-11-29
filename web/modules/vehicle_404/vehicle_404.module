@@ -1,0 +1,12 @@
+<?php
+use Drupal\node\Entity\Node;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+function vehicle_404_node_view(array &$build) {
+    if ($build['#node']->getType() == 'vehicle') {
+        $release_date = $build['#node']->get('field_release_date')->value;
+        if (!empty($release_date) && date('Y', strtotime($release_date)) == '2020') 
+            throw new NotFoundHttpException('This vehicle is not available because its release date is in 2020.');
+    }
+}
+  
