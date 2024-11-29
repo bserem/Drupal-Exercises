@@ -24,9 +24,9 @@
 - [X] Να κάνεις την standard εγκατάσταση
 - [X] Να κάνεις track το codebase σου με το git (προσοχή τι κάνεις track!)
 - [X] Να κάνεις merge/pull request με τις αλλαγές σου προς το αρχικό gitlab repo
-- [ ] Να σετάρεις το configuration export folder στο `../config/sync`
-- [ ] Να εγκαταστήσεις το drush
-- [ ] Να κάνεις export το config και να το βάλεις και αυτό στο git (πρέπει να το κάνεις τακτικά αυτό το βήμα!)
+- [X] Να σετάρεις το configuration export folder στο `../config/sync`
+- [X] Να εγκαταστήσεις το drush
+- [] Να κάνεις export το config και να το βάλεις και αυτό στο git (πρέπει να το κάνεις τακτικά αυτό το βήμα!)
 - [ ] Να φτιάξεις ένα content type `vehicle`
 - [ ] Να βάλεις τα πεδία: `ημερομηνία κυκλοφορίας` (date) και τιμή (float)
 - [ ] Να εγκαταστήσεις το open source theme με το ονομα `bartik`
