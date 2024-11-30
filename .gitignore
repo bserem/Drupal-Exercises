@@ -44,3 +44,9 @@ pnpm-lock.yaml
 /web/themes/contrib/bartik
 
 
+# Ignore temporary files
+/tmp
+*.swp
+*.swo
+*.swm
+

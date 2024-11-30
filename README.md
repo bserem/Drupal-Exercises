@@ -56,3 +56,5 @@ _The following tasks may require over 30 hours for an entry-level developer._
 
 #### Credits
 
+- Implementation, development, and updates: Bill Seremetis ([Drupal profile](https://www.drupal.org/u/bserem))
+
