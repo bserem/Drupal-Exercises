@@ -1,0 +1,5 @@
+name: vehicle
+props:
+  type: object
+  properties:
+    content: {} #loads vehicle content given from the node--vehicle.html.twig
