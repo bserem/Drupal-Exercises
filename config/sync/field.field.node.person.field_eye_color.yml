@@ -1,0 +1,19 @@
+uuid: d7fa0096-432b-42b9-a8dd-18fdb7c91b0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_eye_color
+    - node.type.person
+id: node.person.field_eye_color
+field_name: field_eye_color
+entity_type: node
+bundle: person
+label: eye_color
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
