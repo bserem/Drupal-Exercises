@@ -1,0 +1,34 @@
+_core:
+  default_config_hash: d1auxcFGm7BI-IAjlU-UAJxD8lBmgGGahqb2b-qMY0s
+id: migrate_swapi_people
+label: 'Migrate SWAPI People'
+migration_group: migrate_swapi
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls:
+    - 'https://swapi.dev/api/people/'
+  item_selector: /results
+  fields:
+    - name
+    - height
+    - mass
+    - hair_color
+    - skin_color
+    - eye_color
+    - birth_year
+    - gender
+  ids:
+    - name
+process:
+  field_name: name
+  field_height: height
+  field_mass: mass
+  field_hair_color: hair_color
+  field_skin_color: skin_color
+  field_eye_color: eye_color
+  field_gender: gender
+destination:
+  plugin: 'entity:node'
+  default_bundle: person

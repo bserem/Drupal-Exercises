@@ -1,0 +1,8 @@
+name: 'My Migrate Module'
+type: module
+description: 'Custom module for migrating data from an external API.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - migrate:migrate
+  - drupal:node

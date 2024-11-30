@@ -1,0 +1,7 @@
+name: 'Vehicle 404'
+type: module
+description: 'Returns a 404 error for vehicles with a release date in 2020.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:node

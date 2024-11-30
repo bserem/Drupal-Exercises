@@ -1,0 +1,5 @@
+<?php
+
+function migrate_swapi_install() {
+    $migration = \Drupal::service('plugin.manager.migration')->createInstance('migrate_swapi')->import();
+  }

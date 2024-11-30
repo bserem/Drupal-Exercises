@@ -1,0 +1,23 @@
+uuid: 9f4f8148-7562-449b-93fa-f8490c9c415a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mass
+    - node.type.person
+id: node.person.field_mass
+field_name: field_mass
+entity_type: node
+bundle: person
+label: mass
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float
