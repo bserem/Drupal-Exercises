@@ -1,0 +1,21 @@
+uuid: 5c49c538-b3cc-45ae-b69c-9ccfdd54ac72
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_hair_color
+field_name: field_hair_color
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

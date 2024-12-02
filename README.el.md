@@ -39,7 +39,7 @@
 
 - [X] Να κάνεις ένα subtheme του `bartik`
 - [X] Να κάνεις override το template του content type
-- [ ] * Να φτιάξεις ένα Single Directory Component και να το κάνεις map με το content type vehicle
+- [X] * Να φτιάξεις ένα Single Directory Component και να το κάνεις map με το content type vehicle
 
 ## Backend Drupal
   
@@ -49,9 +49,9 @@
 
 _Τα παρακάτω tasks είναι λογικό να χρειαστούν άνω των 30 ωρών για κάποιον/α με entry level skills._
 
-- [ ] * Να κάνεις migrate ένα dataset (τουλάχιστον 5 items, μόνο τον τίτλο) από το JSON API του https://stapi.co/ ή του https://swapi.dev/
-- [ ] * Να εμπλουτίσεις το migration σου με τουλάχιστον 3 fields
-- [ ] * Το ένα από τα fields να είναι multivalue reference field
+- [X] * Να κάνεις migrate ένα dataset (τουλάχιστον 5 items, μόνο τον τίτλο) από το JSON API του https://stapi.co/ ή του https://swapi.dev/
+- [X] * Να εμπλουτίσεις το migration σου με τουλάχιστον 3 fields
+- [X] * Το ένα από τα fields να είναι multivalue reference field
 
 ---
 

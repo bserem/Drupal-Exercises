@@ -42,7 +42,7 @@ pnpm-lock.yaml
 /web/sites/default/files/js/*
 /web/sites/default/files/.htaccess
 /web/themes/contrib/bartik
-
+/web/modules/contrib
 
 # Ignore temporary files
 /tmp
