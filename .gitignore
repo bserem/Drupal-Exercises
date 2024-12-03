@@ -15,8 +15,12 @@ vendor/
 composer.lock
 composer.phar
 
-# Ignore scaffolding files from Drupal core
-web/core/
+# Ignore scaffolding files from Drupal core except the required ones
+# Include core, index.php, autoload.php, and update.php explicitly
+!web/core/
+!web/index.php
+!web/autoload.php
+!web/update.php
 web/modules/README.txt
 web/profiles/README.txt
 web/themes/README.txt
@@ -31,10 +35,7 @@ web/.eslintrc.json
 web/.gitattributes
 web/.htaccess
 web/.ht.router.php
-web/autoload.php
-web/index.php
 web/robots.txt
-web/update.php
 web/web.config
 
 # Ignore DDEV-specific configuration and temporary directories
