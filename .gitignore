@@ -1,0 +1,63 @@
+# Ignore settings and sensitive configuration files
+web/sites/*/*settings*.php
+web/sites/*/*services*.yml
+web/sites/*/files
+web/sites/*/private
+web/sites/default/files
+
+# Ignore paths with temporary files or user-generated content
+web/sites/*/translations
+web/sites/*/cache
+web/sites/*/tmp
+
+# Ignore Composer dependencies and artifacts
+vendor/
+composer.lock
+composer.phar
+
+# Ignore scaffolding files from Drupal core except the required ones
+# Include core, index.php, autoload.php, and update.php explicitly
+!web/core/
+!web/index.php
+!web/autoload.php
+!web/update.php
+web/modules/README.txt
+web/profiles/README.txt
+web/themes/README.txt
+web/sites/development.services.yml
+web/sites/example.settings.local.php
+web/sites/example.sites.php
+web/sites/README.txt
+web/.csslintrc
+web/.editorconfig
+web/.eslintignore
+web/.eslintrc.json
+web/.gitattributes
+web/.htaccess
+web/.ht.router.php
+web/robots.txt
+web/web.config
+
+# Ignore DDEV-specific configuration and temporary directories
+.ddev/
+web/.ddev/
+
+# Ignore IDE-specific files and OS-specific metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Ignore log files and temporary files
+*.log
+*.tmp
+*.cache
+
+# Node.js specific files (if you use Node.js for theming)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore PHPStorm project files
+/.idea/
