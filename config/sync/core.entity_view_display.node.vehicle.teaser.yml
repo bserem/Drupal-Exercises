@@ -5,8 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.vehicle.body
+    - field.field.node.vehicle.field_brand
     - field.field.node.vehicle.field_price
     - field.field.node.vehicle.field_release_date
+    - field.field.node.vehicle.field_vehicle_image
     - node.type.vehicle
   module:
     - text
@@ -30,5 +32,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_brand: true
   field_price: true
   field_release_date: true
+  field_vehicle_image: true

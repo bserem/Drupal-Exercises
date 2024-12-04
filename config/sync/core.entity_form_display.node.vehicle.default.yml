@@ -4,11 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.vehicle.body
+    - field.field.node.vehicle.field_brand
     - field.field.node.vehicle.field_price
     - field.field.node.vehicle.field_release_date
+    - field.field.node.vehicle.field_vehicle_image
     - node.type.vehicle
   module:
     - datetime
+    - media_library
     - path
     - text
 id: node.vehicle.default
@@ -32,6 +35,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_brand:
+    type: entity_reference_autocomplete
+    weight: 125
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_price:
     type: number
     weight: 123
@@ -44,6 +57,13 @@ content:
     weight: 122
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_vehicle_image:
+    type: media_library_widget
+    weight: 124
+    region: content
+    settings:
+      media_types: {  }
     third_party_settings: {  }
   path:
     type: path

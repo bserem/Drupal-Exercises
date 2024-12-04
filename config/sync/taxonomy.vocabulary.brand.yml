@@ -1,0 +1,9 @@
+uuid: 53d82812-2a0d-48af-a542-d0717d83f473
+langcode: en
+status: true
+dependencies: {  }
+name: Brand
+vid: brand
+description: 'vehicle brand'
+weight: 0
+new_revision: false
