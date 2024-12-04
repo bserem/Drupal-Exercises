@@ -1,0 +1,51 @@
+uuid: 6444cc98-48d8-45c5-98a2-2d365eb01511
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.vehicle.body
+    - field.field.node.vehicle.field_price
+    - field.field.node.vehicle.field_release_date
+    - node.type.vehicle
+  module:
+    - datetime
+    - text
+    - user
+id: node.vehicle.default
+targetEntityType: node
+bundle: vehicle
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_price:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_release_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }
