@@ -19,42 +19,43 @@
 
 ## Drupal Site Building
 
-- [ ] Να κάνεις fork αυτό το repository και να κάνεις commit και push στο fork σου (κρίνε κάθε πότε πρέπει να κάνεις commit)
-- [ ] Να στήσεις το Drupal τοπικά (με το DDEV)
-- [ ] Να κάνεις την standard εγκατάσταση
-- [ ] Να κάνεις track το codebase σου με το git (προσοχή τι κάνεις track!)
-- [ ] Να κάνεις merge/pull request με τις αλλαγές σου προς το αρχικό gitlab repo
-- [ ] Να σετάρεις το configuration export folder στο `../config/sync`
-- [ ] Να εγκαταστήσεις το drush
-- [ ] Να κάνεις export το config και να το βάλεις και αυτό στο git (πρέπει να το κάνεις τακτικά αυτό το βήμα!)
-- [ ] Να φτιάξεις ένα content type `vehicle`
-- [ ] Να βάλεις τα πεδία: `ημερομηνία κυκλοφορίας` (date) και τιμή (float)
-- [ ] Να εγκαταστήσεις το open source theme με το ονομα `bartik`
-- [ ] Να φτιάξεις ένα View που να εμφανίζει τα αυτοκίνητα με σειρά κυκλοφορίας σε ένα πίνακα
-- [ ] Να βάλεις ένα exposed filter στο view για να δείχνει αυτοκίνητα νεότερα από την ημερομηνία που θα βάζει ο χρήστης 
-- [ ] Να προσθέσεις εικόνες στο content type (bonus point αν το κάνεις με media)
-- [ ] Να βάλεις taxonomy terms στο content type για το brand (πχ: ferrari, mercedes, mclaren) σε ένα vocabulary `brand`
+- [X] Να κάνεις fork αυτό το repository και να κάνεις commit και push στο fork σου (κρίνε κάθε πότε πρέπει να κάνεις commit)
+- [X] Να στήσεις το Drupal τοπικά (με το DDEV)
+- [X] Να κάνεις την standard εγκατάσταση
+- [X] Να κάνεις track το codebase σου με το git (προσοχή τι κάνεις track!)
+- [X] Να κάνεις merge/pull request με τις αλλαγές σου προς το αρχικό gitlab repo
+- [X] Να σετάρεις το configuration export folder στο `../config/sync`
+- [X] Να εγκαταστήσεις το drush
+- [X] Να κάνεις export το config και να το βάλεις και αυτό στο git (πρέπει να το κάνεις τακτικά αυτό το βήμα!)
+- [X] Να φτιάξεις ένα content type `vehicle`
+- [X] Να βάλεις τα πεδία: `ημερομηνία κυκλοφορίας` (date) και τιμή (float)
+- [X] Να εγκαταστήσεις το open source theme με το ονομα `bartik`
+- [X] Να φτιάξεις ένα View που να εμφανίζει τα αυτοκίνητα με σειρά κυκλοφορίας σε ένα πίνακα
+- [X] Να βάλεις ένα exposed filter στο view για να δείχνει αυτοκίνητα νεότερα από την ημερομηνία που θα βάζει ο χρήστης 
+- [X] Να προσθέσεις εικόνες στο content type (bonus point αν το κάνεις με media)
+- [X] Να βάλεις taxonomy terms στο content type για το brand (πχ: ferrari, mercedes, mclaren) σε ένα vocabulary `brand`
 
 ## Frontend Drupal
 
-- [ ] Να κάνεις ένα subtheme του `bartik`
-- [ ] Να κάνεις override το template του content type
-- [ ] * Να φτιάξεις ένα Single Directory Component και να το κάνεις map με το content type vehicle
+- [X] Να κάνεις ένα subtheme του `bartik`
+- [X] Να κάνεις override το template του content type
+- [X] * Να φτιάξεις ένα Single Directory Component και να το κάνεις map με το content type vehicle
 
 ## Backend Drupal
   
-- [ ] Να φτιάξεις ένα custom module που θα δίνει 404 error σε κάθε αυτοκίνητο που έχει πρώτη κυκλοφορία το 2020
+- [X] Να φτιάξεις ένα custom module που θα δίνει 404 error σε κάθε αυτοκίνητο που έχει πρώτη κυκλοφορία το 2020
 
 ## Drupal Migrations
 
 _Τα παρακάτω tasks είναι λογικό να χρειαστούν άνω των 30 ωρών για κάποιον/α με entry level skills._
 
-- [ ] * Να κάνεις migrate ένα dataset (τουλάχιστον 5 items, μόνο τον τίτλο) από το JSON API του https://stapi.co/ ή του https://swapi.dev/
-- [ ] * Να εμπλουτίσεις το migration σου με τουλάχιστον 3 fields
-- [ ] * Το ένα από τα fields να είναι multivalue reference field
+- [X] * Να κάνεις migrate ένα dataset (τουλάχιστον 5 items, μόνο τον τίτλο) από το JSON API του https://stapi.co/ ή του https://swapi.dev/
+- [X] * Να εμπλουτίσεις το migration σου με τουλάχιστον 3 fields
+- [X] * Το ένα από τα fields να είναι multivalue reference field
 
 ---
 
 #### Credits
 
 - Υλοποιήση, ανάπτυξη και ενημέρωσεις: Bill Seremetis (https://www.drupal.org/u/bserem)
+
