@@ -1,0 +1,21 @@
+<h1>Vehicle Template Applied</h1>
+
+
+<article{{ attributes.addClass('node--vehicle') }}>
+  <header>
+    <h1{{ title_attributes }}>{{ label }}</h1>
+  </header>
+
+  <div{{ content_attributes.addClass('vehicle-content') }}>
+    <div class="field-vehicle-image">
+      {{ content.field_vehicle_image }}
+    </div>
+    <div class="field-price">
+      <strong>Price:</strong> {{ content.field_price }}
+    </div>
+    <div class="field-release-date">
+      <strong>Release Date:</strong> {{ content.field_release_date }}
+    </div>
+  </div>
+</article>
+ 

@@ -1,0 +1,6 @@
+services:
+  vehicle_404.event_subscriber:
+    class: Drupal\vehicle_404\EventSubscriber\Vehicle404Subscriber
+    tags:
+      - { name: event_subscriber }
+

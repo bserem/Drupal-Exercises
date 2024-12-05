@@ -1,0 +1,24 @@
+uuid: 8d28e9b1-67f0-451f-ba07-6d471b7574eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.vehicle
+  module:
+    - text
+id: node.vehicle.body
+field_name: body
+entity_type: node
+bundle: vehicle
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

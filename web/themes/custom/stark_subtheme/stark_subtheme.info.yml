@@ -1,0 +1,14 @@
+name: stark subtheme
+type: theme
+description: A sample subtheme of Stark.
+core_version_requirement: ^10||^11
+base theme: stark
+libraries:
+  - stark_subtheme/global-styling
+
+regions:
+  header: Header
+  feature: Feature
+  content: Content
+  sidebar_first: Sidebar First
+  footer: Footer
