@@ -26,31 +26,31 @@ If you are working on these tasks as part of an interview/hiring process, your w
 - [X] Set the configuration export folder to `../config/sync`
 - [X] Install Drush
 - [X] Export the configuration and commit it to Git (do this regularly!)
-- [X] Create a content type called `vehicle`
-- [X] Add fields: `release date` (date) and `price` (float)
-- [X] Install the open-source theme named `bartik`
-- [X] Create a View displaying vehicles in a table sorted by release date
-- [X] Add an exposed filter to the View to show vehicles newer than a user-specified date
-- [X] Add images to the content type (bonus point if done with media)
-- [X] Add taxonomy terms to the content type for the brand (e.g., Ferrari, Mercedes, McLaren) in a `brand` vocabulary
+- [ ] Create a content type called `vehicle`
+- [ ] Add fields: `release date` (date) and `price` (float)
+- [ ] Install the open-source theme named `bartik`
+- [ ] Create a View displaying vehicles in a table sorted by release date
+- [ ] Add an exposed filter to the View to show vehicles newer than a user-specified date
+- [ ] Add images to the content type (bonus point if done with media)
+- [ ] Add taxonomy terms to the content type for the brand (e.g., Ferrari, Mercedes, McLaren) in a `brand` vocabulary
 
 ## Frontend Drupal Tasks
 
-- [X] Create a subtheme of `bartik`
-- [X] Override the content type's template
-- [X] * Create a Single Directory Component and map it to the `vehicle` content type
+- [ ] Create a subtheme of `bartik`
+- [ ] Override the content type's template
+- [ ] * Create a Single Directory Component and map it to the `vehicle` content type
 
 ## Backend Drupal Tasks
 
-- [X] Create a custom module that returns a 404 error for any vehicle with a release date in 2020
+- [ ] Create a custom module that returns a 404 error for any vehicle with a release date in 2020
 
 ## Drupal Migrations
 
 _The following tasks may require over 30 hours for an entry-level developer._
 
-- [X] * Migrate a dataset (at least 5 items, titles only) from the JSON API of [stapi.co](https://stapi.co/) or [swapi.dev](https://swapi.dev/)
-- [X] * Enrich your migration with at least 3 fields
-- [X] * One of the fields should be a multi-value reference field
+- [ ] * Migrate a dataset (at least 5 items, titles only) from the JSON API of [stapi.co](https://stapi.co/) or [swapi.dev](https://swapi.dev/)
+- [ ] * Enrich your migration with at least 3 fields
+- [ ] * One of the fields should be a multi-value reference field
 
 ---
 
