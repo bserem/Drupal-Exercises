@@ -1,13 +1,15 @@
-uuid: f7eb77ac-c39d-4999-a2b9-a80ddeef6151
+uuid: df62d849-f891-4f94-837b-b0308fbe6a13
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - node.type.vehicle
+    - system.menu.main
   module:
     - datetime
     - node
+    - user
 id: vehicle_view
 label: 'Vehicle View'
 module: views
@@ -101,8 +103,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
@@ -134,12 +137,23 @@ display:
           plugin_id: datetime
           order: DESC
           expose:
-            label: 'Release Date (field_release_date)'
-            field_identifier: field_release_date_value
-          exposed: true
+            label: ''
+            field_identifier: ''
+          exposed: false
           granularity: year
       arguments: {  }
       filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
         type:
           id: type
           table: node_field_data
@@ -157,23 +171,22 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: datetime
-          operator: '>'
+          operator: '<'
           value:
             min: ''
             max: ''
-            value: ''
-            type: date
+            value: 12/12/2024
           group: 1
           exposed: true
           expose:
             operator_id: field_release_date_value_op
-            label: 'release date'
-            description: 'Select the preferred release date'
+            label: 'Release Date '
+            description: 'the preferred least release date for the car'
             use_operator: false
             operator: field_release_date_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_release_date
+            identifier: field_release_date_value
             required: false
             remember: false
             multiple: false
@@ -182,9 +195,9 @@ display:
               anonymous: '0'
               content_editor: '0'
               administrator: '0'
-            min_placeholder: ''
-            max_placeholder: ''
-            placeholder: 'Vehicle Release Date'
+            min_placeholder: null
+            max_placeholder: null
+            placeholder: null
           is_grouped: false
           group_info:
             label: ''
@@ -197,8 +210,9 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+          type: date
       style:
-        type: default
+        type: grid_responsive
       row:
         type: 'entity:node'
         options:
@@ -222,9 +236,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
+        - user.permissions
       tags: {  }
   page_1:
     id: page_1
@@ -232,82 +245,24 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      filters:
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          relationship: none
-          group_type: group
-          admin_label: 'Vehicle '
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-          operator: in
-          value:
-            vehicle: vehicle
-          group: 1
-          exposed: false
-          expose:
-            operator_id: type_op
-            label: Vehicle
-            description: 'Vehicle View'
-            use_operator: false
-            operator: type_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: type
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
-      defaults:
-        filters: false
-        filter_groups: false
       display_extenders: {  }
       path: vehicles
       menu:
-        type: 'default tab'
-        title: Vehicles
+        type: normal
+        title: Vehicle
         description: ''
         weight: 0
         expanded: false
         menu_name: main
         parent: ''
         context: '0'
-      tab_options:
-        type: normal
-        title: Vehicle
-        description: 'A page that shows vehicles'
-        weight: 0
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
+        - user.permissions
       tags: {  }
