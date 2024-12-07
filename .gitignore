@@ -50,3 +50,5 @@ pnpm-lock.yaml
 *.swo
 *.swm
 
+#tasks
+todo.md
