@@ -1,4 +1,4 @@
-uuid: 8ed2c171-421d-44d5-a885-44b60b183ef1
+uuid: 877ff8e0-1672-4d51-aace-a744eb3bf70c
 langcode: en
 status: true
 dependencies:
@@ -11,9 +11,9 @@ id: node.vehicle.field_release_date
 field_name: field_release_date
 entity_type: node
 bundle: vehicle
-label: 'release date'
-description: ''
-required: false
+label: 'Release Date'
+description: "The car's release date "
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

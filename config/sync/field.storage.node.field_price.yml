@@ -1,11 +1,11 @@
-uuid: 27b004f4-89e2-407c-aabf-80bb9c900ec6
+uuid: 15ca1217-54bb-4728-822a-004bfeff7cde
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_timi
-field_name: field_timi
+id: node.field_price
+field_name: field_price
 entity_type: node
 type: float
 settings: {  }

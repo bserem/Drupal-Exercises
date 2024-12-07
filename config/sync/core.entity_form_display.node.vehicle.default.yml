@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.field.node.vehicle.body
     - field.field.node.vehicle.field_brands
+    - field.field.node.vehicle.field_price
     - field.field.node.vehicle.field_release_date
-    - field.field.node.vehicle.field_timi
     - field.field.node.vehicle.field_vehicle_image
     - node.type.vehicle
   module:
@@ -44,18 +44,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_release_date:
-    type: datetime_default
-    weight: 122
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_timi:
+  field_price:
     type: number
-    weight: 123
+    weight: 126
     region: content
     settings:
       placeholder: ''
+    third_party_settings: {  }
+  field_release_date:
+    type: datetime_default
+    weight: 127
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_vehicle_image:
     type: entity_reference_autocomplete

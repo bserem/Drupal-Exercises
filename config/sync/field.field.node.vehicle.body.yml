@@ -12,8 +12,8 @@ field_name: body
 entity_type: node
 bundle: vehicle
 label: Body
-description: ''
-required: false
+description: 'A description of the vehicle inputted'
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''

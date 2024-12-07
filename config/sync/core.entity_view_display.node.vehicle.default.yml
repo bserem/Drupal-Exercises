@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.field.node.vehicle.body
     - field.field.node.vehicle.field_brands
+    - field.field.node.vehicle.field_price
     - field.field.node.vehicle.field_release_date
-    - field.field.node.vehicle.field_timi
     - field.field.node.vehicle.field_vehicle_image
     - node.type.vehicle
   module:
@@ -33,16 +33,7 @@ content:
     third_party_settings: {  }
     weight: 105
     region: content
-  field_release_date:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 102
-    region: content
-  field_timi:
+  field_price:
     type: number_decimal
     label: above
     settings:
@@ -51,7 +42,16 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 103
+    weight: 106
+    region: content
+  field_release_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 107
     region: content
   field_vehicle_image:
     type: entity_reference_entity_view

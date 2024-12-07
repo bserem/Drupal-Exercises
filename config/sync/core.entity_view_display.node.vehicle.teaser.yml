@@ -6,8 +6,8 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.vehicle.body
     - field.field.node.vehicle.field_brands
+    - field.field.node.vehicle.field_price
     - field.field.node.vehicle.field_release_date
-    - field.field.node.vehicle.field_timi
     - field.field.node.vehicle.field_vehicle_image
     - node.type.vehicle
   module:
@@ -33,6 +33,6 @@ content:
     region: content
 hidden:
   field_brands: true
+  field_price: true
   field_release_date: true
-  field_timi: true
   field_vehicle_image: true
