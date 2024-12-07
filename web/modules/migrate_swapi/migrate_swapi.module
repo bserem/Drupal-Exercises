@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * @file
+ * Contains functionality for the Migrate SWAPI module.
+ */
+
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_install().
+ */
+function migrate_swapi_install() {
+  \Drupal::logger('migrate_swapi')->notice('Migrate SWAPI module installed.');
+
+  migrate_swapi_import();
+}
+
+/**
+ * Function to fetch data from SWAPI and create nodes.
+ */
+function migrate_swapi_import() {
+  $client = \Drupal::httpClient();
+  $data = [];
+
+  for ($i = 1; $i <= 5; $i++) {
+    try {
+      $response = $client->get('https://swapi.dev/api/people/' . $i);
+      if ($response->getStatusCode() === 200) {
+        $data[] = json_decode($response->getBody()->getContents(), TRUE);
+      }
+    }
+catch (\Exception $e) {
+      \Drupal::logger('migrate_swapi')->error('Failed to fetch person ' . $i . ': ' . $e->getMessage());
+    }
+  }
+
+  foreach ($data as $person) {
+    // Check if a node for this person already exists.
+    $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+    $query->condition('type', 'person');
+    $query->condition('title', $person['name']);
+    $query->accessCheck(FALSE); // Bypass access check.
+
+    $existing_nodes = $query->execute();
+
+    if (!empty($existing_nodes)) {
+      \Drupal::logger('migrate_swapi')->notice('Node for ' . $person['name'] . ' already exists.');
+      continue;
+    }
+
+    // Create a new node.
+    $node = Node::create([
+      'type' => 'person',
+      'title' => $person['name'],
+      'field_height' => $person['height'],
+      'field_mass' => $person['mass'],
+      'field_hair_color' => $person['hair_color'],
+      'field_skin_color' => $person['skin_color'],
+      'field_eye_color' => $person['eye_color'],
+      'field_gender' => $person['gender'],
+      'status' => 1, // Published.
+    ]);
+
+    $films = $person['films'];  
+
+    $film_field = [];
+    foreach ($films as $film_url) {
+      $film_field[] = ['uri' => $film_url];
+    }
+
+    try {
+      $node->set('field_films', $film_field); // 'field_films' is the machine name of the films field.
+      $node->save();
+      \Drupal::logger('migrate_swapi')->notice('Created node for ' . $person['name']);
+    }
+    catch (\Exception $e) {
+      \Drupal::logger('migrate_swapi')->error('Failed to create node for ' . $person['name'] . ': ' . $e->getMessage());
+    }
+  }
+}

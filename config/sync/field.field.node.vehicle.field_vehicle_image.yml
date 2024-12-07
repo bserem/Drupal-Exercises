@@ -1,0 +1,23 @@
+uuid: d23440c3-71e2-447b-be8d-54bc683078f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_vehicle_image
+    - node.type.vehicle
+id: node.vehicle.field_vehicle_image
+field_name: field_vehicle_image
+entity_type: node
+bundle: vehicle
+label: 'Vehicle Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:image_style'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

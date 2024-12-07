@@ -1,0 +1,55 @@
+# Ignore everything in the .ddev folder except necessary configuration files
+.ddev/*
+!.ddev/config.yaml
+!.ddev/docker-compose.*
+!.ddev/host.*
+!.ddev/commands/**/*
+!.ddev/providers/**/*
+!.ddev/import-db
+!.ddev/import-files
+
+# Drupal core files and directories
+/core
+/vendor
+/web/core
+/web/vendor
+/.gitattributes
+
+# Ignore Composer dependencies
+/asset-packages
+/npm-packages
+
+# Ignore environment-specific settings
+/sites/default/settings.local.php
+/sites/default/services.local.yml
+
+# Ignore Drupal files directory (contains user-uploaded content)
+/sites/*/files
+
+# Ignore IDE/editor configurations
+.vscode/
+
+# Ignore npm/yarn/pnpm
+/node_modules
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore log files and caches
+*.log
+/web/sites/default/files/php/*
+/web/sites/default/files/css/*
+/web/sites/default/files/js/*
+/web/sites/default/files/.htaccess
+/web/themes/contrib/bartik
+/web/modules/contrib
+
+# Ignore temporary files
+/tmp
+*.swp
+*.swo
+*.swm
+
+#tasks
+todo.md
+
