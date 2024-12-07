@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   module:
-    - image
+    - file
     - node
 id: node.field_vehicle_image
 field_name: field_vehicle_image
 entity_type: node
 type: entity_reference
 settings:
-  target_type: image_style
+  target_type: file
 module: core
 locked: false
 cardinality: 1
