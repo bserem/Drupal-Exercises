@@ -93,7 +93,7 @@
             "require-dev": {
                 "chi-teck/drupal-coder-extension": "^2.0.0-beta3",
                 "drupal/coder": "8.3.23",
-                "drupal/core": "10.3.x-dev",
+                "drupal/core": "11.0.9",
                 "ext-simplexml": "*",
                 "phpspec/prophecy-phpunit": "^2.2",
                 "phpunit/phpunit": "^9.6",
@@ -1156,7 +1156,7 @@
                 "shasum": "3b1acc601c21fae5584ebc4a3b8c9d7b8a48a431"
             },
             "require": {
-                "drupal/core": "^9 || ^10"
+                "drupal/core": "^9 || ^10 || ^11"
             },
             "type": "drupal-theme",
             "extra": {
