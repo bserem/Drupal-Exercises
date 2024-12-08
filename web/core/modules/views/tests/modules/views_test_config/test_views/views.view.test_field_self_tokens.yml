@@ -4,7 +4,7 @@ dependencies:
   module:
     - node
 id: test_field_self_tokens
-label: 'Test field self tokens'
+label: ''
 module: views
 description: ''
 tag: ''

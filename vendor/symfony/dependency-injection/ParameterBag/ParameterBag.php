@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\DependencyInjection\ParameterBag;
 
-use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
@@ -23,8 +22,8 @@ use Symfony\Component\DependencyInjection\Exception\RuntimeException;
  */
 class ParameterBag implements ParameterBagInterface
 {
-    protected array $parameters = [];
-    protected bool $resolved = false;
+    protected $parameters = [];
+    protected $resolved = false;
     protected array $deprecatedParameters = [];
 
     public function __construct(array $parameters = [])
@@ -32,12 +31,18 @@ class ParameterBag implements ParameterBagInterface
         $this->add($parameters);
     }
 
-    public function clear(): void
+    /**
+     * @return void
+     */
+    public function clear()
     {
         $this->parameters = [];
     }
 
-    public function add(array $parameters): void
+    /**
+     * @return void
+     */
+    public function add(array $parameters)
     {
         foreach ($parameters as $key => $value) {
             $this->set($key, $value);
@@ -95,10 +100,15 @@ class ParameterBag implements ParameterBagInterface
         return $this->parameters[$name];
     }
 
-    public function set(string $name, array|bool|string|int|float|\UnitEnum|null $value): void
+    /**
+     * @return void
+     */
+    public function set(string $name, array|bool|string|int|float|\UnitEnum|null $value)
     {
         if (is_numeric($name)) {
-            throw new InvalidArgumentException(sprintf('The parameter name "%s" cannot be numeric.', $name));
+            trigger_deprecation('symfony/dependency-injection', '6.2', sprintf('Using numeric parameter name "%s" is deprecated and will throw as of 7.0.', $name));
+            // uncomment the following line in 7.0
+            // throw new InvalidArgumentException(sprintf('The parameter name "%s" cannot be numeric.', $name));
         }
 
         $this->parameters[$name] = $value;
@@ -107,9 +117,11 @@ class ParameterBag implements ParameterBagInterface
     /**
      * Deprecates a service container parameter.
      *
+     * @return void
+     *
      * @throws ParameterNotFoundException if the parameter is not defined
      */
-    public function deprecate(string $name, string $package, string $version, string $message = 'The parameter "%s" is deprecated.'): void
+    public function deprecate(string $name, string $package, string $version, string $message = 'The parameter "%s" is deprecated.')
     {
         if (!\array_key_exists($name, $this->parameters)) {
             throw new ParameterNotFoundException($name);
@@ -123,12 +135,18 @@ class ParameterBag implements ParameterBagInterface
         return \array_key_exists($name, $this->parameters);
     }
 
-    public function remove(string $name): void
+    /**
+     * @return void
+     */
+    public function remove(string $name)
     {
         unset($this->parameters[$name], $this->deprecatedParameters[$name]);
     }
 
-    public function resolve(): void
+    /**
+     * @return void
+     */
+    public function resolve()
     {
         if ($this->resolved) {
             return;
@@ -237,7 +255,10 @@ class ParameterBag implements ParameterBagInterface
         }, $value);
     }
 
-    public function isResolved(): bool
+    /**
+     * @return bool
+     */
+    public function isResolved()
     {
         return $this->resolved;
     }

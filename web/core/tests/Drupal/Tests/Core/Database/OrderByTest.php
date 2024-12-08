@@ -9,8 +9,6 @@ use Drupal\Tests\Core\Database\Stub\StubConnection;
 use Drupal\Tests\Core\Database\Stub\StubPDO;
 use Drupal\Tests\UnitTestCase;
 
-// cspell:ignore tablenode
-
 /**
  * Tests the orderBy() method of select queries.
  *

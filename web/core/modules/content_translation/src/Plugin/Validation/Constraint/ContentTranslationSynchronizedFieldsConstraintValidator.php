@@ -85,7 +85,7 @@ class ContentTranslationSynchronizedFieldsConstraintValidator extends Constraint
   /**
    * {@inheritdoc}
    */
-  public function validate($value, Constraint $constraint): void {
+  public function validate($value, Constraint $constraint) {
     /** @var \Drupal\content_translation\Plugin\Validation\Constraint\ContentTranslationSynchronizedFieldsConstraint $constraint */
     /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
     $entity = $value;

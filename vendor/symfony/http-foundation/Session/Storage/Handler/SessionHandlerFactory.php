@@ -71,11 +71,15 @@ class SessionHandlerFactory
                     throw new \InvalidArgumentException('Unsupported PDO OCI DSN. Try running "composer require doctrine/dbal".');
                 }
                 $connection[3] = '-';
-                $params = (new DsnParser())->parse($connection);
+                $params = class_exists(DsnParser::class) ? (new DsnParser())->parse($connection) : ['url' => $connection];
                 $config = new Configuration();
-                $config->setSchemaManagerFactory(new DefaultSchemaManagerFactory());
+                if (class_exists(DefaultSchemaManagerFactory::class)) {
+                    $config->setSchemaManagerFactory(new DefaultSchemaManagerFactory());
+                }
 
-                $connection = DriverManager::getConnection($params, $config)->getNativeConnection();
+                $connection = DriverManager::getConnection($params, $config);
+                // The condition should be removed once support for DBAL <3.3 is dropped
+                $connection = method_exists($connection, 'getNativeConnection') ? $connection->getNativeConnection() : $connection->getWrappedConnection();
                 // no break;
 
             case str_starts_with($connection, 'mssql://'):

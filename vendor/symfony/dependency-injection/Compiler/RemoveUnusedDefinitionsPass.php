@@ -28,8 +28,10 @@ class RemoveUnusedDefinitionsPass extends AbstractRecursivePass
 
     /**
      * Processes the ContainerBuilder to remove unused definitions.
+     *
+     * @return void
      */
-    public function process(ContainerBuilder $container): void
+    public function process(ContainerBuilder $container)
     {
         try {
             $this->enableExpressionProcessing();

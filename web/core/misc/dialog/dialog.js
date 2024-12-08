@@ -20,12 +20,14 @@ class DrupalDialogEvent extends Event {
    * @type {object}
    *
    * @prop {boolean} [autoOpen=true]
+   * @prop {string} [dialogClass='']
    * @prop {string} [buttonClass='button']
    * @prop {string} [buttonPrimaryClass='button--primary']
    * @prop {function} close
    */
   drupalSettings.dialog = {
     autoOpen: true,
+    dialogClass: '',
     // Drupal-specific extensions: see dialog.jquery-ui.js.
     buttonClass: 'button',
     buttonPrimaryClass: 'button--primary',
@@ -78,13 +80,6 @@ class DrupalDialogEvent extends Event {
 
     function openDialog(settings) {
       settings = $.extend({}, drupalSettings.dialog, options, settings);
-      if (settings.dialogClass) {
-        Drupal.deprecationError({
-          message:
-            'dialogClass is deprecated in drupal:10.4.x and will be removed from drupal:12.0.0.',
-        });
-      }
-
       // Trigger a global event to allow scripts to bind events to the dialog.
       const event = new DrupalDialogEvent('beforecreate', dialog, settings);
       domElement.dispatchEvent(event);

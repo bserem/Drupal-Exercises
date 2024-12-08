@@ -42,7 +42,7 @@ class ValidPathConstraintValidator extends ConstraintValidator implements Contai
   /**
    * {@inheritdoc}
    */
-  public function validate($value, Constraint $constraint): void {
+  public function validate($value, Constraint $constraint) {
     if (!isset($value)) {
       return;
     }

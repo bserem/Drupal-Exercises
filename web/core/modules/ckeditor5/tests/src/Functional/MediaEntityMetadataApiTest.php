@@ -139,9 +139,6 @@ class MediaEntityMetadataApiTest extends BrowserTestBase {
     $this->editor = Editor::create([
       'format' => 'filtered_html',
       'editor' => 'ckeditor5',
-      'image_upload' => [
-        'status' => FALSE,
-      ],
       'settings' => [
         'toolbar' => [
           'items' => [],

@@ -33,12 +33,12 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
  */
 class PhpFileLoader extends FileLoader
 {
-    protected bool $autoRegisterAliasesForSinglyImplementedInterfaces = false;
+    protected $autoRegisterAliasesForSinglyImplementedInterfaces = false;
     private ?ConfigBuilderGeneratorInterface $generator;
 
-    public function __construct(ContainerBuilder $container, FileLocatorInterface $locator, ?string $env = null, ?ConfigBuilderGeneratorInterface $generator = null, bool $prepend = false)
+    public function __construct(ContainerBuilder $container, FileLocatorInterface $locator, ?string $env = null, ?ConfigBuilderGeneratorInterface $generator = null)
     {
-        parent::__construct($container, $locator, $env, $prepend);
+        parent::__construct($container, $locator, $env);
         $this->generator = $generator;
     }
 
@@ -143,18 +143,12 @@ class PhpFileLoader extends FileLoader
         // Force load ContainerConfigurator to make env(), param() etc available.
         class_exists(ContainerConfigurator::class);
 
-        ++$this->importing;
-        try {
-            $callback(...$arguments);
-        } finally {
-            --$this->importing;
-        }
+        $callback(...$arguments);
 
+        /** @var ConfigBuilderInterface $configBuilder */
         foreach ($configBuilders as $configBuilder) {
-            $this->loadExtensionConfig($configBuilder->getExtensionAlias(), ContainerConfigurator::processValue($configBuilder->toArray()));
+            $containerConfigurator->extension($configBuilder->getExtensionAlias(), $configBuilder->toArray());
         }
-
-        $this->loadExtensionConfigs();
     }
 
     /**
@@ -189,7 +183,7 @@ class PhpFileLoader extends FileLoader
 
         if (!$this->container->hasExtension($alias)) {
             $extensions = array_filter(array_map(fn (ExtensionInterface $ext) => $ext->getAlias(), $this->container->getExtensions()));
-            throw new InvalidArgumentException(UndefinedExtensionHandler::getErrorMessage($namespace, null, $alias, $extensions));
+            throw new InvalidArgumentException(sprintf('There is no extension able to load the configuration for "%s". Looked for namespace "%s", found "%s".', $namespace, $alias, $extensions ? implode('", "', $extensions) : 'none'));
         }
 
         $extension = $this->container->getExtension($alias);

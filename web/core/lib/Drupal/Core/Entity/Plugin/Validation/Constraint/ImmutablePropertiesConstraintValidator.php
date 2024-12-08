@@ -40,7 +40,7 @@ class ImmutablePropertiesConstraintValidator extends ConstraintValidator impleme
   /**
    * {@inheritdoc}
    */
-  public function validate(mixed $value, Constraint $constraint): void {
+  public function validate(mixed $value, Constraint $constraint) {
     assert($constraint instanceof ImmutablePropertiesConstraint);
 
     if (!$value instanceof ConfigEntityInterface) {

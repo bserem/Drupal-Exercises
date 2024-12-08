@@ -21,7 +21,10 @@ final class FinalTestHttpMiddlewareClass implements HttpKernelInterface, Termina
 
   /**
    * {@inheritdoc}
+   *
+   * phpcs:ignore Drupal.Commenting.FunctionComment.VoidReturn
+   * @return void
    */
-  public function terminate(Request $request, Response $response): void {}
+  public function terminate(Request $request, Response $response) {}
 
 }

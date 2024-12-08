@@ -28,6 +28,14 @@ class NodeAccessCacheabilityTest extends NodeTestBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @todo Remove and fix test to not rely on super user.
+   * @see https://www.drupal.org/project/drupal/issues/3437620
+   */
+  protected bool $usesSuperUserAccessPolicy = TRUE;
+
+  /**
+   * {@inheritdoc}
    */
   protected $defaultTheme = 'stark';
 
@@ -56,9 +64,9 @@ class NodeAccessCacheabilityTest extends NodeTestBase {
     $this->drupalGet(new Url('node_access_test_auto_bubbling'));
     $this->assertCacheContext('user.node_grants:view');
 
-    // The user has the 'bypass node access' permission, which means the
+    // The root user has the 'bypass node access' permission, which means the
     // node grants cache context is not necessary.
-    $this->drupalLogin($this->drupalCreateUser(['bypass node access']));
+    $this->drupalLogin($this->rootUser);
     $this->drupalGet(new Url('node_access_test_auto_bubbling'));
     $this->assertNoCacheContext('user.node_grants:view');
     $this->drupalLogout();

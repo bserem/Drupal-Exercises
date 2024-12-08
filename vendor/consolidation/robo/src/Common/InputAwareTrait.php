@@ -15,11 +15,15 @@ trait InputAwareTrait
     /**
      * @param \Symfony\Component\Console\Input\InputInterface $input
      *
+     * @return $this
+     *
      * @see \Symfony\Component\Console\Input\InputAwareInterface::setInput()
      */
-    public function setInput(InputInterface $input): void
+    public function setInput(InputInterface $input)
     {
         $this->input = $input;
+
+        return $this;
     }
 
     /**

@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Drupal\KernelTests\Core\Database;
 
-use Drupal\Core\Database\InvalidQueryException;
+use Drupal\Core\Database\Database;
+
+// cSpell:ignore aquery aprepare
 
 /**
- * Tests Drupal's extended prepared statement syntax.
+ * Tests Drupal's extended prepared statement syntax..
  *
  * @coversDefaultClass \Drupal\Core\Database\Connection
  * @group Database
@@ -72,6 +74,16 @@ class QueryTest extends DatabaseTestBase {
   public function testConditionOperatorArgumentsSQLInjection(): void {
     $injection = "IS NOT NULL) ;INSERT INTO {test} (name) VALUES ('test12345678'); -- ";
 
+    $previous_error_handler = set_error_handler(function ($severity, $message, $filename, $lineno) use (&$previous_error_handler) {
+      // Normalize the filename to use UNIX directory separators.
+      if (preg_match('@core/lib/Drupal/Core/Database/Query/Condition.php$@', str_replace(DIRECTORY_SEPARATOR, '/', $filename))) {
+        // Convert errors to exceptions for testing purposes below.
+        throw new \ErrorException($message, 0, $severity, $filename, $lineno);
+      }
+      if ($previous_error_handler) {
+        return $previous_error_handler($severity, $message, $filename, $lineno);
+      }
+    });
     try {
       $result = $this->connection->select('test', 't')
         ->fields('t')
@@ -79,8 +91,7 @@ class QueryTest extends DatabaseTestBase {
         ->execute();
       $this->fail('Should not be able to attempt SQL injection via condition operator.');
     }
-    catch (InvalidQueryException $e) {
-      $this->assertSame("Invalid characters in query operator: $injection", $e->getMessage());
+    catch (\ErrorException $e) {
       // Expected exception; just continue testing.
     }
 
@@ -108,8 +119,7 @@ class QueryTest extends DatabaseTestBase {
         ->execute();
       $this->fail('Should not be able to attempt SQL injection via operator.');
     }
-    catch (InvalidQueryException $e) {
-      $this->assertSame("Invalid characters in query operator: $injection", $e->getMessage());
+    catch (\ErrorException $e) {
       // Expected exception; just continue testing.
     }
 
@@ -126,10 +136,10 @@ class QueryTest extends DatabaseTestBase {
         ->execute();
       $this->fail('Should not be able to attempt SQL injection via operator.');
     }
-    catch (InvalidQueryException $e) {
-      $this->assertSame("Invalid characters in query operator: $injection", $e->getMessage());
+    catch (\ErrorException $e) {
       // Expected exception; just continue testing.
     }
+    restore_error_handler();
   }
 
   /**
@@ -155,6 +165,24 @@ class QueryTest extends DatabaseTestBase {
     // well.
     $result = $this->connection->query('SELECT [update] FROM {select}')->fetchObject();
     $this->assertEquals('Update value 1', $result->update);
+  }
+
+  /**
+   * Tests deprecation of the 'return' query option.
+   *
+   * @covers ::query
+   * @covers ::prepareStatement
+   *
+   * @group legacy
+   */
+  public function testReturnOptionDeprecation(): void {
+    $this->expectDeprecation('Passing "return" option to %Aquery() is deprecated in drupal:9.4.0 and is removed in drupal:11.0.0. For data manipulation operations, use dynamic queries instead. See https://www.drupal.org/node/3185520');
+    $this->expectDeprecation('Passing "return" option to %AprepareStatement() is deprecated in drupal:9.4.0 and is removed in drupal:11.0.0. For data manipulation operations, use dynamic queries instead. See https://www.drupal.org/node/3185520');
+    $this->assertIsInt((int) $this->connection->query('INSERT INTO {test} ([name], [age], [job]) VALUES (:name, :age, :job)', [
+      ':name' => 'Magoo',
+      ':age' => 56,
+      ':job' => 'Driver',
+    ], ['return' => Database::RETURN_INSERT_ID]));
   }
 
 }

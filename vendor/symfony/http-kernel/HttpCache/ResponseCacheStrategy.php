@@ -37,7 +37,7 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
     private int $embeddedResponses = 0;
     private bool $isNotCacheableResponseEmbedded = false;
     private int $age = 0;
-    private \DateTimeInterface|false|null $lastModified = null;
+    private \DateTimeInterface|null|false $lastModified = null;
     private array $flagDirectives = [
         'no-cache' => null,
         'no-store' => null,
@@ -54,7 +54,10 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
         'expires' => false,
     ];
 
-    public function add(Response $response): void
+    /**
+     * @return void
+     */
+    public function add(Response $response)
     {
         ++$this->embeddedResponses;
 
@@ -110,7 +113,10 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
         }
     }
 
-    public function update(Response $response): void
+    /**
+     * @return void
+     */
+    public function update(Response $response)
     {
         // if we have no embedded Response, do nothing
         if (0 === $this->embeddedResponses) {

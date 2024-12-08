@@ -13,7 +13,7 @@ class EntityChangedConstraintValidator extends ConstraintValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate($entity, Constraint $constraint): void {
+  public function validate($entity, Constraint $constraint) {
     if (isset($entity)) {
       /** @var \Drupal\Core\Entity\EntityInterface $entity */
       if (!$entity->isNew()) {

@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
 
 /**
- * @author Mathieu Lechat <math.lechat@gmail.com>
+ * @author Mathieu Lechat <mathieu.lechat@les-tilleuls.coop>
  */
 class NoSuspiciousCharactersValidator extends ConstraintValidator
 {
@@ -56,7 +56,10 @@ class NoSuspiciousCharactersValidator extends ConstraintValidator
     {
     }
 
-    public function validate(mixed $value, Constraint $constraint): void
+    /**
+     * @return void
+     */
+    public function validate(mixed $value, Constraint $constraint)
     {
         if (!$constraint instanceof NoSuspiciousCharacters) {
             throw new UnexpectedTypeException($constraint, NoSuspiciousCharacters::class);
@@ -94,12 +97,18 @@ class NoSuspiciousCharactersValidator extends ConstraintValidator
 
         $checker->setChecks($checks);
 
-        if (!$checker->isSuspicious($value, $errorCode)) {
+        if (!$checker->isSuspicious($value)) {
             return;
         }
 
         foreach (self::CHECK_ERROR as $check => $error) {
-            if (!($errorCode & $check)) {
+            if (!($checks & $check)) {
+                continue;
+            }
+
+            $checker->setChecks($check);
+
+            if (!$checker->isSuspicious($value)) {
                 continue;
             }
 

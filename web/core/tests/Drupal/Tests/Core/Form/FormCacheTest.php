@@ -87,6 +87,16 @@ class FormCacheTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
+  protected $runTestInSeparateProcess = TRUE;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $preserveGlobalState = FALSE;
+
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp(): void {
     parent::setUp();
 

@@ -40,7 +40,7 @@ class QueryTest extends UnitTestCase {
     $container->expects($this->any())
       ->method('get')
       ->with('module_handler')
-      ->willReturn($this->createMock(ModuleHandler::class));
+      ->will($this->returnValue($this->createMock(ModuleHandler::class)));
     \Drupal::setContainer($container);
   }
 

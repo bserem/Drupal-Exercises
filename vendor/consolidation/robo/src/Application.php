@@ -2,6 +2,7 @@
 
 namespace Robo;
 
+use SelfUpdate\SelfUpdateCommand;
 use Symfony\Component\Console\Application as SymfonyApplication;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -67,10 +68,10 @@ class Application extends SymfonyApplication
      */
     public function addSelfUpdateCommand($repository = null)
     {
-        if (!$repository || !class_exists('\SelfUpdate\SelfUpdateCommand') || empty(\Phar::running())) {
+        if (!$repository || empty(\Phar::running())) {
             return;
         }
-        $selfUpdateCommand = new \SelfUpdate\SelfUpdateCommand($this->getName(), $this->getVersion(), $repository);
+        $selfUpdateCommand = new SelfUpdateCommand($this->getName(), $this->getVersion(), $repository);
         $this->add($selfUpdateCommand);
     }
 }

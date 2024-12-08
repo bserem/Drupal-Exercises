@@ -92,17 +92,14 @@ class RecipeQuickStartTest extends TestCase {
     // Install a site using the standard recipe to ensure the one time login
     // link generation works.
 
-    $script = $this->root . '/core/scripts/drupal';
     $install_command = [
       $this->php,
-      $script,
+      'core/scripts/drupal',
       'quick-start',
       'core/recipes/standard',
       "--site-name='Test site {$this->testDb->getDatabasePrefix()}'",
       '--suppress-login',
     ];
-    $this->assertFileExists($script, "Install script is found in $script");
-
     $process = new Process($install_command, NULL, ['DRUPAL_DEV_SITE_PATH' => $this->testDb->getTestSitePath()]);
     $process->setTimeout(500);
     $process->start();
@@ -126,7 +123,7 @@ class RecipeQuickStartTest extends TestCase {
 
     // Generate a cookie so we can make a request against the installed site.
     define('DRUPAL_TEST_IN_CHILD_SITE', FALSE);
-    chmod($this->root . '/' . $this->testDb->getTestSitePath(), 0755);
+    chmod($this->testDb->getTestSitePath(), 0755);
     $cookieJar = CookieJar::fromArray([
       'SIMPLETEST_USER_AGENT' => drupal_generate_test_ua($this->testDb->getDatabasePrefix()),
     ], '127.0.0.1');

@@ -19,14 +19,14 @@ class TestFieldConstraint extends NotEqualTo {
   /**
    * {@inheritdoc}
    */
-  public function getRequiredOptions(): array {
+  public function getRequiredOptions() {
     return ['value'];
   }
 
   /**
    * {@inheritdoc}
    */
-  public function validatedBy(): string {
+  public function validatedBy() {
     return '\Symfony\Component\Validator\Constraints\NotEqualToValidator';
   }
 

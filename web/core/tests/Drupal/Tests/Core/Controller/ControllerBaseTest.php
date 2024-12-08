@@ -15,8 +15,10 @@ class ControllerBaseTest extends UnitTestCase {
 
   /**
    * The tested controller base class.
+   *
+   * @var \Drupal\Core\Controller\ControllerBase|\PHPUnit\Framework\MockObject\MockObject
    */
-  protected StubControllerBase $controllerBase;
+  protected $controllerBase;
 
   /**
    * {@inheritdoc}
@@ -24,7 +26,7 @@ class ControllerBaseTest extends UnitTestCase {
   protected function setUp(): void {
     parent::setUp();
 
-    $this->controllerBase = new StubControllerBase();
+    $this->controllerBase = $this->getMockForAbstractClass('Drupal\Core\Controller\ControllerBase');
   }
 
   /**
@@ -47,7 +49,7 @@ class ControllerBaseTest extends UnitTestCase {
       ->willReturn($config_factory);
     \Drupal::setContainer($container);
 
-    $config_method = new \ReflectionMethod(StubControllerBase::class, 'config');
+    $config_method = new \ReflectionMethod('Drupal\Core\Controller\ControllerBase', 'config');
 
     // Call config twice to ensure that the container is just called once.
     $config = $config_method->invoke($this->controllerBase, 'config_name');

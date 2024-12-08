@@ -9,7 +9,7 @@ namespace Drupal\FunctionalTests\Installer;
  *
  * @group Installer
  */
-class InstallerExistingConfigSyncDirectoryProfileHookInstall extends InstallerConfigDirectoryTestBase {
+class InstallerExistingConfigSyncDirectoryProfileHookInstall extends InstallerExistingConfigTestBase {
 
   /**
    * {@inheritdoc}
@@ -74,8 +74,8 @@ EOF;
   /**
    * {@inheritdoc}
    */
-  protected function getConfigLocation() {
-    return __DIR__ . '/../../../fixtures/config_install/multilingual';
+  protected function getConfigTarball() {
+    return __DIR__ . '/../../../fixtures/config_install/multilingual.tar.gz';
   }
 
   /**

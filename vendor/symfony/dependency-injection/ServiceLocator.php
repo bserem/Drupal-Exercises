@@ -16,8 +16,8 @@ use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use Symfony\Contracts\Service\ServiceCollectionInterface;
 use Symfony\Contracts\Service\ServiceLocatorTrait;
+use Symfony\Contracts\Service\ServiceProviderInterface;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
 
 /**
@@ -26,9 +26,9 @@ use Symfony\Contracts\Service\ServiceSubscriberInterface;
  *
  * @template-covariant T of mixed
  *
- * @implements ServiceCollectionInterface<T>
+ * @implements ServiceProviderInterface<T>
  */
-class ServiceLocator implements ServiceCollectionInterface
+class ServiceLocator implements ServiceProviderInterface, \Countable
 {
     use ServiceLocatorTrait {
         get as private doGet;
@@ -60,7 +60,10 @@ class ServiceLocator implements ServiceCollectionInterface
         }
     }
 
-    public function __invoke(string $id): mixed
+    /**
+     * @return mixed
+     */
+    public function __invoke(string $id)
     {
         return isset($this->factories[$id]) ? $this->get($id) : null;
     }
@@ -80,13 +83,6 @@ class ServiceLocator implements ServiceCollectionInterface
     public function count(): int
     {
         return \count($this->getProvidedServices());
-    }
-
-    public function getIterator(): \Traversable
-    {
-        foreach ($this->getProvidedServices() as $id => $config) {
-            yield $id => $this->get($id);
-        }
     }
 
     private function createNotFoundException(string $id): NotFoundExceptionInterface

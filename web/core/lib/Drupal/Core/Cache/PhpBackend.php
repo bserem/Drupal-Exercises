@@ -35,8 +35,6 @@ class PhpBackend implements CacheBackendInterface {
 
   /**
    * Array to store cache objects.
-   *
-   * @var object[]
    */
   protected $cache = [];
 
@@ -54,12 +52,16 @@ class PhpBackend implements CacheBackendInterface {
    *   The cache bin for which the object is created.
    * @param \Drupal\Core\Cache\CacheTagsChecksumInterface $checksum_provider
    *   The cache tags checksum provider.
-   * @param \Drupal\Component\Datetime\TimeInterface $time
+   * @param \Drupal\Component\Datetime\TimeInterface|null $time
    *   The time service.
    */
-  public function __construct($bin, CacheTagsChecksumInterface $checksum_provider, protected TimeInterface $time) {
+  public function __construct($bin, CacheTagsChecksumInterface $checksum_provider, protected ?TimeInterface $time = NULL) {
     $this->bin = 'cache_' . $bin;
     $this->checksumProvider = $checksum_provider;
+    if (!$time) {
+      @trigger_error('Calling ' . __METHOD__ . '() without the $time argument is deprecated in drupal:10.3.0 and it will be required in drupal:11.0.0. See https://www.drupal.org/node/3387233', E_USER_DEPRECATED);
+      $this->time = \Drupal::service(TimeInterface::class);
+    }
   }
 
   /**

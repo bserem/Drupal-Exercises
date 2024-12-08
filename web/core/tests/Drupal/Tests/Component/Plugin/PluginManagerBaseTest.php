@@ -6,6 +6,7 @@ namespace Drupal\Tests\Component\Plugin;
 
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Component\Plugin\Mapper\MapperInterface;
+use Drupal\Component\Plugin\PluginManagerBase;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
@@ -50,7 +51,8 @@ class PluginManagerBaseTest extends TestCase {
    * @covers ::createInstance
    */
   public function testCreateInstance(): void {
-    $manager = new StubPluginManagerBase();
+    $manager = $this->getMockBuilder('Drupal\Component\Plugin\PluginManagerBase')
+      ->getMockForAbstractClass();
     // PluginManagerBase::createInstance() looks for a factory object and then
     // calls createInstance() on it. So we have to mock a factory object.
     $factory_ref = new \ReflectionProperty($manager, 'factory');
@@ -116,7 +118,9 @@ class PluginManagerBaseTest extends TestCase {
       'foo' => 'F00',
       'bar' => 'bAr',
     ];
-    $manager = new StubPluginManagerBase();
+    /** @var \Drupal\Component\Plugin\PluginManagerBase $manager */
+    $manager = $this->getMockBuilder(PluginManagerBase::class)
+      ->getMockForAbstractClass();
     // Set the expected exception thrown by ::getInstance.
     $this->expectException(\BadMethodCallException::class);
     $this->expectExceptionMessage(sprintf('%s does not support this method unless %s::$mapper is set.', get_class($manager), get_class($manager)));

@@ -41,14 +41,14 @@ class ExtensionExistsConstraint extends SymfonyConstraint {
   /**
    * {@inheritdoc}
    */
-  public function getRequiredOptions(): array {
+  public function getRequiredOptions() {
     return ['type'];
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getDefaultOption(): ?string {
+  public function getDefaultOption() {
     return 'type';
   }
 

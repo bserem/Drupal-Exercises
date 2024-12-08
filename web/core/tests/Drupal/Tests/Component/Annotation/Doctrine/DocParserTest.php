@@ -7,7 +7,6 @@ namespace Drupal\Tests\Component\Annotation\Doctrine;
 use Drupal\Component\Annotation\Doctrine\DocParser;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\Annotation\Target;
-use Drupal\Tests\Component\Annotation\Doctrine\Fixtures\Annotation\Autoload;
 use Drupal\Tests\Component\Annotation\Doctrine\Fixtures\AnnotationWithConstants;
 use Drupal\Tests\Component\Annotation\Doctrine\Fixtures\ClassWithConstants;
 use Drupal\Tests\Component\Annotation\Doctrine\Fixtures\IntefaceWithConstants;
@@ -1059,20 +1058,19 @@ DOCBLOCK;
      */
     public function testAutoloadAnnotation()
     {
-        self::assertFalse(
-          class_exists('Drupal\Tests\Component\Annotation\Doctrine\Fixture\Annotation\Autoload', false),
-          'Pre-condition: Drupal\Tests\Component\Annotation\Doctrine\Fixture\Annotation\Autoload not allowed to be loaded.'
-        );
+        $this->assertFalse(class_exists('Drupal\Tests\Component\Annotation\Doctrine\Fixture\Annotation\Autoload', false), 'Pre-condition: Drupal\Tests\Component\Annotation\Doctrine\Fixture\Annotation\Autoload not allowed to be loaded.');
 
         $parser = new DocParser();
 
-        $parser->setImports([
-          'autoload' => Autoload::class,
-        ]);
+        AnnotationRegistry::registerAutoloadNamespace('Drupal\Tests\Component\Annotation\Doctrine\Fixtures\Annotation', __DIR__ . '/../../../../');
+
+        $parser->setImports(array(
+            'autoload' => 'Drupal\Tests\Component\Annotation\Doctrine\Fixtures\Annotation\Autoload',
+        ));
         $annotations = $parser->parse('@Autoload');
 
-        self::assertCount(1, $annotations);
-        self::assertInstanceOf(Autoload::class, $annotations[0]);
+        $this->assertCount(1, $annotations);
+        $this->assertInstanceOf('Drupal\Tests\Component\Annotation\Doctrine\Fixtures\Annotation\Autoload', $annotations[0]);
     }
 
     public function createTestParser()

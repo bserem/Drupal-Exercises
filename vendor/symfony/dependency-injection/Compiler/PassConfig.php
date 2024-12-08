@@ -55,7 +55,6 @@ class PassConfig
             new AutoAliasServicePass(),
             new ValidateEnvPlaceholdersPass(),
             new ResolveDecoratorStackPass(),
-            new ResolveAutowireInlineAttributesPass(),
             new ResolveChildDefinitionsPass(),
             new RegisterServiceSubscribersPass(),
             new ResolveParameterPlaceHoldersPass(false, false),
@@ -122,9 +121,11 @@ class PassConfig
     /**
      * Adds a pass.
      *
+     * @return void
+     *
      * @throws InvalidArgumentException when a pass type doesn't exist
      */
-    public function addPass(CompilerPassInterface $pass, string $type = self::TYPE_BEFORE_OPTIMIZATION, int $priority = 0): void
+    public function addPass(CompilerPassInterface $pass, string $type = self::TYPE_BEFORE_OPTIMIZATION, int $priority = 0)
     {
         $property = $type.'Passes';
         if (!isset($this->$property)) {
@@ -197,7 +198,10 @@ class PassConfig
         return $this->mergePass;
     }
 
-    public function setMergePass(CompilerPassInterface $pass): void
+    /**
+     * @return void
+     */
+    public function setMergePass(CompilerPassInterface $pass)
     {
         $this->mergePass = $pass;
     }
@@ -206,8 +210,10 @@ class PassConfig
      * Sets the AfterRemoving passes.
      *
      * @param CompilerPassInterface[] $passes
+     *
+     * @return void
      */
-    public function setAfterRemovingPasses(array $passes): void
+    public function setAfterRemovingPasses(array $passes)
     {
         $this->afterRemovingPasses = [$passes];
     }
@@ -216,8 +222,10 @@ class PassConfig
      * Sets the BeforeOptimization passes.
      *
      * @param CompilerPassInterface[] $passes
+     *
+     * @return void
      */
-    public function setBeforeOptimizationPasses(array $passes): void
+    public function setBeforeOptimizationPasses(array $passes)
     {
         $this->beforeOptimizationPasses = [$passes];
     }
@@ -226,8 +234,10 @@ class PassConfig
      * Sets the BeforeRemoving passes.
      *
      * @param CompilerPassInterface[] $passes
+     *
+     * @return void
      */
-    public function setBeforeRemovingPasses(array $passes): void
+    public function setBeforeRemovingPasses(array $passes)
     {
         $this->beforeRemovingPasses = [$passes];
     }
@@ -236,8 +246,10 @@ class PassConfig
      * Sets the Optimization passes.
      *
      * @param CompilerPassInterface[] $passes
+     *
+     * @return void
      */
-    public function setOptimizationPasses(array $passes): void
+    public function setOptimizationPasses(array $passes)
     {
         $this->optimizationPasses = [$passes];
     }
@@ -246,8 +258,10 @@ class PassConfig
      * Sets the Removing passes.
      *
      * @param CompilerPassInterface[] $passes
+     *
+     * @return void
      */
-    public function setRemovingPasses(array $passes): void
+    public function setRemovingPasses(array $passes)
     {
         $this->removingPasses = [$passes];
     }

@@ -23,7 +23,7 @@ class UploadedFileConstraintValidator extends ConstraintValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate(mixed $value, Constraint $constraint): void {
+  public function validate(mixed $value, Constraint $constraint) {
     if (!$constraint instanceof UploadedFileConstraint) {
       throw new UnexpectedTypeException($constraint, UploadedFileConstraint::class);
     }

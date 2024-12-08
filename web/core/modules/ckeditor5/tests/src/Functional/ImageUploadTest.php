@@ -66,10 +66,10 @@ class ImageUploadTest extends BrowserTestBase {
       'status' => TRUE,
       'scheme' => 'public',
       'directory' => 'inline-images',
-      'max_size' => NULL,
+      'max_size' => '',
       'max_dimensions' => [
-        'width' => NULL,
-        'height' => NULL,
+        'width' => 0,
+        'height' => 0,
       ],
     ]);
 
@@ -94,8 +94,8 @@ class ImageUploadTest extends BrowserTestBase {
       'directory' => 'inline-images',
       'max_size' => 30000,
       'max_dimensions' => [
-        'width' => NULL,
-        'height' => NULL,
+        'width' => 0,
+        'height' => 0,
       ],
     ]);
 
@@ -128,8 +128,8 @@ class ImageUploadTest extends BrowserTestBase {
       'directory' => 'inline-images',
       'max_size' => 30000,
       'max_dimensions' => [
-        'width' => NULL,
-        'height' => NULL,
+        'width' => 0,
+        'height' => 0,
       ],
     ]);
 

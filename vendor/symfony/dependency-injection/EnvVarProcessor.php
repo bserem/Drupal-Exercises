@@ -14,18 +14,15 @@ namespace Symfony\Component\DependencyInjection;
 use Symfony\Component\DependencyInjection\Exception\EnvNotFoundException;
 use Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use Symfony\Contracts\Service\ResetInterface;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class EnvVarProcessor implements EnvVarProcessorInterface, ResetInterface
+class EnvVarProcessor implements EnvVarProcessorInterface
 {
     private ContainerInterface $container;
     /** @var \Traversable<EnvVarLoaderInterface> */
     private \Traversable $loaders;
-    /** @var \Traversable<EnvVarLoaderInterface> */
-    private \Traversable $originalLoaders;
     private array $loadedVars = [];
 
     /**
@@ -34,7 +31,7 @@ class EnvVarProcessor implements EnvVarProcessorInterface, ResetInterface
     public function __construct(ContainerInterface $container, ?\Traversable $loaders = null)
     {
         $this->container = $container;
-        $this->originalLoaders = $this->loaders = $loaders ?? new \ArrayIterator();
+        $this->loaders = $loaders ?? new \ArrayIterator();
     }
 
     public static function getProvidedTypes(): array
@@ -60,7 +57,6 @@ class EnvVarProcessor implements EnvVarProcessorInterface, ResetInterface
             'enum' => \BackedEnum::class,
             'shuffle' => 'array',
             'defined' => 'bool',
-            'urlencode' => 'string',
         ];
     }
 
@@ -363,16 +359,6 @@ class EnvVarProcessor implements EnvVarProcessorInterface, ResetInterface
             return trim($env);
         }
 
-        if ('urlencode' === $prefix) {
-            return rawurlencode($env);
-        }
-
         throw new RuntimeException(sprintf('Unsupported env var prefix "%s" for env name "%s".', $prefix, $name));
-    }
-
-    public function reset(): void
-    {
-        $this->loadedVars = [];
-        $this->loaders = $this->originalLoaders;
     }
 }

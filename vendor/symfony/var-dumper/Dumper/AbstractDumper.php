@@ -29,14 +29,14 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
     /** @var callable|resource|string|null */
     public static $defaultOutput = 'php://output';
 
-    protected string $line = '';
+    protected $line = '';
     /** @var callable|null */
     protected $lineDumper;
     /** @var resource|null */
     protected $outputStream;
-    protected string $decimalPoint = '.';
-    protected string $indentPad = '  ';
-    protected int $flags;
+    protected $decimalPoint = '.';
+    protected $indentPad = '  ';
+    protected $flags;
 
     private string $charset = '';
 
@@ -90,7 +90,7 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
         $prev = $this->charset;
 
         $charset = strtoupper($charset);
-        $charset = 'UTF-8' === $charset || 'UTF8' === $charset ? 'CP1252' : $charset;
+        $charset = null === $charset || 'UTF-8' === $charset || 'UTF8' === $charset ? 'CP1252' : $charset;
 
         $this->charset = $charset;
 
@@ -158,8 +158,10 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
      *
      * @param int $depth The recursive depth in the dumped structure for the line being dumped,
      *                   or -1 to signal the end-of-dump to the line dumper callable
+     *
+     * @return void
      */
-    protected function dumpLine(int $depth): void
+    protected function dumpLine(int $depth)
     {
         ($this->lineDumper)($this->line, $depth, $this->indentPad);
         $this->line = '';
@@ -167,8 +169,10 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
 
     /**
      * Generic line dumper callback.
+     *
+     * @return void
      */
-    protected function echoLine(string $line, int $depth, string $indentPad): void
+    protected function echoLine(string $line, int $depth, string $indentPad)
     {
         if (-1 !== $depth) {
             fwrite($this->outputStream, str_repeat($indentPad, $depth).$line."\n");

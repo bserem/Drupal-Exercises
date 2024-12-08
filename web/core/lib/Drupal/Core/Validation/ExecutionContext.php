@@ -110,8 +110,12 @@ class ExecutionContext implements ExecutionContextInterface {
 
   /**
    * {@inheritdoc}
+   *
+   * phpcs:ignore Drupal.Commenting.FunctionComment.VoidReturn
+   *
+   * @return void
    */
-  public function addViolation(string $message, array $params = []): void {
+  public function addViolation(string $message, array $params = []) {
     $this->violations->add(new ConstraintViolation($this->translator->trans($message, $params, $this->translationDomain), $message, $params, $this->root, $this->propertyPath, $this->value, NULL, NULL, $this->constraint));
   }
 

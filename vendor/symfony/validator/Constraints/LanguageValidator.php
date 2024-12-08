@@ -24,7 +24,10 @@ use Symfony\Component\Validator\Exception\UnexpectedValueException;
  */
 class LanguageValidator extends ConstraintValidator
 {
-    public function validate(mixed $value, Constraint $constraint): void
+    /**
+     * @return void
+     */
+    public function validate(mixed $value, Constraint $constraint)
     {
         if (!$constraint instanceof Language) {
             throw new UnexpectedTypeException($constraint, Language::class);

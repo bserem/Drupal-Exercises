@@ -48,9 +48,6 @@ class EditorValidationTest extends ConfigEntityValidationTestBase {
     $this->entity = Editor::create([
       'format' => $format->id(),
       'editor' => 'ckeditor5',
-      'image_upload' => [
-        'status' => FALSE,
-      ],
       'settings' => [
         // @see \Drupal\ckeditor5\Plugin\Editor\CKEditor5::getDefaultSettings()
         'toolbar' => [

@@ -199,7 +199,13 @@ services:
   Drupal\jsonapi\Controller\EntityResource: '@jsonapi.entity_resource'
   jsonapi.file_upload:
     class: Drupal\jsonapi\Controller\FileUpload
-    autowire: true
+    arguments:
+      - '@current_user'
+      - '@entity_field.manager'
+      - '@file.upload_handler'
+      - '@http_kernel'
+      - '@file.input_stream_file_writer'
+      - '@file_system'
   Drupal\jsonapi\Controller\FileUpload: '@jsonapi.file_upload'
 
   # Event subscribers.

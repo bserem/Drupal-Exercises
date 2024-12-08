@@ -67,6 +67,13 @@ class CacheCollectorHelper extends CacheCollector {
   }
 
   /**
+   * {@inheritdoc}
+   */
+  public function normalizeLockName($cid) {
+    return parent::normalizeLockName($cid);
+  }
+
+  /**
    * Setter for the cacheCreated property for use in unit tests.
    *
    * @param int $cache_created

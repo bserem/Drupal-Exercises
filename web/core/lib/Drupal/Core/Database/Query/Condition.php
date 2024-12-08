@@ -12,8 +12,6 @@ class Condition implements ConditionInterface, \Countable {
 
   /**
    * Provides a map of condition operators to condition operator options.
-   *
-   * @var string[][]
    */
   protected static $conditionOperatorMap = [
     'BETWEEN' => ['delimiter' => ' AND '],
@@ -92,7 +90,8 @@ class Condition implements ConditionInterface, \Countable {
    * size of its conditional array minus one, because one element is the
    * conjunction.
    */
-  public function count(): int {
+  #[\ReturnTypeWillChange]
+  public function count() {
     return count($this->conditions) - 1;
   }
 
@@ -112,7 +111,8 @@ class Condition implements ConditionInterface, \Countable {
         throw new InvalidQueryException(sprintf("Query condition '%s %s %s' must have an array compatible operator.", $field, $operator, $value));
       }
       else {
-        throw new InvalidQueryException('Calling ' . __METHOD__ . '() without an array compatible operator is not supported. See https://www.drupal.org/node/3350985');
+        $value = $value[0];
+        @trigger_error('Calling ' . __METHOD__ . '() without an array compatible operator is deprecated in drupal:10.1.0 and will be required in drupal:11.0.0. See https://www.drupal.org/node/3350985', E_USER_DEPRECATED);
       }
     }
 
@@ -257,7 +257,14 @@ class Condition implements ConditionInterface, \Countable {
             // Provide a string which will result into an empty query result.
             $this->stringVersion = '( AND 1 = 0 )';
 
-            throw new InvalidQueryException('Invalid characters in query operator: ' . $condition['operator']);
+            // Conceptually throwing an exception caused by user input is bad
+            // as you result into a 'white screen of death', which depending on
+            // your webserver configuration can result into the assumption that
+            // your site is broken.
+            // On top of that the database API relies on __toString() which
+            // does not allow to throw exceptions.
+            trigger_error('Invalid characters in query operator: ' . $condition['operator'], E_USER_ERROR);
+            return;
           }
 
           // For simplicity, we convert all operators to a data structure to

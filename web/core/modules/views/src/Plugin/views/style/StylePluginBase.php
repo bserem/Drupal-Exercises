@@ -46,8 +46,6 @@ abstract class StylePluginBase extends PluginBase {
 
   /**
    * Store all available tokens row rows.
-   *
-   * @var array
    */
   protected $rowTokens = [];
 

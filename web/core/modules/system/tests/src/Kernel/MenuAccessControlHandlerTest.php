@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Drupal\Tests\system\Kernel;
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Cache\Context\CacheContextsManager;
+use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\system\Entity\Menu;
 use Drupal\Tests\user\Traits\UserCreationTrait;
@@ -65,13 +67,15 @@ class MenuAccessControlHandlerTest extends KernelTestBase {
     static::assertEquals($create_access_result, $this->accessControlHandler->createAccess(NULL, $user, [], TRUE));
   }
 
-  public static function testAccessProvider() {
-    // RefinableCacheableDependencyTrait::addCacheContexts() only needs the
-    // container to perform an assertion, but we can't use the container here,
-    // so disable assertions for the purposes of this test.
-    $assertions = ini_set('zend.assertions', 0);
+  public function testAccessProvider() {
+    $c = new ContainerBuilder();
+    $cache_contexts_manager = $this->prophesize(CacheContextsManager::class);
+    $cache_contexts_manager->assertValidTokens()->willReturn(TRUE);
+    $cache_contexts_manager->reveal();
+    $c->set('cache_contexts_manager', $cache_contexts_manager);
+    \Drupal::setContainer($c);
 
-    $data = [
+    return [
       'permissionless + unlocked' => [
         [],
         'unlocked',
@@ -109,12 +113,6 @@ class MenuAccessControlHandlerTest extends KernelTestBase {
         AccessResult::allowed()->addCacheContexts(['user.permissions']),
       ],
     ];
-
-    if ($assertions !== FALSE) {
-      ini_set('zend.assertions', $assertions);
-    }
-
-    return $data;
   }
 
 }

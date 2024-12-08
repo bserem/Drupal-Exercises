@@ -7,6 +7,7 @@ use Drupal\Component\Annotation\Reflection\MockFileFinder;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Extension\ExtensionDiscovery;
 use Drupal\Core\Test\Exception\MissingGroupException;
+use Drupal\TestTools\PhpUnitCompatibility\ClassWriter;
 
 /**
  * Discovers available tests.
@@ -105,18 +106,13 @@ class TestDiscovery {
       $this->testNamespaces["Drupal\\Tests\\$name\\"][] = "$base_path/tests/src";
     }
 
-    // Expose tests provided by core recipes.
-    $base_path = $this->root . '/core/recipes';
-    if (@opendir($base_path)) {
-      while (($recipe = readdir()) !== FALSE) {
-        $this->testNamespaces["Drupal\\FunctionalTests\\Recipe\\Core\\$recipe\\"][] = "$base_path/$recipe/tests/src/Functional";
-      }
-      closedir();
-    }
-
     foreach ($this->testNamespaces as $prefix => $paths) {
       $this->classLoader->addPsr4($prefix, $paths);
     }
+
+    $loader = require __DIR__ . '/../../../../../autoload.php';
+    // Ensure we have a valid TestCase class.
+    ClassWriter::mutateTestBase($loader);
 
     return $this->testNamespaces;
   }

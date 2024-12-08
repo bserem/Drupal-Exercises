@@ -8,7 +8,7 @@ use Drupal\Component\Plugin\Attribute\Plugin;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversDefaultClass \Drupal\Component\Plugin\Attribute\Plugin
+ * @coversDefaultClass \Drupal\Component\Annotation\Plugin
  * @group Attribute
  */
 class PluginTest extends TestCase {

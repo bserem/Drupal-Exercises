@@ -15,7 +15,8 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Exception\InvalidArgumentException;
 
 /**
- * Validates that all the elements of the given collection are unique.
+ * @Annotation
+ * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
  *
  * @author Yevgeniy Zholkevskiy <zhenya.zholkevskiy@gmail.com>
  */
@@ -30,14 +31,17 @@ class Unique extends Constraint
         self::IS_NOT_UNIQUE => 'IS_NOT_UNIQUE',
     ];
 
-    public string $message = 'This collection should contain only unique elements.';
+    /**
+     * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
+     */
+    protected static $errorNames = self::ERROR_NAMES;
+
+    public $message = 'This collection should contain only unique elements.';
     /** @var callable|null */
     public $normalizer;
 
     /**
-     * @param array<string,mixed>|null $options
-     * @param string[]|null            $groups
-     * @param string[]|string|null     $fields  Defines the key or keys in the collection that should be checked for uniqueness (defaults to null, which ensure uniqueness for all keys)
+     * @param array|string $fields the combination of fields that must contain unique values or a set of options
      */
     public function __construct(
         ?array $options = null,

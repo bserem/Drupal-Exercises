@@ -15,7 +15,7 @@ class DeprecatedServicePass implements CompilerPassInterface {
   /**
    * {@inheritdoc}
    */
-  public function process(ContainerBuilder $container): void {
+  public function process(ContainerBuilder $container) {
     $deprecated_services = [];
     foreach ($container->getDefinitions() as $service_id => $definition) {
       if ($definition->isDeprecated()) {

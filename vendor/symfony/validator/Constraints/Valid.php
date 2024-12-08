@@ -14,20 +14,16 @@ namespace Symfony\Component\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Validates an object embedded in an object's property.
+ * @Annotation
+ * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
 #[\Attribute(\Attribute::TARGET_PROPERTY | \Attribute::TARGET_METHOD | \Attribute::IS_REPEATABLE)]
 class Valid extends Constraint
 {
-    public bool $traverse = true;
+    public $traverse = true;
 
-    /**
-     * @param array<string,mixed>|null $options
-     * @param string[]|null            $groups
-     * @param bool|null                $traverse Whether to validate {@see \Traversable} objects (defaults to true)
-     */
     public function __construct(?array $options = null, ?array $groups = null, $payload = null, ?bool $traverse = null)
     {
         parent::__construct($options ?? [], $groups, $payload);
@@ -45,7 +41,10 @@ class Valid extends Constraint
         return parent::__get($option);
     }
 
-    public function addImplicitGroupName(string $group): void
+    /**
+     * @return void
+     */
+    public function addImplicitGroupName(string $group)
     {
         if (null !== $this->groups) {
             parent::addImplicitGroupName($group);

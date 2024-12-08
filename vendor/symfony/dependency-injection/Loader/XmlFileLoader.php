@@ -39,7 +39,7 @@ class XmlFileLoader extends FileLoader
 {
     public const NS = 'http://symfony.com/schema/dic/services';
 
-    protected bool $autoRegisterAliasesForSinglyImplementedInterfaces = false;
+    protected $autoRegisterAliasesForSinglyImplementedInterfaces = false;
 
     public function load(mixed $resource, ?string $type = null): mixed
     {
@@ -609,6 +609,11 @@ class XmlFileLoader extends FileLoader
                     break;
                 case 'service_locator':
                     $arg = $this->getArgumentsAsPhp($arg, $name, $file);
+
+                    if (isset($arg[0])) {
+                        trigger_deprecation('symfony/dependency-injection', '6.3', 'Skipping "key" argument or using integers as values in a "service_locator" tag is deprecated. The keys will default to the IDs of the original services in 7.0.');
+                    }
+
                     $arguments[$key] = new ServiceLocatorArgument($arg);
                     break;
                 case 'tagged':
@@ -834,9 +839,9 @@ EOF
             }
 
             // can it be handled by an extension?
-            if (!$this->prepend && !$this->container->hasExtension($node->namespaceURI)) {
+            if (!$this->container->hasExtension($node->namespaceURI)) {
                 $extensionNamespaces = array_filter(array_map(fn (ExtensionInterface $ext) => $ext->getNamespace(), $this->container->getExtensions()));
-                throw new InvalidArgumentException(UndefinedExtensionHandler::getErrorMessage($node->tagName, $file, $node->namespaceURI, $extensionNamespaces));
+                throw new InvalidArgumentException(sprintf('There is no extension able to load the configuration for "%s" (in "%s"). Looked for namespace "%s", found "%s".', $node->tagName, $file, $node->namespaceURI, $extensionNamespaces ? implode('", "', $extensionNamespaces) : 'none'));
             }
         }
     }
@@ -856,10 +861,8 @@ EOF
                 $values = [];
             }
 
-            $this->loadExtensionConfig($node->namespaceURI, $values);
+            $this->container->loadFromExtension($node->namespaceURI, $values);
         }
-
-        $this->loadExtensionConfigs();
     }
 
     /**

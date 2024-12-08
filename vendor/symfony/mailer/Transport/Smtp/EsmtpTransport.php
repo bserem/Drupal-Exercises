@@ -32,7 +32,6 @@ class EsmtpTransport extends SmtpTransport
     private string $username = '';
     private string $password = '';
     private array $capabilities;
-    private bool $autoTls = true;
 
     public function __construct(string $host = 'localhost', int $port = 0, ?bool $tls = null, ?EventDispatcherInterface $dispatcher = null, ?LoggerInterface $logger = null, ?AbstractStream $stream = null, ?array $authenticators = null)
     {
@@ -101,21 +100,6 @@ class EsmtpTransport extends SmtpTransport
         return $this->password;
     }
 
-    /**
-     * @return $this
-     */
-    public function setAutoTls(bool $autoTls): static
-    {
-        $this->autoTls = $autoTls;
-
-        return $this;
-    }
-
-    public function isAutoTls(): bool
-    {
-        return $this->autoTls;
-    }
-
     public function setAuthenticators(array $authenticators): void
     {
         $this->authenticators = [];
@@ -162,7 +146,7 @@ class EsmtpTransport extends SmtpTransport
         // WARNING: !$stream->isTLS() is right, 100% sure :)
         // if you think that the ! should be removed, read the code again
         // if doing so "fixes" your issue then it probably means your SMTP server behaves incorrectly or is wrongly configured
-        if ($this->autoTls && !$stream->isTLS() && \defined('OPENSSL_VERSION_NUMBER') && \array_key_exists('STARTTLS', $this->capabilities)) {
+        if (!$stream->isTLS() && \defined('OPENSSL_VERSION_NUMBER') && \array_key_exists('STARTTLS', $this->capabilities)) {
             $this->executeCommand("STARTTLS\r\n", [220]);
 
             if (!$stream->startTLS()) {

@@ -25,7 +25,10 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
  */
 class ImageValidator extends FileValidator
 {
-    public function validate(mixed $value, Constraint $constraint): void
+    /**
+     * @return void
+     */
+    public function validate(mixed $value, Constraint $constraint)
     {
         if (!$constraint instanceof Image) {
             throw new UnexpectedTypeException($constraint, Image::class);
@@ -52,7 +55,7 @@ class ImageValidator extends FileValidator
 
         $size = @getimagesize($value);
 
-        if (!$size || (0 === $size[0]) || (0 === $size[1])) {
+        if (empty($size) || (0 === $size[0]) || (0 === $size[1])) {
             $this->context->buildViolation($constraint->sizeNotDetectedMessage)
                 ->setCode(Image::SIZE_NOT_DETECTED_ERROR)
                 ->addViolation();

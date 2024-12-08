@@ -130,7 +130,3 @@ tr.selected td {
     width: auto;
   }
 }
-
-.ui-autocomplete {
-  z-index: 501;
-}

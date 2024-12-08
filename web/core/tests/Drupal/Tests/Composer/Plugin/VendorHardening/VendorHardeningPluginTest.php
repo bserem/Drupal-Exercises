@@ -10,6 +10,7 @@ use Composer\Package\PackageInterface;
 use Composer\Package\RootPackageInterface;
 use Drupal\Composer\Plugin\VendorHardening\Config;
 use Drupal\Composer\Plugin\VendorHardening\VendorHardeningPlugin;
+use Drupal\Tests\Traits\PhpUnitWarnings;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
@@ -20,6 +21,7 @@ use Prophecy\PhpUnit\ProphecyTrait;
  */
 class VendorHardeningPluginTest extends TestCase {
 
+  use PhpUnitWarnings;
   use ProphecyTrait;
 
   /**
@@ -164,10 +166,12 @@ class VendorHardeningPluginTest extends TestCase {
     $this->assertDirectoryExists($dir);
 
     $this->assertFileDoesNotExist($dir . '/.htaccess');
+    $this->assertFileDoesNotExist($dir . '/web.config');
 
     $plugin->writeAccessRestrictionFiles($dir);
 
     $this->assertFileExists($dir . '/.htaccess');
+    $this->assertFileExists($dir . '/web.config');
   }
 
   public static function providerFindBinOverlap() {

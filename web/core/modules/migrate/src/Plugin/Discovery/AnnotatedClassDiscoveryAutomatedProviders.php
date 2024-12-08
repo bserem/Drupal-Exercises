@@ -78,6 +78,8 @@ class AnnotatedClassDiscoveryAutomatedProviders extends AnnotatedClassDiscovery 
 
     // Clear the annotation loaders of any previous annotation classes.
     AnnotationRegistry::reset();
+    // Register the namespaces of classes that can be used for annotations.
+    AnnotationRegistry::registerLoader('class_exists');
 
     // Search for classes within all PSR-4 namespace locations.
     foreach ($this->getPluginNamespaces() as $namespace => $dirs) {

@@ -16,6 +16,11 @@ use Drupal\Tests\UnitTestCase;
 class CssOptimizerUnitTest extends UnitTestCase {
 
   /**
+   * {@inheritdoc}
+   */
+  protected $backupGlobals = FALSE;
+
+  /**
    * A CSS asset optimizer.
    *
    * @var \Drupal\Core\Asset\CssOptimizer

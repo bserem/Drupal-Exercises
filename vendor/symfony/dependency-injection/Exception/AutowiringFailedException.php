@@ -65,7 +65,10 @@ class AutowiringFailedException extends RuntimeException
         return $this->messageCallback;
     }
 
-    public function getServiceId(): string
+    /**
+     * @return string
+     */
+    public function getServiceId()
     {
         return $this->serviceId;
     }

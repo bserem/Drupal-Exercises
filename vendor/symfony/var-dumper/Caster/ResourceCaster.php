@@ -27,7 +27,10 @@ class ResourceCaster
         return curl_getinfo($h);
     }
 
-    public static function castDba($dba, array $a, Stub $stub, bool $isNested): array
+    /**
+     * @return array
+     */
+    public static function castDba($dba, array $a, Stub $stub, bool $isNested)
     {
         $list = dba_list();
         $a['file'] = $list[(int) $dba];
@@ -35,7 +38,10 @@ class ResourceCaster
         return $a;
     }
 
-    public static function castProcess($process, array $a, Stub $stub, bool $isNested): array
+    /**
+     * @return array
+     */
+    public static function castProcess($process, array $a, Stub $stub, bool $isNested)
     {
         return proc_get_status($process);
     }
@@ -50,12 +56,18 @@ class ResourceCaster
         return $a;
     }
 
-    public static function castStreamContext($stream, array $a, Stub $stub, bool $isNested): array
+    /**
+     * @return array
+     */
+    public static function castStreamContext($stream, array $a, Stub $stub, bool $isNested)
     {
         return @stream_context_get_params($stream) ?: $a;
     }
 
-    public static function castGd($gd, array $a, Stub $stub, bool $isNested): array
+    /**
+     * @return array
+     */
+    public static function castGd($gd, array $a, Stub $stub, bool $isNested)
     {
         $a['size'] = imagesx($gd).'x'.imagesy($gd);
         $a['trueColor'] = imageistruecolor($gd);
@@ -63,7 +75,10 @@ class ResourceCaster
         return $a;
     }
 
-    public static function castOpensslX509($h, array $a, Stub $stub, bool $isNested): array
+    /**
+     * @return array
+     */
+    public static function castOpensslX509($h, array $a, Stub $stub, bool $isNested)
     {
         $stub->cut = -1;
         $info = openssl_x509_parse($h, false);

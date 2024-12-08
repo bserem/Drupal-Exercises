@@ -37,25 +37,18 @@ abstract class FileLoader extends BaseFileLoader
 {
     public const ANONYMOUS_ID_REGEXP = '/^\.\d+_[^~]*+~[._a-zA-Z\d]{7}$/';
 
-    protected ContainerBuilder $container;
-    protected bool $isLoadingInstanceof = false;
-    protected array $instanceof = [];
-    protected array $interfaces = [];
-    protected array $singlyImplemented = [];
+    protected $container;
+    protected $isLoadingInstanceof = false;
+    protected $instanceof = [];
+    protected $interfaces = [];
+    protected $singlyImplemented = [];
     /** @var array<string, Alias> */
-    protected array $aliases = [];
-    protected bool $autoRegisterAliasesForSinglyImplementedInterfaces = true;
-    protected bool $prepend = false;
-    protected array $extensionConfigs = [];
-    protected int $importing = 0;
+    protected $aliases = [];
+    protected $autoRegisterAliasesForSinglyImplementedInterfaces = true;
 
-    /**
-     * @param bool $prepend Whether to prepend extension config instead of appending them
-     */
-    public function __construct(ContainerBuilder $container, FileLocatorInterface $locator, ?string $env = null, bool $prepend = false)
+    public function __construct(ContainerBuilder $container, FileLocatorInterface $locator, ?string $env = null)
     {
         $this->container = $container;
-        $this->prepend = $prepend;
 
         parent::__construct($locator, $env);
     }
@@ -73,7 +66,6 @@ abstract class FileLoader extends BaseFileLoader
             throw new \TypeError(sprintf('Invalid argument $ignoreErrors provided to "%s::import()": boolean or "not_found" expected, "%s" given.', static::class, get_debug_type($ignoreErrors)));
         }
 
-        ++$this->importing;
         try {
             return parent::import(...$args);
         } catch (LoaderLoadException $e) {
@@ -90,9 +82,6 @@ abstract class FileLoader extends BaseFileLoader
             if (__FILE__ !== $frame['file']) {
                 throw $e;
             }
-        } finally {
-            --$this->importing;
-            $this->loadExtensionConfigs();
         }
 
         return null;
@@ -106,8 +95,10 @@ abstract class FileLoader extends BaseFileLoader
      * @param string               $resource  The directory to look for classes, glob-patterns allowed
      * @param string|string[]|null $exclude   A globbed path of files to exclude or an array of globbed paths of files to exclude
      * @param string|null          $source    The path to the file that defines the auto-discovery rule
+     *
+     * @return void
      */
-    public function registerClasses(Definition $prototype, string $namespace, string $resource, string|array|null $exclude = null, ?string $source = null): void
+    public function registerClasses(Definition $prototype, string $namespace, string $resource, string|array|null $exclude = null/* , string $source = null */)
     {
         if (!str_ends_with($namespace, '\\')) {
             throw new InvalidArgumentException(sprintf('Namespace prefix must end with a "\\": "%s".', $namespace));
@@ -124,6 +115,7 @@ abstract class FileLoader extends BaseFileLoader
             throw new InvalidArgumentException('The exclude list must not contain an empty value.');
         }
 
+        $source = \func_num_args() > 4 ? func_get_arg(4) : null;
         $autoconfigureAttributes = new RegisterAutoconfigureAttributesPass();
         $autoconfigureAttributes = $autoconfigureAttributes->accept($prototype) ? $autoconfigureAttributes : null;
         $classes = $this->findClasses($namespace, $resource, (array) $exclude, $autoconfigureAttributes, $source);
@@ -217,7 +209,10 @@ abstract class FileLoader extends BaseFileLoader
         }
     }
 
-    public function registerAliasesForSinglyImplementedInterfaces(): void
+    /**
+     * @return void
+     */
+    public function registerAliasesForSinglyImplementedInterfaces()
     {
         foreach ($this->interfaces as $interface) {
             if (!empty($this->singlyImplemented[$interface]) && !isset($this->aliases[$interface]) && !$this->container->has($interface)) {
@@ -228,45 +223,12 @@ abstract class FileLoader extends BaseFileLoader
         $this->interfaces = $this->singlyImplemented = $this->aliases = [];
     }
 
-    final protected function loadExtensionConfig(string $namespace, array $config): void
-    {
-        if (!$this->prepend) {
-            $this->container->loadFromExtension($namespace, $config);
-
-            return;
-        }
-
-        if ($this->importing) {
-            if (!isset($this->extensionConfigs[$namespace])) {
-                $this->extensionConfigs[$namespace] = [];
-            }
-            array_unshift($this->extensionConfigs[$namespace], $config);
-
-            return;
-        }
-
-        $this->container->prependExtensionConfig($namespace, $config);
-    }
-
-    final protected function loadExtensionConfigs(): void
-    {
-        if ($this->importing || !$this->extensionConfigs) {
-            return;
-        }
-
-        foreach ($this->extensionConfigs as $namespace => $configs) {
-            foreach ($configs as $config) {
-                $this->container->prependExtensionConfig($namespace, $config);
-            }
-        }
-
-        $this->extensionConfigs = [];
-    }
-
     /**
      * Registers a definition in the container with its instanceof-conditionals.
+     *
+     * @return void
      */
-    protected function setDefinition(string $id, Definition $definition): void
+    protected function setDefinition(string $id, Definition $definition)
     {
         $this->container->removeBindings($id);
 

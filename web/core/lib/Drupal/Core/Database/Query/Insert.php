@@ -2,6 +2,8 @@
 
 namespace Drupal\Core\Database\Query;
 
+use Drupal\Core\Database\Database;
+
 /**
  * General class for an abstracted INSERT query.
  *
@@ -29,6 +31,11 @@ class Insert extends Query implements \Countable {
    *   Array of database options.
    */
   public function __construct($connection, $table, array $options = []) {
+    // @todo Remove $options['return'] in Drupal 11.
+    // @see https://www.drupal.org/project/drupal/issues/3256524
+    if (!isset($options['return'])) {
+      $options['return'] = Database::RETURN_INSERT_ID;
+    }
     parent::__construct($connection, $options);
     $this->table = $table;
   }

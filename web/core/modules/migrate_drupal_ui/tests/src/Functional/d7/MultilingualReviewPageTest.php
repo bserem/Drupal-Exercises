@@ -166,6 +166,7 @@ class MultilingualReviewPageTest extends MultilingualReviewPageTestBase {
       'References',
       'References UUID',
       'Statistics',
+      // @todo Remove tracker in https://www.drupal.org/project/drupal/issues/3261452
       'Tracker',
       'Translation redirect',
       'Translation sets',

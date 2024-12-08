@@ -5,12 +5,14 @@
  * Responsive image display formatter for image fields.
  */
 
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Logger\RfcLogLevel;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\responsive_image\Entity\ResponsiveImageStyle;
+use Drupal\responsive_image\ResponsiveImageConfigUpdater;
 use Drupal\responsive_image\ResponsiveImageStyleInterface;
 use Drupal\breakpoint\BreakpointInterface;
 
@@ -220,12 +222,6 @@ function template_preprocess_responsive_image(&$variables) {
     if (isset($variables['attributes']['title'])) {
       $variables['img_element']['#title'] = $variables['attributes']['title'];
       unset($variables['attributes']['title']);
-    }
-    if (isset($variables['img_element']['#width'])) {
-      $variables['attributes']['width'] = $variables['img_element']['#width'];
-    }
-    if (isset($variables['img_element']['#height'])) {
-      $variables['attributes']['height'] = $variables['img_element']['#height'];
     }
     $variables['img_element']['#attributes'] = $variables['attributes'];
   }
@@ -545,4 +541,13 @@ function responsive_image_library_info_alter(array &$libraries, $module) {
   if ($module === 'core' && isset($libraries['drupal.ajax'])) {
     $libraries['drupal.ajax']['dependencies'][] = 'responsive_image/ajax';
   }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for entity_view_display.
+ */
+function responsive_image_entity_view_display_presave(EntityViewDisplayInterface $view_display): void {
+  /** @var \Drupal\responsive_image\ResponsiveImageConfigUpdater $config_updater */
+  $config_updater = \Drupal::classResolver(ResponsiveImageConfigUpdater::class);
+  $config_updater->processResponsiveImageField($view_display);
 }

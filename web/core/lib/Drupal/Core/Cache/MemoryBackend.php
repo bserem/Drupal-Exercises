@@ -24,18 +24,20 @@ class MemoryBackend implements CacheBackendInterface, CacheTagsInvalidatorInterf
 
   /**
    * Array to store cache objects.
-   *
-   * @var object[]
    */
   protected $cache = [];
 
   /**
    * Constructs a MemoryBackend object.
    *
-   * @param \Drupal\Component\Datetime\TimeInterface $time
+   * @param \Drupal\Component\Datetime\TimeInterface|null $time
    *   The time service.
    */
-  public function __construct(protected TimeInterface $time) {
+  public function __construct(protected ?TimeInterface $time = NULL) {
+    if (!$time) {
+      @trigger_error('Calling ' . __METHOD__ . '() without the $time argument is deprecated in drupal:10.3.0 and it will be required in drupal:11.0.0. See https://www.drupal.org/node/3387233', E_USER_DEPRECATED);
+      $this->time = \Drupal::service(TimeInterface::class);
+    }
   }
 
   /**
@@ -208,9 +210,19 @@ class MemoryBackend implements CacheBackendInterface, CacheTagsInvalidatorInterf
   }
 
   /**
+   * Wrapper method for REQUEST_TIME constant.
+   *
+   * @return int
+   */
+  protected function getRequestTime() {
+    @trigger_error(__METHOD__ . '() is deprecated in drupal:10.3.0 will be removed in drupal:11.0.0. Use the datetime.time service instead. See https://www.drupal.org/node/3387233', E_USER_DEPRECATED);
+    return $this->time->getRequestTime();
+  }
+
+  /**
    * Prevents data stored in memory backends from being serialized.
    */
-  public function __sleep(): array {
+  public function __sleep() {
     return ['time'];
   }
 

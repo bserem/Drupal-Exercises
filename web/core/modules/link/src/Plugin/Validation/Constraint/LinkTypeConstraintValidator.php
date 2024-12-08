@@ -14,7 +14,7 @@ class LinkTypeConstraintValidator extends ConstraintValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate($value, Constraint $constraint): void {
+  public function validate($value, Constraint $constraint) {
     if (isset($value)) {
       $uri_is_valid = TRUE;
 

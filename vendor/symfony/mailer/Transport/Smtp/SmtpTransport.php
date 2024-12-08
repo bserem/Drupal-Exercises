@@ -244,7 +244,12 @@ class SmtpTransport extends AbstractTransport
         }
     }
 
-    private function doHeloCommand(): void
+    /**
+     * @internal since version 6.1, to be made private in 7.0
+     *
+     * @final since version 6.1, to be made private in 7.0
+     */
+    protected function doHeloCommand(): void
     {
         $this->executeCommand(sprintf("HELO %s\r\n", $this->domain), [250]);
     }
@@ -372,7 +377,10 @@ class SmtpTransport extends AbstractTransport
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    public function __wakeup(): void
+    /**
+     * @return void
+     */
+    public function __wakeup()
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }

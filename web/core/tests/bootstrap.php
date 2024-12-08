@@ -7,10 +7,7 @@
  * @see phpunit.xml.dist
  */
 
-use Drupal\TestTools\ErrorHandler\BootstrapErrorHandler;
-use Drupal\TestTools\Extension\DeprecationBridge\DeprecationHandler;
-use PHPUnit\Runner\ErrorHandler as PhpUnitErrorHandler;
-use Symfony\Component\ErrorHandler\DebugClassLoader;
+use Drupal\TestTools\PhpUnitCompatibility\ClassWriter;
 
 /**
  * Finds all valid extension directories recursively within a given directory.
@@ -145,6 +142,8 @@ function drupal_phpunit_populate_class_loader() {
 $loader = drupal_phpunit_populate_class_loader();
 class_alias('\Drupal\Tests\DocumentElement', '\Behat\Mink\Element\DocumentElement', TRUE);
 
+ClassWriter::mutateTestBase($loader);
+
 // Set sane locale settings, to ensure consistent string, dates, times and
 // numbers handling.
 // @see \Drupal\Core\DrupalKernel::bootEnvironment()
@@ -161,18 +160,13 @@ mb_language('uni');
 // reduce the fragility of the testing system in general.
 date_default_timezone_set('Australia/Sydney');
 
-// Bootstrap the DeprecationHandler extension and the DebugClassloader to report
-// deprecations in PHPUnit 10+.
-if ($deprecationBridgeConfiguration = DeprecationHandler::getConfiguration()) {
-  DeprecationHandler::init($deprecationBridgeConfiguration['ignoreFile'] ?? NULL);
-
-  // Need to have an early error handler to manage deprecations triggered by
-  // DebugClassLoader, that occur before tests' setUp() methods are called.
-  // We pass an instance of the PHPUnit error handler to redirect any error not
-  // managed by our layer back to PHPUnit.
-  set_error_handler(new BootstrapErrorHandler(PhpUnitErrorHandler::instance()));
-
-  // Enable the DebugClassLoader to get deprecations for methods' signature
-  // changes.
-  DebugClassLoader::enable();
+// Ensure ignored deprecation patterns listed in .deprecation-ignore.txt are
+// considered in testing.
+if (getenv('SYMFONY_DEPRECATIONS_HELPER') === FALSE) {
+  $deprecation_ignore_filename = realpath(__DIR__ . "/../.deprecation-ignore.txt");
+  putenv("SYMFONY_DEPRECATIONS_HELPER=ignoreFile=$deprecation_ignore_filename");
 }
+
+// Drupal expects to be run from its root directory. This ensures all test types
+// are consistent.
+chdir(dirname(__DIR__, 2));

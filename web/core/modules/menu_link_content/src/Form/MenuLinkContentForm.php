@@ -3,10 +3,12 @@
 namespace Drupal\menu_link_content\Form;
 
 use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Core\DependencyInjection\DeprecatedServicePropertyTrait;
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Menu\MenuParentFormSelectorInterface;
 use Drupal\Core\Path\PathValidatorInterface;
 use Drupal\system\MenuInterface;
@@ -19,6 +21,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class MenuLinkContentForm extends ContentEntityForm {
 
+  use DeprecatedServicePropertyTrait;
+
+  /**
+   * The deprecated properties and services on this class.
+   */
+  protected array $deprecatedProperties = ['languageManager' => 'language_manager'];
+
   /**
    * The content menu link.
    *
@@ -27,26 +36,38 @@ class MenuLinkContentForm extends ContentEntityForm {
   protected $entity;
 
   /**
+   * The parent form selector service.
+   */
+  protected MenuParentFormSelectorInterface $menuParentSelector;
+
+  /**
+   * The path validator.
+   */
+  protected PathValidatorInterface $pathValidator;
+
+  /**
    * Constructs a MenuLinkContentForm object.
    *
    * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
    *   The entity repository.
-   * @param \Drupal\Core\Menu\MenuParentFormSelectorInterface $menuParentSelector
+   * @param \Drupal\Core\Menu\MenuParentFormSelectorInterface $menu_parent_selector
    *   The menu parent form selector service.
-   * @param \Drupal\Core\Path\PathValidatorInterface $pathValidator
+   * @param \Drupal\Core\Path\PathValidatorInterface|\Drupal\Core\Language\LanguageManagerInterface $path_validator
    *   The path validator.
-   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
+   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface|\Drupal\Core\Path\PathValidatorInterface $entity_type_bundle_info
    *   The entity type bundle service.
-   * @param \Drupal\Component\Datetime\TimeInterface $time
+   * @param \Drupal\Component\Datetime\TimeInterface|\Drupal\Core\Entity\EntityTypeBundleInfoInterface $time
    *   The time service.
    */
-  public function __construct(
-    EntityRepositoryInterface $entity_repository,
-    protected MenuParentFormSelectorInterface $menuParentSelector,
-    protected PathValidatorInterface $pathValidator,
-    EntityTypeBundleInfoInterface $entity_type_bundle_info,
-    TimeInterface $time,
-  ) {
+  public function __construct(EntityRepositoryInterface $entity_repository, MenuParentFormSelectorInterface $menu_parent_selector, PathValidatorInterface|LanguageManagerInterface $path_validator, EntityTypeBundleInfoInterface|PathValidatorInterface|null $entity_type_bundle_info = NULL, TimeInterface|EntityTypeBundleInfoInterface|null $time = NULL) {
+    if ($path_validator instanceof LanguageManagerInterface) {
+      $path_validator = func_get_arg(3);
+      $entity_type_bundle_info = func_get_arg(4);
+      $time = func_get_arg(5);
+      @trigger_error('Calling ' . __CLASS__ . '::__construct() with the $language_manager argument is deprecated in drupal:10.2.0 and is removed in drupal:11.0.0. See https://www.drupal.org/node/3325178', E_USER_DEPRECATED);
+    }
+    $this->menuParentSelector = $menu_parent_selector;
+    $this->pathValidator = $path_validator;
     parent::__construct($entity_repository, $entity_type_bundle_info, $time);
   }
 

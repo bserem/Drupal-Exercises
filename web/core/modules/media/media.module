@@ -7,6 +7,7 @@
 
 use Drupal\Component\Plugin\DerivativeInspectionInterface;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Field\FieldTypeCategoryManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -17,6 +18,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\field\FieldConfigInterface;
+use Drupal\media\MediaConfigUpdater;
 use Drupal\media\Plugin\media\Source\OEmbedInterface;
 use Drupal\views\ViewExecutable;
 
@@ -363,6 +365,15 @@ function media_entity_type_alter(array &$entity_types) {
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_presave() for entity_view_display.
+ */
+function media_entity_view_display_presave(EntityViewDisplayInterface $view_display): void {
+  $config_updater = \Drupal::classResolver(MediaConfigUpdater::class);
+  assert($config_updater instanceof MediaConfigUpdater);
+  $config_updater->processOembedEagerLoadField($view_display);
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function media_form_filter_format_edit_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
@@ -504,7 +515,8 @@ function media_filter_format_edit_form_validate($form, FormStateInterface $form_
  */
 function media_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context) {
   // Add an attribute so that text editors plugins can pass the host entity's
-  // language, allowing it to present entities in the same language.
+  // language to EditorMediaDialog, allowing it to present entities in the same
+  // language.
   if (!empty($element['#type']) && $element['#type'] == 'text_format') {
     $element['#attributes']['data-media-embed-host-entity-langcode'] = $context['items']->getLangcode();
   }

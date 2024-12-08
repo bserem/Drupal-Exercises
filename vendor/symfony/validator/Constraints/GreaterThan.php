@@ -12,7 +12,8 @@
 namespace Symfony\Component\Validator\Constraints;
 
 /**
- * Validates that a value is greater than another value.
+ * @Annotation
+ * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
  *
  * @author Daniel Holmes <daniel@danielholmes.org>
  * @author Bernhard Schussek <bschussek@gmail.com>
@@ -26,5 +27,10 @@ class GreaterThan extends AbstractComparison
         self::TOO_LOW_ERROR => 'TOO_LOW_ERROR',
     ];
 
-    public string $message = 'This value should be greater than {{ compared_value }}.';
+    /**
+     * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
+     */
+    protected static $errorNames = self::ERROR_NAMES;
+
+    public $message = 'This value should be greater than {{ compared_value }}.';
 }

@@ -20,6 +20,8 @@ namespace Symfony\Component\Validator\Violation;
  * execution context.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
+ *
+ * @method $this disableTranslation()
  */
 interface ConstraintViolationBuilderInterface
 {
@@ -55,11 +57,6 @@ interface ConstraintViolationBuilderInterface
      * @return $this
      */
     public function setParameters(array $parameters): static;
-
-    /**
-     * @return $this
-     */
-    public function disableTranslation(): static;
 
     /**
      * Sets the translation domain which should be used for translating the
@@ -112,6 +109,8 @@ interface ConstraintViolationBuilderInterface
 
     /**
      * Adds the violation to the current execution context.
+     *
+     * @return void
      */
-    public function addViolation(): void;
+    public function addViolation();
 }

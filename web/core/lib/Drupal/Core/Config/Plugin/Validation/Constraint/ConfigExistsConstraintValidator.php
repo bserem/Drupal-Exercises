@@ -42,7 +42,7 @@ class ConfigExistsConstraintValidator extends ConstraintValidator implements Con
   /**
    * {@inheritdoc}
    */
-  public function validate(mixed $name, Constraint $constraint): void {
+  public function validate(mixed $name, Constraint $constraint) {
     assert($constraint instanceof ConfigExistsConstraint);
 
     // This constraint may be used to validate nullable (optional) values.

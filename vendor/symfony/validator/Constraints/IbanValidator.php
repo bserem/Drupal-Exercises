@@ -167,7 +167,10 @@ class IbanValidator extends ConstraintValidator
         'YT' => 'FR\d{2}\d{5}\d{5}[\dA-Z]{11}\d{2}', // France
     ];
 
-    public function validate(mixed $value, Constraint $constraint): void
+    /**
+     * @return void
+     */
+    public function validate(mixed $value, Constraint $constraint)
     {
         if (!$constraint instanceof Iban) {
             throw new UnexpectedTypeException($constraint, Iban::class);

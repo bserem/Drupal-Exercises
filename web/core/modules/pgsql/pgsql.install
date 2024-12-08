@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Database\Database;
+use Drupal\pgsql\Update10101;
 
 /**
  * Implements hook_requirements().
@@ -42,8 +43,8 @@ function pgsql_requirements() {
 }
 
 /**
- * Implements hook_update_last_removed().
+ * Update sequences' owner created from serial columns in PostgreSQL.
  */
-function pgsql_update_last_removed() {
-  return 10101;
+function pgsql_update_10101(&$sandbox) {
+  \Drupal::classResolver(Update10101::class)->update($sandbox);
 }

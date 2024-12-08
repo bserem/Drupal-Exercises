@@ -18,19 +18,20 @@ class AjaxWaitTest extends WebDriverTestBase {
   protected $defaultTheme = 'starterkit_theme';
 
   /**
-   * Tests that an unnecessary wait triggers an error.
+   * Tests that an unnecessary wait triggers a deprecation error.
    */
   public function testUnnecessaryWait(): void {
     $this->drupalGet('user');
 
+    $this->expectDeprecation("Drupal\FunctionalJavascriptTests\JSWebAssert::assertExpectedAjaxRequest called unnecessarily in a test is deprecated in drupal:10.2.0 and will throw an exception in drupal:11.0.0. See https://www.drupal.org/node/3401201");
     $this->expectException(\RuntimeException::class);
-    $this->expectExceptionMessage('There are no AJAX requests to wait for.');
+    $this->expectExceptionMessage('Unable to complete AJAX request.');
 
     $this->assertSession()->assertWaitOnAjaxRequest(500);
   }
 
   /**
-   * Tests that an untracked XHR triggers an error.
+   * Tests that an untracked XHR triggers a deprecation error.
    */
   public function testUntrackedXhr(): void {
     $this->getSession()->executeScript(<<<JS

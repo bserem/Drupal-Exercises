@@ -20,7 +20,7 @@ class IsNullConstraintValidator extends IsNullValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate($value, Constraint $constraint): void {
+  public function validate($value, Constraint $constraint) {
     $typed_data = $this->getTypedData();
     if (($typed_data instanceof ListInterface || $typed_data instanceof ComplexDataInterface) && $typed_data->isEmpty()) {
       $value = NULL;

@@ -26,6 +26,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/includes/form.inc',
 ];
 $ignoreErrors[] = [
+	// identifier: method.deprecated
+	'message' => '#^Call to deprecated method getFromDriverName\\(\\) of class Drupal\\\\Core\\\\Extension\\\\DatabaseDriverList\\:
+in drupal\\:10\\.2\\.0 and is removed from drupal\\:11\\.0\\.0\\. Use
+  DatabaseDriverList\\:\\:get\\(\\) instead, passing a database driver namespace\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/includes/install.core.inc',
+];
+$ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Function install_config_download_translations\\(\\) should return string but return statement is missing\\.$#',
 	'count' => 1,
@@ -34,7 +42,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Function install_download_translation\\(\\) should return string but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/includes/install.core.inc',
 ];
 $ignoreErrors[] = [
@@ -50,6 +58,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/includes/theme.maintenance.inc',
 ];
 $ignoreErrors[] = [
+	// identifier: staticMethod.deprecated
+	'message' => '#^Call to deprecated method registerLoader\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+This method is deprecated and will be removed in
+            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Component/Annotation/Plugin/Discovery/AnnotatedClassDiscovery.php',
+];
+$ignoreErrors[] = [
 	// identifier: method.notFound
 	'message' => '#^Call to an undefined method Drupal\\\\Component\\\\Datetime\\\\DateTimePlus\\:\\:getTimeZone\\(\\)\\.$#',
 	'count' => 1,
@@ -60,6 +76,14 @@ $ignoreErrors[] = [
 	'message' => '#^Variable \\$value might not be defined\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/lib/Drupal/Component/Datetime/DateTimePlus.php',
+];
+$ignoreErrors[] = [
+	// identifier: traitUse.deprecated
+	'message' => '#^Usage of deprecated trait Drupal\\\\Component\\\\DependencyInjection\\\\ServiceIdHashTrait in class Drupal\\\\Component\\\\DependencyInjection\\\\Container\\:
+in drupal\\:9\\.5\\.1 and is removed from drupal\\:11\\.0\\.0\\. Use the
+  \'Drupal\\\\Component\\\\DependencyInjection\\\\ReverseContainer\' service instead\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Component/DependencyInjection/Container.php',
 ];
 $ignoreErrors[] = [
 	// identifier: variable.undefined
@@ -84,6 +108,72 @@ $ignoreErrors[] = [
 	'message' => '#^Variable \\$yi in empty\\(\\) always exists and is not falsy\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/lib/Drupal/Component/Diff/DiffFormatter.php',
+];
+$ignoreErrors[] = [
+	// identifier: property.notFound
+	'message' => '#^Access to an undefined property Drupal\\\\Component\\\\Diff\\\\Engine\\\\DiffEngine\\:\\:\\$in_seq\\.$#',
+	'count' => 3,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
+];
+$ignoreErrors[] = [
+	// identifier: property.notFound
+	'message' => '#^Access to an undefined property Drupal\\\\Component\\\\Diff\\\\Engine\\\\DiffEngine\\:\\:\\$lcs\\.$#',
+	'count' => 4,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
+];
+$ignoreErrors[] = [
+	// identifier: property.notFound
+	'message' => '#^Access to an undefined property Drupal\\\\Component\\\\Diff\\\\Engine\\\\DiffEngine\\:\\:\\$seq\\.$#',
+	'count' => 7,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
+];
+$ignoreErrors[] = [
+	// identifier: property.notFound
+	'message' => '#^Access to an undefined property Drupal\\\\Component\\\\Diff\\\\Engine\\\\DiffEngine\\:\\:\\$xchanged\\.$#',
+	'count' => 6,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
+];
+$ignoreErrors[] = [
+	// identifier: property.notFound
+	'message' => '#^Access to an undefined property Drupal\\\\Component\\\\Diff\\\\Engine\\\\DiffEngine\\:\\:\\$xind\\.$#',
+	'count' => 2,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
+];
+$ignoreErrors[] = [
+	// identifier: property.notFound
+	'message' => '#^Access to an undefined property Drupal\\\\Component\\\\Diff\\\\Engine\\\\DiffEngine\\:\\:\\$xv\\.$#',
+	'count' => 5,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
+];
+$ignoreErrors[] = [
+	// identifier: property.notFound
+	'message' => '#^Access to an undefined property Drupal\\\\Component\\\\Diff\\\\Engine\\\\DiffEngine\\:\\:\\$ychanged\\.$#',
+	'count' => 5,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
+];
+$ignoreErrors[] = [
+	// identifier: property.notFound
+	'message' => '#^Access to an undefined property Drupal\\\\Component\\\\Diff\\\\Engine\\\\DiffEngine\\:\\:\\$yind\\.$#',
+	'count' => 2,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
+];
+$ignoreErrors[] = [
+	// identifier: property.notFound
+	'message' => '#^Access to an undefined property Drupal\\\\Component\\\\Diff\\\\Engine\\\\DiffEngine\\:\\:\\$yv\\.$#',
+	'count' => 5,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
+];
+$ignoreErrors[] = [
+	// identifier: variable.undefined
+	'message' => '#^Variable \\$k might not be defined\\.$#',
+	'count' => 4,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
+];
+$ignoreErrors[] = [
+	// identifier: variable.undefined
+	'message' => '#^Variable \\$seps might not be defined\\.$#',
+	'count' => 3,
+	'path' => __DIR__ . '/lib/Drupal/Component/Diff/Engine/DiffEngine.php',
 ];
 $ignoreErrors[] = [
 	// identifier: constructor.unusedParameter
@@ -126,6 +216,12 @@ $ignoreErrors[] = [
 	'message' => '#^Variable \\$log_vars might not be defined\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/lib/Drupal/Component/Gettext/PoStreamReader.php',
+];
+$ignoreErrors[] = [
+	// identifier: staticMethod.notFound
+	'message' => '#^Call to an undefined static method ReflectionMethod\\:\\:createFromMethodName\\(\\)\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Component/Utility/ArgumentsResolver.php',
 ];
 $ignoreErrors[] = [
 	// identifier: variable.undefined
@@ -206,6 +302,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/lib/Drupal/Core/Condition/ConditionManager.php',
 ];
 $ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_AFFECTED of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 4,
+	'path' => __DIR__ . '/lib/Drupal/Core/Config/DatabaseStorage.php',
+];
+$ignoreErrors[] = [
 	// identifier: isset.variable
 	'message' => '#^Variable \\$value in isset\\(\\) always exists and is not nullable\\.$#',
 	'count' => 2,
@@ -218,10 +322,50 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/lib/Drupal/Core/Config/ExtensionInstallStorage.php',
 ];
 $ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_AFFECTED of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Connection.php',
+];
+$ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_INSERT_ID of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Connection.php',
+];
+$ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_NULL of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Connection.php',
+];
+$ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_STATEMENT of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 2,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Connection.php',
+];
+$ignoreErrors[] = [
 	// identifier: variable.undefined
 	'message' => '#^Variable \\$statement might not be defined\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/lib/Drupal/Core/Database/Connection.php',
+];
+$ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_AFFECTED of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Query/Delete.php',
 ];
 $ignoreErrors[] = [
 	// identifier: return.missing
@@ -230,16 +374,88 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/lib/Drupal/Core/Database/Query/Delete.php',
 ];
 $ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_INSERT_ID of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Query/Insert.php',
+];
+$ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_AFFECTED of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Query/Merge.php',
+];
+$ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\Core\\\\Database\\\\Query\\\\Merge\\:\\:__toString\\(\\) should return string but return statement is missing\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/lib/Drupal/Core/Database/Query/Merge.php',
 ];
 $ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_STATEMENT of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Query/Select.php',
+];
+$ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_AFFECTED of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Query/Truncate.php',
+];
+$ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_AFFECTED of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Query/Update.php',
+];
+$ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_AFFECTED of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Database/Query/Upsert.php',
+];
+$ignoreErrors[] = [
 	// identifier: variable.undefined
 	'message' => '#^Variable \\$affected_rows might not be defined\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/lib/Drupal/Core/Database/Query/Upsert.php',
+];
+$ignoreErrors[] = [
+	// identifier: traitUse.deprecated
+	'message' => '#^Usage of deprecated trait Drupal\\\\Component\\\\DependencyInjection\\\\ServiceIdHashTrait in class Drupal\\\\Core\\\\DependencyInjection\\\\ContainerBuilder\\:
+in drupal\\:9\\.5\\.1 and is removed from drupal\\:11\\.0\\.0\\. Use the
+  \'Drupal\\\\Component\\\\DependencyInjection\\\\ReverseContainer\' service instead\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/DependencyInjection/ContainerBuilder.php',
+];
+$ignoreErrors[] = [
+	// identifier: method.deprecated
+	'message' => '#^Call to deprecated method closing\\(\\) of class Drupal\\\\Component\\\\Diff\\\\WordLevelDiff\\:
+in drupal\\:10\\.1\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Diff/DiffFormatter.php',
+];
+$ignoreErrors[] = [
+	// identifier: method.deprecated
+	'message' => '#^Call to deprecated method orig\\(\\) of class Drupal\\\\Component\\\\Diff\\\\WordLevelDiff\\:
+in drupal\\:10\\.1\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Diff/DiffFormatter.php',
 ];
 $ignoreErrors[] = [
 	// identifier: return.missing
@@ -258,6 +474,13 @@ $ignoreErrors[] = [
 	'message' => '#^Variable \\$container_definition might not be defined\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/lib/Drupal/Core/DrupalKernel.php',
+];
+$ignoreErrors[] = [
+	// identifier: interface.extendsDeprecatedInterface
+	'message' => '#^Interface Drupal\\\\Core\\\\DrupalKernelInterface extends deprecated interface Symfony\\\\Component\\\\DependencyInjection\\\\ContainerAwareInterface\\:
+since Symfony 6\\.4, use dependency injection instead$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/DrupalKernelInterface.php',
 ];
 $ignoreErrors[] = [
 	// identifier: return.missing
@@ -374,6 +597,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/lib/Drupal/Core/Entity/Query/Sql/Tables.php',
 ];
 $ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_INSERT_ID of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 2,
+	'path' => __DIR__ . '/lib/Drupal/Core/Entity/Sql/SqlContentEntityStorage.php',
+];
+$ignoreErrors[] = [
 	// identifier: variable.undefined
 	'message' => '#^Variable \\$revision_query might not be defined\\.$#',
 	'count' => 2,
@@ -390,6 +621,14 @@ $ignoreErrors[] = [
 	'message' => '#^Variable \\$initial_storage_value in empty\\(\\) always exists and is not falsy\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/lib/Drupal/Core/Entity/Sql/SqlContentEntityStorageSchema.php',
+];
+$ignoreErrors[] = [
+	// identifier: method.deprecated
+	'message' => '#^Call to deprecated method getFromDriverName\\(\\) of class Drupal\\\\Core\\\\Extension\\\\DatabaseDriverList\\:
+in drupal\\:10\\.2\\.0 and is removed from drupal\\:11\\.0\\.0\\. Use
+  DatabaseDriverList\\:\\:get\\(\\) instead, passing a database driver namespace\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Extension/DatabaseDriverList.php',
 ];
 $ignoreErrors[] = [
 	// identifier: variable.undefined
@@ -547,6 +786,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/lib/Drupal/Core/Menu/MenuLinkManager.php',
 ];
 $ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant RETURN_INSERT_ID of class Drupal\\\\Core\\\\Database\\\\Database\\:
+in drupal\\:9\\.4\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Menu/MenuTreeStorage.php',
+];
+$ignoreErrors[] = [
 	// identifier: isset.variable
 	'message' => '#^Variable \\$transaction in isset\\(\\) always exists and is not nullable\\.$#',
 	'count' => 1,
@@ -562,6 +809,20 @@ $ignoreErrors[] = [
 	'message' => '#^Constructor of class Drupal\\\\Core\\\\Queue\\\\Memory has an unused parameter \\$name\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/lib/Drupal/Core/Queue/Memory.php',
+];
+$ignoreErrors[] = [
+	// identifier: class.implementsDeprecatedInterface
+	'message' => '#^Class Drupal\\\\Core\\\\Queue\\\\QueueFactory implements deprecated interface Symfony\\\\Component\\\\DependencyInjection\\\\ContainerAwareInterface\\:
+since Symfony 6\\.4, use dependency injection instead$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Queue/QueueFactory.php',
+];
+$ignoreErrors[] = [
+	// identifier: traitUse.deprecated
+	'message' => '#^Usage of deprecated trait Symfony\\\\Component\\\\DependencyInjection\\\\ContainerAwareTrait in class Drupal\\\\Core\\\\Queue\\\\QueueFactory\\:
+since Symfony 6\\.4, use dependency injection instead$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Queue/QueueFactory.php',
 ];
 $ignoreErrors[] = [
 	// identifier: isset.variable
@@ -630,6 +891,12 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/lib/Drupal/Core/Test/TestRunnerKernel.php',
 ];
 $ignoreErrors[] = [
+	// identifier: return.missing
+	'message' => '#^Method Drupal\\\\Core\\\\Theme\\\\ThemeInitialization\\:\\:resolveStyleSheetPlaceholders\\(\\) should return string but return statement is missing\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/lib/Drupal/Core/Theme/ThemeInitialization.php',
+];
+$ignoreErrors[] = [
 	// identifier: variable.undefined
 	'message' => '#^Variable \\$candidate might not be defined\\.$#',
 	'count' => 1,
@@ -672,6 +939,12 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/lib/Drupal/Core/Updater/Module.php',
 ];
 $ignoreErrors[] = [
+	// identifier: return.missing
+	'message' => '#^Method Drupal\\\\action\\\\Form\\\\ActionFormBase\\:\\:save\\(\\) should return int but return statement is missing\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/action/src/Form/ActionFormBase.php',
+];
+$ignoreErrors[] = [
 	// identifier: variable.undefined
 	'message' => '#^Variable \\$position might not be defined\\.$#',
 	'count' => 4,
@@ -692,7 +965,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\block_content\\\\BlockContentForm\\:\\:save\\(\\) should return int but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/block_content/src/BlockContentForm.php',
 ];
 $ignoreErrors[] = [
@@ -706,6 +979,30 @@ $ignoreErrors[] = [
 	'message' => '#^Variable \\$loaded might not be defined\\.$#',
 	'count' => 9,
 	'path' => __DIR__ . '/modules/block_content/tests/src/Functional/BlockContentRevisionsTest.php',
+];
+$ignoreErrors[] = [
+	// identifier: empty.variable
+	'message' => '#^Variable \\$callable in empty\\(\\) always exists and is not falsy\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/book/src/BookExport.php',
+];
+$ignoreErrors[] = [
+	// identifier: return.missing
+	'message' => '#^Method Drupal\\\\book\\\\BookOutline\\:\\:nextLink\\(\\) should return array but return statement is missing\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/book/src/BookOutline.php',
+];
+$ignoreErrors[] = [
+	// identifier: return.missing
+	'message' => '#^Method Drupal\\\\book\\\\BookOutline\\:\\:prevLink\\(\\) should return array but return statement is missing\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/book/src/BookOutline.php',
+];
+$ignoreErrors[] = [
+	// identifier: return.missing
+	'message' => '#^Method Drupal\\\\book\\\\Form\\\\BookOutlineForm\\:\\:save\\(\\) should return int but return statement is missing\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/book/src/Form/BookOutlineForm.php',
 ];
 $ignoreErrors[] = [
 	// identifier: empty.variable
@@ -782,7 +1079,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\contact\\\\MessageForm\\:\\:save\\(\\) should return int but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/contact/src/MessageForm.php',
 ];
 $ignoreErrors[] = [
@@ -936,10 +1233,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/modules/file/file.module',
 ];
 $ignoreErrors[] = [
-	// identifier: argument.invalidPregQuote
-	'message' => '#^Call to preg_quote\\(\\) is missing delimiter / to be effective\\.$#',
-	'count' => 2,
-	'path' => __DIR__ . '/modules/file/src/EventSubscriber/FileEventSubscriber.php',
+	// identifier: variable.undefined
+	'message' => '#^Variable \\$message might not be defined\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/file/file.module',
 ];
 $ignoreErrors[] = [
 	// identifier: empty.variable
@@ -956,7 +1253,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\file\\\\Plugin\\\\Field\\\\FieldType\\\\FileFieldItemList\\:\\:postSave\\(\\) should return bool but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/file/src/Plugin/Field/FieldType/FileFieldItemList.php',
 ];
 $ignoreErrors[] = [
@@ -990,10 +1287,16 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/modules/filter/src/Plugin/Filter/FilterHtml.php',
 ];
 $ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#',
+	// identifier: return.missing
+	'message' => '#^Method Drupal\\\\forum\\\\ForumManager\\:\\:getTopicOrder\\(\\) should return array but return statement is missing\\.$#',
 	'count' => 1,
-	'path' => __DIR__ . '/modules/help/tests/src/Unit/HelpTopicTwigTest.php',
+	'path' => __DIR__ . '/modules/forum/src/ForumManager.php',
+];
+$ignoreErrors[] = [
+	// identifier: empty.variable
+	'message' => '#^Variable \\$vocabulary in empty\\(\\) always exists and is not falsy\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/forum/src/ForumUninstallValidator.php',
 ];
 $ignoreErrors[] = [
 	// identifier: return.missing
@@ -1154,7 +1457,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\locale\\\\LocaleDefaultConfigStorage\\:\\:read\\(\\) should return array but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/locale/src/LocaleDefaultConfigStorage.php',
 ];
 $ignoreErrors[] = [
@@ -1248,6 +1551,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/modules/migrate/src/MigrateException.php',
 ];
 $ignoreErrors[] = [
+	// identifier: staticMethod.deprecated
+	'message' => '#^Call to deprecated method registerLoader\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+This method is deprecated and will be removed in
+            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/migrate/src/Plugin/Discovery/AnnotatedClassDiscoveryAutomatedProviders.php',
+];
+$ignoreErrors[] = [
 	'message' => '#^Missing cache backend declaration for performance\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/modules/migrate/src/Plugin/MigrateDestinationPluginManager.php',
@@ -1310,12 +1621,6 @@ $ignoreErrors[] = [
 	'message' => '#^Call to an undefined static method Drupal\\\\Tests\\\\migrate\\\\Kernel\\\\MigrateTestBase\\:\\:migrateDumpAlter\\(\\)\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/modules/migrate/tests/src/Kernel/MigrateTestBase.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/modules/migrate/tests/src/Unit/MigrateExecutableTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: variable.undefined
@@ -1436,6 +1741,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/modules/migrate_drupal_ui/tests/src/Functional/MultilingualReviewPageTestBase.php',
 ];
 $ignoreErrors[] = [
+	// identifier: property.deprecated
+	'message' => '#^Access to deprecated property \\$needsCleanup of class Drupal\\\\mysql\\\\Driver\\\\Database\\\\mysql\\\\Connection\\:
+in drupal\\:10\\.2\\.0 and is removed from drupal\\:11\\.0\\.0\\. There\'s no
+   replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/mysql/src/Driver/Database/mysql/Connection.php',
+];
+$ignoreErrors[] = [
 	// identifier: variable.undefined
 	'message' => '#^Variable \\$last_insert_id might not be defined\\.$#',
 	'count' => 1,
@@ -1456,13 +1769,13 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\node\\\\ConfigTranslation\\\\NodeTypeMapper\\:\\:setEntity\\(\\) should return bool but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/node/src/ConfigTranslation/NodeTypeMapper.php',
 ];
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\node\\\\NodeForm\\:\\:save\\(\\) should return int but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/node/src/NodeForm.php',
 ];
 $ignoreErrors[] = [
@@ -1546,13 +1859,15 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\path\\\\Plugin\\\\Field\\\\FieldType\\\\PathItem\\:\\:postSave\\(\\) should return bool but return statement is missing\\.$#',
-	'count' => 3,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/path/src/Plugin/Field/FieldType/PathItem.php',
 ];
 $ignoreErrors[] = [
-	// identifier: argument.invalidPregQuote
-	'message' => '#^Call to preg_quote\\(\\) is missing delimiter / to be effective\\.$#',
-	'count' => 3,
+	// identifier: method.deprecated
+	'message' => '#^Call to deprecated method makeSequenceName\\(\\) of class Drupal\\\\Core\\\\Database\\\\Connection\\:
+in drupal\\:10\\.2\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is
+  no replacement\\.$#',
+	'count' => 1,
 	'path' => __DIR__ . '/modules/pgsql/src/Driver/Database/pgsql/Schema.php',
 ];
 $ignoreErrors[] = [
@@ -1568,6 +1883,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/modules/pgsql/src/Driver/Database/pgsql/Upsert.php',
 ];
 $ignoreErrors[] = [
+	// identifier: method.deprecated
+	'message' => '#^Call to deprecated method makeSequenceName\\(\\) of class Drupal\\\\Core\\\\Database\\\\Connection\\:
+in drupal\\:10\\.2\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is
+  no replacement\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/pgsql/src/Update10101.php',
+];
+$ignoreErrors[] = [
 	// identifier: empty.variable
 	'message' => '#^Variable \\$responsive_image_styles in empty\\(\\) always exists and is not falsy\\.$#',
 	'count' => 1,
@@ -1576,7 +1899,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\responsive_image\\\\ResponsiveImageStyleForm\\:\\:save\\(\\) should return int but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/responsive_image/src/ResponsiveImageStyleForm.php',
 ];
 $ignoreErrors[] = [
@@ -1652,12 +1975,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/modules/sqlite/src/Driver/Database/sqlite/Connection.php',
 ];
 $ignoreErrors[] = [
-	// identifier: argument.invalidPregQuote
-	'message' => '#^Call to preg_quote\\(\\) is missing delimiter / to be effective\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/modules/sqlite/src/Driver/Database/sqlite/Statement.php',
-];
-$ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\system\\\\Controller\\\\BatchController\\:\\:batchPage\\(\\) should return array\\|Symfony\\\\Component\\\\HttpFoundation\\\\Response but return statement is missing\\.$#',
 	'count' => 1,
@@ -1710,6 +2027,14 @@ $ignoreErrors[] = [
 	'message' => '#^Variable \\$site_path might not be defined\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/modules/system/system.install',
+];
+$ignoreErrors[] = [
+	// identifier: classConstant.deprecated
+	'message' => '#^Fetching deprecated class constant EXISTS_RENAME of interface Drupal\\\\Core\\\\File\\\\FileSystemInterface\\:
+in drupal\\:10\\.3\\.0 and is removed from drupal\\:12\\.0\\.0\\. Use
+\\\\Drupal\\\\Core\\\\File\\\\FileExists\\:\\:Rename instead\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/system/system.module',
 ];
 $ignoreErrors[] = [
 	// identifier: variable.undefined
@@ -1813,7 +2138,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\taxonomy\\\\TermForm\\:\\:validateForm\\(\\) should return Drupal\\\\Core\\\\Entity\\\\ContentEntityInterface but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/taxonomy/src/TermForm.php',
 ];
 $ignoreErrors[] = [
@@ -1821,6 +2146,18 @@ $ignoreErrors[] = [
 	'message' => '#^Method Drupal\\\\taxonomy\\\\VocabularyForm\\:\\:save\\(\\) should return int but return statement is missing\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/modules/taxonomy/src/VocabularyForm.php',
+];
+$ignoreErrors[] = [
+	// identifier: return.missing
+	'message' => '#^Method Drupal\\\\tour\\\\TipPluginBase\\:\\:get\\(\\) should return string but return statement is missing\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/tour/src/TipPluginBase.php',
+];
+$ignoreErrors[] = [
+	// identifier: nullCoalesce.variable
+	'message' => '#^Variable \\$location on left side of \\?\\? always exists and is not nullable\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/modules/tour/src/TipPluginBase.php',
 ];
 $ignoreErrors[] = [
 	// identifier: variable.undefined
@@ -1873,7 +2210,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\user\\\\RegisterForm\\:\\:save\\(\\) should return int but return statement is missing\\.$#',
-	'count' => 4,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/user/src/RegisterForm.php',
 ];
 $ignoreErrors[] = [
@@ -2195,42 +2532,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/modules/views/tests/src/Kernel/Plugin/StyleTest.php',
 ];
 $ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 5,
-	'path' => __DIR__ . '/modules/views/tests/src/Unit/Plugin/Derivative/ViewsLocalTaskTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#',
-	'count' => 2,
-	'path' => __DIR__ . '/modules/views/tests/src/Unit/Plugin/argument_validator/EntityTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/modules/views/tests/src/Unit/Plugin/display/PathPluginBaseTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/modules/views/tests/src/Unit/Plugin/pager/PagerPluginBaseTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/modules/views/tests/src/Unit/Plugin/pager/SqlBaseTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/modules/views/tests/src/Unit/Plugin/views/field/EntityOperationsUnitTest.php',
-];
-$ignoreErrors[] = [
 	// identifier: empty.variable
 	'message' => '#^Variable \\$relationship_handler in empty\\(\\) always exists and is not falsy\\.$#',
 	'count' => 1,
@@ -2269,7 +2570,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\views_ui\\\\ViewUI\\:\\:set\\(\\) should return \\$this\\(Drupal\\\\views_ui\\\\ViewUI\\) but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/views_ui/src/ViewUI.php',
 ];
 $ignoreErrors[] = [
@@ -2323,7 +2624,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	// identifier: return.missing
 	'message' => '#^Method Drupal\\\\workspaces\\\\Form\\\\WorkspaceForm\\:\\:save\\(\\) should return int but return statement is missing\\.$#',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/modules/workspaces/src/Form/WorkspaceForm.php',
 ];
 $ignoreErrors[] = [
@@ -2381,25 +2682,36 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/tests/Drupal/BuildTests/Composer/Template/ComposerProjectTemplatesTest.php',
 ];
 $ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 2,
-	'path' => __DIR__ . '/tests/Drupal/BuildTests/Framework/Tests/BuildTestTest.php',
+	// identifier: traitUse.deprecated
+	'message' => '#^Usage of deprecated trait Drupal\\\\BuildTests\\\\Framework\\\\ExternalCommandRequirementsTrait in class Drupal\\\\BuildTests\\\\Framework\\\\Tests\\\\ClassRequiresAvailable\\:
+in drupal\\:10\\.2\\.0 and is removed from drupal\\:11\\.0\\.0\\. Use
+Drupal\\\\\\\\TestTools\\\\\\\\Extension\\\\\\\\RequiresComposerTrait instead\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/Drupal/BuildTests/Framework/Tests/ExternalCommandRequirementTest.php',
 ];
 $ignoreErrors[] = [
-	'message' => '#^Drupal\\\\Tests\\\\BrowserTestBase\\:\\:\\$defaultTheme is required\\. See https\\://www\\.drupal\\.org/node/3083055, which includes recommendations on which theme to use\\.$#',
+	// identifier: traitUse.deprecated
+	'message' => '#^Usage of deprecated trait Drupal\\\\BuildTests\\\\Framework\\\\ExternalCommandRequirementsTrait in class Drupal\\\\BuildTests\\\\Framework\\\\Tests\\\\ClassRequiresUnavailable\\:
+in drupal\\:10\\.2\\.0 and is removed from drupal\\:11\\.0\\.0\\. Use
+Drupal\\\\\\\\TestTools\\\\\\\\Extension\\\\\\\\RequiresComposerTrait instead\\.$#',
 	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/FunctionalTests/Installer/InstallerExistingConfigExistingSettingsTest.php',
+	'path' => __DIR__ . '/tests/Drupal/BuildTests/Framework/Tests/ExternalCommandRequirementTest.php',
 ];
 $ignoreErrors[] = [
-	'message' => '#^Drupal\\\\Tests\\\\BrowserTestBase\\:\\:\\$defaultTheme is required\\. See https\\://www\\.drupal\\.org/node/3083055, which includes recommendations on which theme to use\\.$#',
+	// identifier: traitUse.deprecated
+	'message' => '#^Usage of deprecated trait Drupal\\\\BuildTests\\\\Framework\\\\ExternalCommandRequirementsTrait in class Drupal\\\\BuildTests\\\\Framework\\\\Tests\\\\MethodRequires\\:
+in drupal\\:10\\.2\\.0 and is removed from drupal\\:11\\.0\\.0\\. Use
+Drupal\\\\\\\\TestTools\\\\\\\\Extension\\\\\\\\RequiresComposerTrait instead\\.$#',
 	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/FunctionalTests/Installer/InstallerExistingConfigNoSystemSiteTest.php',
+	'path' => __DIR__ . '/tests/Drupal/BuildTests/Framework/Tests/ExternalCommandRequirementTest.php',
 ];
 $ignoreErrors[] = [
-	'message' => '#^Drupal\\\\Tests\\\\BrowserTestBase\\:\\:\\$defaultTheme is required\\. See https\\://www\\.drupal\\.org/node/3083055, which includes recommendations on which theme to use\\.$#',
+	// identifier: traitUse.deprecated
+	'message' => '#^Usage of deprecated trait Drupal\\\\BuildTests\\\\Framework\\\\ExternalCommandRequirementsTrait in class Drupal\\\\BuildTests\\\\Framework\\\\Tests\\\\UsesCommandRequirements\\:
+in drupal\\:10\\.2\\.0 and is removed from drupal\\:11\\.0\\.0\\. Use
+Drupal\\\\\\\\TestTools\\\\\\\\Extension\\\\\\\\RequiresComposerTrait instead\\.$#',
 	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/FunctionalTests/Installer/InstallerExistingConfigTest.php',
+	'path' => __DIR__ . '/tests/Drupal/BuildTests/Framework/Tests/ExternalCommandRequirementTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: variable.undefined
@@ -2408,10 +2720,38 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/tests/Drupal/KernelTests/Core/Cache/ApcuBackendTest.php',
 ];
 $ignoreErrors[] = [
+	// identifier: method.deprecated
+	'message' => '#^Call to deprecated method expectWarning\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\:
+https\\://github\\.com/sebastianbergmann/phpunit/issues/5062$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/Drupal/KernelTests/Core/Config/ConfigInstallTest.php',
+];
+$ignoreErrors[] = [
+	// identifier: method.deprecated
+	'message' => '#^Call to deprecated method expectWarningMessage\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\:
+https\\://github\\.com/sebastianbergmann/phpunit/issues/5062$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/Drupal/KernelTests/Core/Config/ConfigInstallTest.php',
+];
+$ignoreErrors[] = [
 	// identifier: variable.undefined
 	'message' => '#^Variable \\$expected_driver might not be defined\\.$#',
 	'count' => 2,
 	'path' => __DIR__ . '/tests/Drupal/KernelTests/Core/Database/DriverSpecificKernelTestBase.php',
+];
+$ignoreErrors[] = [
+	// identifier: method.deprecated
+	'message' => '#^Call to deprecated method expectError\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\:
+https\\://github\\.com/sebastianbergmann/phpunit/issues/5062$#',
+	'count' => 3,
+	'path' => __DIR__ . '/tests/Drupal/KernelTests/Core/Database/StatementTest.php',
+];
+$ignoreErrors[] = [
+	// identifier: method.deprecated
+	'message' => '#^Call to deprecated method expectErrorMessage\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\:
+https\\://github\\.com/sebastianbergmann/phpunit/issues/5062$#',
+	'count' => 3,
+	'path' => __DIR__ . '/tests/Drupal/KernelTests/Core/Database/StatementTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: variable.undefined
@@ -2438,24 +2778,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/tests/Drupal/KernelTests/Core/Entity/FieldableEntityDefinitionUpdateTest.php',
 ];
 $ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 2,
-	'path' => __DIR__ . '/tests/Drupal/KernelTests/Core/Installer/InstallerRedirectTraitTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/KernelTests/Core/Installer/InstallerRedirectTraitTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: argument.invalidPregQuote
-	'message' => '#^Call to preg_quote\\(\\) is missing delimiter / to be effective\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/KernelTests/KernelTestBase.php',
-];
-$ignoreErrors[] = [
 	// identifier: isset.variable
 	'message' => '#^Variable \\$value in isset\\(\\) always exists and is not nullable\\.$#',
 	'count' => 1,
@@ -2479,6 +2801,14 @@ $ignoreErrors[] = [
 Client\\:\\:getConfig will be removed in guzzlehttp/guzzle\\:8\\.0\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/tests/Drupal/Tests/BrowserTestBase.php',
+];
+$ignoreErrors[] = [
+	// identifier: staticMethod.deprecated
+	'message' => '#^Call to deprecated method registerAutoloadNamespace\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+This method is deprecated and will be removed in
+            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/Drupal/Tests/Component/Annotation/Doctrine/DocParserTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: constructor.unusedParameter
@@ -2564,52 +2894,41 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/tests/Drupal/Tests/Composer/ComposerTest.php',
 ];
 $ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#',
+	// identifier: class.implementsDeprecatedInterface
+	'message' => '#^Class Drupal\\\\Tests\\\\Core\\\\Controller\\\\MockContainerAware implements deprecated interface Symfony\\\\Component\\\\DependencyInjection\\\\ContainerAwareInterface\\:
+since Symfony 6\\.4, use dependency injection instead$#',
 	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Config/Entity/ConfigEntityStorageTest.php',
+	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Controller/ControllerResolverTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
+	'message' => '#^Call to deprecated method expectError\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\:
+https\\://github\\.com/sebastianbergmann/phpunit/issues/5062$#',
 	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Entity/ContentEntityBaseUnitTest.php',
+	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Database/ConditionTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#',
+	'message' => '#^Call to deprecated method findCaller\\(\\) of class Drupal\\\\Core\\\\Database\\\\Log\\:
+in drupal\\:10\\.1\\.0 and is removed from drupal\\:11\\.0\\.0\\. Use
+  Connection\\:\\:findCallerFromDebugBacktrace\\(\\)\\.$#',
 	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Entity/EntityFormTest.php',
+	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Database/Stub/StubConnection.php',
 ];
 $ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#',
+	// identifier: classConstant.deprecatedClass
+	'message' => '#^Fetching class constant class of deprecated class Drupal\\\\Core\\\\Database\\\\StatementWrapper\\:
+in drupal\\:10\\.1\\.0 and is removed from drupal\\:11\\.0\\.0\\. Use
+  \\\\Drupal\\\\Core\\\\Database\\\\StatementWrapperIterator instead\\.$#',
 	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Entity/EntityLinkTest.php',
+	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Database/Stub/StubConnection.php',
 ];
 $ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 2,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Entity/EntityStorageBaseTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#',
-	'count' => 2,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Entity/EntityTypeManagerTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#',
+	// identifier: class.implementsDeprecatedInterface
+	'message' => '#^Class Drupal\\\\Tests\\\\Core\\\\DependencyInjection\\\\DependencySerializationTestDummy implements deprecated interface Symfony\\\\Component\\\\DependencyInjection\\\\ContainerAwareInterface\\:
+since Symfony 6\\.4, use dependency injection instead$#',
 	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Entity/EntityTypeTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Entity/EntityUrlTest.php',
+	'path' => __DIR__ . '/tests/Drupal/Tests/Core/DependencyInjection/DependencySerializationTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: phpunit.mockMethod
@@ -2625,15 +2944,17 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#',
+	'message' => '#^Call to deprecated method expectWarning\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\:
+https\\://github\\.com/sebastianbergmann/phpunit/issues/5062$#',
 	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Entity/KeyValueStore/KeyValueEntityStorageTest.php',
+	'path' => __DIR__ . '/tests/Drupal/Tests/Core/EventSubscriber/SpecialAttributesRouteSubscriberTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\.$#',
-	'count' => 3,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Entity/Sql/SqlContentEntityStorageTest.php',
+	'message' => '#^Call to deprecated method expectWarningMessage\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\:
+https\\://github\\.com/sebastianbergmann/phpunit/issues/5062$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/Drupal/Tests/Core/EventSubscriber/SpecialAttributesRouteSubscriberTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: method.deprecated
@@ -2641,12 +2962,6 @@ $ignoreErrors[] = [
 Client\\:\\:getConfig will be removed in guzzlehttp/guzzle\\:8\\.0\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Http/ClientFactoryTest.php',
-];
-$ignoreErrors[] = [
-	// identifier: method.deprecated
-	'message' => '#^Call to deprecated method getMockForAbstractClass\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Lock/LockBackendAbstractTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: class.notFound
@@ -2688,16 +3003,17 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Plugin/TestPluginManager.php',
 ];
 $ignoreErrors[] = [
-	// identifier: argument.invalidPregQuote
-	'message' => '#^Call to preg_quote\\(\\) is missing delimiter / to be effective\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Test/AssertContentTraitTest.php',
-];
-$ignoreErrors[] = [
 	// identifier: isset.variable
 	'message' => '#^Variable \\$value in isset\\(\\) always exists and is not nullable\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Test/AssertContentTraitTest.php',
+];
+$ignoreErrors[] = [
+	// identifier: class.implementsDeprecatedInterface
+	'message' => '#^Class Drupal\\\\Tests\\\\Core\\\\Utility\\\\MockContainerAware implements deprecated interface Symfony\\\\Component\\\\DependencyInjection\\\\ContainerAwareInterface\\:
+since Symfony 6\\.4, use dependency injection instead$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/Drupal/Tests/Core/Utility/CallableResolverTest.php',
 ];
 $ignoreErrors[] = [
 	// identifier: method.deprecated
@@ -2707,10 +3023,57 @@ ClientInterface\\:\\:getConfig will be removed in guzzlehttp/guzzle\\:8\\.0\\.$#
 	'path' => __DIR__ . '/tests/Drupal/Tests/DrupalTestBrowser.php',
 ];
 $ignoreErrors[] = [
-	// identifier: argument.invalidPregQuote
-	'message' => '#^Call to preg_quote\\(\\) is missing delimiter / to be effective\\.$#',
+	// identifier: class.implementsDeprecatedInterface
+	'message' => '#^Class Drupal\\\\Tests\\\\Listeners\\\\DrupalListener implements deprecated interface PHPUnit\\\\Framework\\\\TestListener\\.$#',
 	'count' => 1,
-	'path' => __DIR__ . '/tests/Drupal/Tests/WebAssert.php',
+	'path' => __DIR__ . '/tests/Drupal/Tests/Listeners/DrupalListener.php',
+];
+$ignoreErrors[] = [
+	// identifier: traitUse.deprecated
+	'message' => '#^Usage of deprecated trait PHPUnit\\\\Framework\\\\TestListenerDefaultImplementation in class Drupal\\\\Tests\\\\Listeners\\\\DrupalListener\\:
+The `TestListener` interface is deprecated$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/Drupal/Tests/Listeners/DrupalListener.php',
+];
+$ignoreErrors[] = [
+	// identifier: class.extendsDeprecatedClass
+	'message' => '#^Class Drupal\\\\Tests\\\\TestSuites\\\\BuildTestSuite extends deprecated class Drupal\\\\Tests\\\\TestSuites\\\\TestSuiteBase\\:
+in drupal\\:10\\.3\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement and test discovery will be handled differently in PHPUnit 10\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/TestSuites/BuildTestSuite.php',
+];
+$ignoreErrors[] = [
+	// identifier: class.extendsDeprecatedClass
+	'message' => '#^Class Drupal\\\\Tests\\\\TestSuites\\\\FunctionalJavascriptTestSuite extends deprecated class Drupal\\\\Tests\\\\TestSuites\\\\TestSuiteBase\\:
+in drupal\\:10\\.3\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement and test discovery will be handled differently in PHPUnit 10\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/TestSuites/FunctionalJavascriptTestSuite.php',
+];
+$ignoreErrors[] = [
+	// identifier: class.extendsDeprecatedClass
+	'message' => '#^Class Drupal\\\\Tests\\\\TestSuites\\\\FunctionalTestSuite extends deprecated class Drupal\\\\Tests\\\\TestSuites\\\\TestSuiteBase\\:
+in drupal\\:10\\.3\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement and test discovery will be handled differently in PHPUnit 10\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/TestSuites/FunctionalTestSuite.php',
+];
+$ignoreErrors[] = [
+	// identifier: class.extendsDeprecatedClass
+	'message' => '#^Class Drupal\\\\Tests\\\\TestSuites\\\\KernelTestSuite extends deprecated class Drupal\\\\Tests\\\\TestSuites\\\\TestSuiteBase\\:
+in drupal\\:10\\.3\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement and test discovery will be handled differently in PHPUnit 10\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/TestSuites/KernelTestSuite.php',
+];
+$ignoreErrors[] = [
+	// identifier: class.extendsDeprecatedClass
+	'message' => '#^Class Drupal\\\\Tests\\\\TestSuites\\\\UnitTestSuite extends deprecated class Drupal\\\\Tests\\\\TestSuites\\\\TestSuiteBase\\:
+in drupal\\:10\\.3\\.0 and is removed from drupal\\:11\\.0\\.0\\. There is no
+  replacement and test discovery will be handled differently in PHPUnit 10\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/tests/TestSuites/UnitTestSuite.php',
 ];
 
 return ['parameters' => ['ignoreErrors' => $ignoreErrors]];

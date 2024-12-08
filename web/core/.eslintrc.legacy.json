@@ -12,7 +12,8 @@
     "jQuery": true,
     "_": true,
     "matchMedia": true,
-    "Backbone": true
+    "Backbone": true,
+    "Modernizr": true
   },
   "rules": {
     "array-bracket-spacing": ["error", "never"],

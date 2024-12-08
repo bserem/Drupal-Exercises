@@ -3,8 +3,10 @@
 namespace Drupal\sqlite\Driver\Database\sqlite;
 
 use Drupal\Core\Database\Connection as DatabaseConnection;
+use Drupal\Core\Database\DatabaseExceptionWrapper;
 use Drupal\Core\Database\DatabaseNotFoundException;
 use Drupal\Core\Database\ExceptionHandler;
+use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Database\StatementInterface;
 use Drupal\Core\Database\SupportsTemporaryTablesInterface;
 use Drupal\Core\Database\Transaction\TransactionManagerInterface;
@@ -25,11 +27,21 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
   protected $statementWrapperClass = NULL;
 
   /**
+   * Whether or not the active transaction (if any) will be rolled back.
+   *
+   * @var bool
+   *
+   * @deprecated in drupal:10.2.0 and is removed from drupal:11.0.0. It is
+   *   unused.
+   *
+   * @see https://www.drupal.org/node/3381002
+   */
+  protected $willRollback;
+
+  /**
    * A map of condition operators to SQLite operators.
    *
    * We don't want to override any of the defaults.
-   *
-   * @var string[][]
    */
   protected static $sqliteConditionOperatorMap = [
     'LIKE' => ['postfix' => " ESCAPE '\\'"],
@@ -46,7 +58,7 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
    *
    * @var array
    */
-  protected $attachedDatabases = [];
+  protected array $attachedDatabases = [];
 
   /**
    * Whether or not a table has been dropped this request.
@@ -398,7 +410,9 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
    * {@inheritdoc}
    */
   public function prepareStatement(string $query, array $options, bool $allow_row_count = FALSE): StatementInterface {
-    assert(!isset($options['return']), 'Passing "return" option to prepareStatement() has no effect. See https://www.drupal.org/node/3185520');
+    if (isset($options['return'])) {
+      @trigger_error('Passing "return" option to ' . __METHOD__ . '() is deprecated in drupal:9.4.0 and is removed in drupal:11.0.0. For data manipulation operations, use dynamic queries instead. See https://www.drupal.org/node/3185520', E_USER_DEPRECATED);
+    }
 
     try {
       $query = $this->preprocessStatement($query, $options);
@@ -408,6 +422,42 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
       $this->exceptionHandler()->handleStatementException($e, $query, $options);
     }
     return $statement;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function nextId($existing_id = 0) {
+    @trigger_error('Drupal\Core\Database\Connection::nextId() is deprecated in drupal:10.2.0 and is removed from drupal:11.0.0. Modules should use instead the keyvalue storage for the last used id. See https://www.drupal.org/node/3349345', E_USER_DEPRECATED);
+    try {
+      $this->startTransaction();
+    }
+    catch (\PDOException $e) {
+      // $this->exceptionHandler()->handleExecutionException()
+      // requires a $statement argument, so we cannot use that.
+      throw new DatabaseExceptionWrapper($e->getMessage(), 0, $e);
+    }
+
+    // We can safely use literal queries here instead of the slower query
+    // builder because if a given database breaks here then it can simply
+    // override nextId. However, this is unlikely as we deal with short strings
+    // and integers and no known databases require special handling for those
+    // simple cases. If another transaction wants to write the same row, it will
+    // wait until this transaction commits.
+    $stmt = $this->prepareStatement('UPDATE {sequences} SET [value] = GREATEST([value], :existing_id) + 1', [], TRUE);
+    $args = [':existing_id' => $existing_id];
+    try {
+      $stmt->execute($args);
+    }
+    catch (\Exception $e) {
+      $this->exceptionHandler()->handleExecutionException($e, $stmt, $args, []);
+    }
+    if ($stmt->rowCount() === 0) {
+      $this->query('INSERT INTO {sequences} ([value]) VALUES (:existing_id + 1)', $args);
+    }
+    // The transaction gets committed when the transaction object gets destroyed
+    // because it gets out of scope.
+    return $this->query('SELECT [value] FROM {sequences}')->fetchField();
   }
 
   /**
@@ -490,8 +540,29 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
   /**
    * {@inheritdoc}
    */
+  public function merge($table, array $options = []) {
+    return new Merge($this, $table, $options);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function upsert($table, array $options = []) {
     return new Upsert($this, $table, $options);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function update($table, array $options = []) {
+    return new Update($this, $table, $options);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function delete($table, array $options = []) {
+    return new Delete($this, $table, $options);
   }
 
   /**
@@ -514,8 +585,22 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
   /**
    * {@inheritdoc}
    */
+  public function condition($conjunction) {
+    return new Condition($conjunction);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   protected function driverTransactionManager(): TransactionManagerInterface {
     return new TransactionManager($this);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function startTransaction($name = '') {
+    return $this->transactionManager()->push($name);
   }
 
 }

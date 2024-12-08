@@ -17,7 +17,7 @@ trait DependencySerializationTrait {
    * @var array
    */
   // phpcs:ignore Drupal.Classes.PropertyDeclaration, Drupal.NamingConventions.ValidVariableName.LowerCamelName
-  protected $_serviceIds = [];
+  protected array $_serviceIds = [];
 
   /**
    * An array of entity type IDs keyed by the property name of their storages.
@@ -25,12 +25,12 @@ trait DependencySerializationTrait {
    * @var array
    */
   // phpcs:ignore Drupal.Classes.PropertyDeclaration, Drupal.NamingConventions.ValidVariableName.LowerCamelName
-  protected $_entityStorages = [];
+  protected array $_entityStorages = [];
 
   /**
    * {@inheritdoc}
    */
-  public function __sleep(): array {
+  public function __sleep() {
     $vars = get_object_vars($this);
     try {
       $container = \Drupal::getContainer();
@@ -70,7 +70,8 @@ trait DependencySerializationTrait {
   /**
    * {@inheritdoc}
    */
-  public function __wakeup(): void {
+  #[\ReturnTypeWillChange]
+  public function __wakeup() {
     // Avoid trying to wakeup if there's nothing to do.
     if (empty($this->_serviceIds) && empty($this->_entityStorages)) {
       return;

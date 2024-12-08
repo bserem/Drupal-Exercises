@@ -57,7 +57,7 @@ class RenderTest extends KernelTestBase {
     ];
     $this->render($build);
     $this->removeWhiteSpace();
-    $this->assertNoRaw('<div>kangaroo-kitten</div>');
+    $this->assertNoRaw('<div>kangarookitten</div>');
   }
 
   /**

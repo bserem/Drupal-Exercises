@@ -58,6 +58,12 @@ global-styling:
     - core/tabbable
     - olivero/navigation-base
 
+book:
+  version: VERSION
+  css:
+    theme:
+      css/components/book.css: {}
+
 cke-dialog:
   version: VERSION
   css:
@@ -138,6 +144,12 @@ filter.theme:
   css:
     component:
       css/theme/filter.theme.css: {}
+
+forum:
+  version: VERSION
+  css:
+    component:
+      css/components/forum.css: {}
 
 layout_builder_fourcol_section:
   version: VERSION

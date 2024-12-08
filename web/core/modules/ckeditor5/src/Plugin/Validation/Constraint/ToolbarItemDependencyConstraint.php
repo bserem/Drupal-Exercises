@@ -36,7 +36,7 @@ class ToolbarItemDependencyConstraint extends SymfonyConstraint {
   /**
    * {@inheritdoc}
    */
-  public function getRequiredOptions(): array {
+  public function getRequiredOptions() {
     return ['toolbarItem'];
   }
 

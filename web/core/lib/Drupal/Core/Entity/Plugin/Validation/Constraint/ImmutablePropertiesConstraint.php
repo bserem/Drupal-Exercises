@@ -34,15 +34,27 @@ class ImmutablePropertiesConstraint extends SymfonyConstraint {
 
   /**
    * {@inheritdoc}
+   *
+   * @return ?string
+   *   Name of the default option.
+   *
+   * @todo Add method return type declaration.
+   * @see https://www.drupal.org/project/drupal/issues/3425150
    */
-  public function getDefaultOption(): ?string {
+  public function getDefaultOption() {
     return 'properties';
   }
 
   /**
    * {@inheritdoc}
+   *
+   * @return array
+   *   The names of the required options.
+   *
+   * @todo Add method return type declaration.
+   * @see https://www.drupal.org/project/drupal/issues/3425150
    */
-  public function getRequiredOptions(): array {
+  public function getRequiredOptions() {
     return ['properties'];
   }
 

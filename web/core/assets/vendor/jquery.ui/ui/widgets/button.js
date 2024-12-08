@@ -1,5 +1,5 @@
 /*!
- * jQuery UI Button 1.14.0
+ * jQuery UI Button 1.13.3
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -42,7 +42,7 @@
 "use strict";
 
 $.widget( "ui.button", {
-	version: "1.14.0",
+	version: "1.13.3",
 	defaultElement: "<button>",
 	options: {
 		classes: {
@@ -109,9 +109,9 @@ $.widget( "ui.button", {
 					if ( event.keyCode === $.ui.keyCode.SPACE ) {
 						event.preventDefault();
 
-						// If a native click is available use it, so we
-						// actually cause navigation. Otherwise, just trigger
-						// a click event.
+						// Support: PhantomJS <= 1.9, IE 8 Only
+						// If a native click is available use it so we actually cause navigation
+						// otherwise just trigger a click event
 						if ( this.element[ 0 ].click ) {
 							this.element[ 0 ].click();
 						} else {
@@ -287,7 +287,7 @@ $.widget( "ui.button", {
 } );
 
 // DEPRECATED
-if ( $.uiBackCompat === true ) {
+if ( $.uiBackCompat !== false ) {
 
 	// Text and Icons options
 	$.widget( "ui.button", $.ui.button, {

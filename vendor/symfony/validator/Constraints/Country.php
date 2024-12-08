@@ -16,9 +16,8 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Exception\LogicException;
 
 /**
- * Validates a value is a valid ISO 3166-1 alpha-2 country code.
- *
- * @see https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes
+ * @Annotation
+ * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
@@ -31,22 +30,20 @@ class Country extends Constraint
         self::NO_SUCH_COUNTRY_ERROR => 'NO_SUCH_COUNTRY_ERROR',
     ];
 
-    public string $message = 'This value is not a valid country.';
-    public bool $alpha3 = false;
-
     /**
-     * @param array<string,mixed>|null $options
-     * @param bool|null                $alpha3  Whether to check for alpha-3 codes instead of alpha-2 (defaults to false)
-     * @param string[]|null            $groups
-     *
-     * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3#Current_codes
+     * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
      */
+    protected static $errorNames = self::ERROR_NAMES;
+
+    public $message = 'This value is not a valid country.';
+    public $alpha3 = false;
+
     public function __construct(
         ?array $options = null,
         ?string $message = null,
         ?bool $alpha3 = null,
         ?array $groups = null,
-        mixed $payload = null,
+        mixed $payload = null
     ) {
         if (!class_exists(Countries::class)) {
             throw new LogicException('The Intl component is required to use the Country constraint. Try running "composer require symfony/intl".');

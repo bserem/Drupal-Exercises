@@ -37,10 +37,10 @@ class ImageUploadAccessTest extends ImageUploadTest {
       'status' => TRUE,
       'scheme' => 'public',
       'directory' => 'inline-images',
-      'max_size' => NULL,
+      'max_size' => '',
       'max_dimensions' => [
-        'width' => NULL,
-        'height' => NULL,
+        'width' => 0,
+        'height' => 0,
       ],
     ])->save();
     $response = $this->uploadRequest($url, $test_image, 'test.jpg');

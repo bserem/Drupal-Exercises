@@ -53,8 +53,11 @@ class StackedHttpKernel implements HttpKernelInterface, TerminableInterface {
 
   /**
    * {@inheritdoc}
+   *
+   * phpcs:ignore Drupal.Commenting.FunctionComment.VoidReturn
+   * @return void
    */
-  public function terminate(Request $request, Response $response): void {
+  public function terminate(Request $request, Response $response) {
     $previous = NULL;
     foreach ($this->middlewares as $kernel) {
       // If the previous kernel was terminable we can assume this middleware

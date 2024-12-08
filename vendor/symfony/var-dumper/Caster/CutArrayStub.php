@@ -18,7 +18,7 @@ namespace Symfony\Component\VarDumper\Caster;
  */
 class CutArrayStub extends CutStub
 {
-    public array $preservedSubset;
+    public $preservedSubset;
 
     public function __construct(array $value, array $preservedKeys)
     {

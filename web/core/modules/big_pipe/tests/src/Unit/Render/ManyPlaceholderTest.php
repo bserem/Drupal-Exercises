@@ -10,9 +10,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Render\HtmlResponse;
 use Drupal\Core\Render\RendererInterface;
-use Drupal\Core\Routing\RequestContext;
 use Drupal\Tests\UnitTestCase;
-use Psr\Log\LoggerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -38,9 +36,7 @@ class ManyPlaceholderTest extends UnitTestCase {
       $this->prophesize(HttpKernelInterface::class)->reveal(),
       $this->prophesize(EventDispatcherInterface::class)->reveal(),
       $this->prophesize(ConfigFactoryInterface::class)->reveal(),
-      $this->prophesize(MessengerInterface::class)->reveal(),
-      $this->prophesize(RequestContext::class)->reveal(),
-      $this->prophesize(LoggerInterface::class)->reveal(),
+      $this->prophesize(MessengerInterface::class)->reveal()
     );
     $response = new BigPipeResponse(new HtmlResponse());
 

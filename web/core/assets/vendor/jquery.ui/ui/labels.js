@@ -1,5 +1,5 @@
 /*!
- * jQuery UI Labels 1.14.0
+ * jQuery UI Labels 1.13.3
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -39,8 +39,9 @@ return $.fn.labels = function() {
 		return this.pushStack( this[ 0 ].labels );
 	}
 
-	// If `control.labels` is empty - e.g. inside of document fragments - find
-	// the labels manually
+	// Support: IE <= 11, FF <= 37, Android <= 2.3 only
+	// Above browsers do not support control.labels. Everything below is to support them
+	// as well as document fragments. control.labels does not work on document fragments
 	labels = this.eq( 0 ).parents( "label" );
 
 	// Look for the label based on the id
@@ -55,7 +56,7 @@ return $.fn.labels = function() {
 		ancestors = ancestor.add( ancestor.length ? ancestor.siblings() : this.siblings() );
 
 		// Create a selector for the label based on the id
-		selector = "label[for='" + CSS.escape( id ) + "']";
+		selector = "label[for='" + $.escapeSelector( id ) + "']";
 
 		labels = labels.add( ancestors.find( selector ).addBack( selector ) );
 

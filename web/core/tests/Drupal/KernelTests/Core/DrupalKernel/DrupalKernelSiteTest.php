@@ -38,7 +38,6 @@ services:
   # Add a new service.
   site.service.yml:
     class: $class
-    arguments: ['test']
   # Swap out a core service.
   cache.backend.database:
     class: Drupal\Core\Cache\MemoryBackendFactory

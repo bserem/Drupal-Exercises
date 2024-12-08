@@ -27,7 +27,10 @@ class ParameterCircularReferenceException extends RuntimeException
         $this->parameters = $parameters;
     }
 
-    public function getParameters(): array
+    /**
+     * @return array
+     */
+    public function getParameters()
     {
         return $this->parameters;
     }
