@@ -1,0 +1,21 @@
+uuid: 8b1d7191-6edb-485a-8cc3-3624f6b07ba9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_release_date
+    - node.type.vehicle
+  module:
+    - datetime
+id: node.vehicle.field_release_date
+field_name: field_release_date
+entity_type: node
+bundle: vehicle
+label: 'Release Date'
+description: 'Date that the vehicle was manufactured.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
