@@ -1,0 +1,17 @@
+name: 'Bartik Sub-theme'
+type: theme
+base theme: bartik
+description: 'A sub-theme of Bartik.'
+core_version_requirement: ^8 || ^9
+package: Custom
+
+libraries:
+  - bartik_sub/global-styling
+
+regions:
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  footer: 'Footer'
