@@ -11,6 +11,7 @@ dependencies:
     - node.type.vehicle
   module:
     - datetime
+    - media_library
     - path
     - text
 id: node.vehicle.default
@@ -57,14 +58,11 @@ content:
       time_type: '24'
     third_party_settings: {  }
   field_vehicle_image:
-    type: entity_reference_autocomplete
+    type: media_library_widget
     weight: 124
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      media_types: {  }
     third_party_settings: {  }
   path:
     type: path
