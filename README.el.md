@@ -33,7 +33,7 @@
 - [X] Να φτιάξεις ένα View που να εμφανίζει τα αυτοκίνητα με σειρά κυκλοφορίας σε ένα πίνακα
 - [X] Να βάλεις ένα exposed filter στο view για να δείχνει αυτοκίνητα νεότερα από την ημερομηνία που θα βάζει ο χρήστης 
 - [X] Να προσθέσεις εικόνες στο content type (bonus point αν το κάνεις με media)
-- [ ] Να βάλεις taxonomy terms στο content type για το brand (πχ: ferrari, mercedes, mclaren) σε ένα vocabulary `brand`
+- [X] Να βάλεις taxonomy terms στο content type για το brand (πχ: ferrari, mercedes, mclaren) σε ένα vocabulary `brand`
 
 ## Frontend Drupal
 

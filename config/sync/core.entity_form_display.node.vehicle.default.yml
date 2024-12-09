@@ -36,7 +36,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_brands:
-    type: options_select
+    type: options_buttons
     weight: 125
     region: content
     settings: {  }
