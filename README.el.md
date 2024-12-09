@@ -38,7 +38,7 @@
 ## Frontend Drupal
 
 - [X] Να κάνεις ένα subtheme του `bartik`
-- [ ] Να κάνεις override το template του content type
+- [X] Να κάνεις override το template του content type
 - [ ] * Να φτιάξεις ένα Single Directory Component και να το κάνεις map με το content type vehicle
 
 ## Backend Drupal

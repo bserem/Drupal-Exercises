@@ -37,7 +37,7 @@ If you are working on these tasks as part of an interview/hiring process, your w
 ## Frontend Drupal Tasks
 
 - [X] Create a subtheme of `bartik`
-- [ ] Override the content type's template
+- [X] Override the content type's template
 - [ ] * Create a Single Directory Component and map it to the `vehicle` content type
 
 ## Backend Drupal Tasks
