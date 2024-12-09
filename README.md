@@ -38,11 +38,11 @@ If you are working on these tasks as part of an interview/hiring process, your w
 
 - [X] Create a subtheme of `bartik`
 - [X] Override the content type's template
-- [ ] * Create a Single Directory Component and map it to the `vehicle` content type
+- [X] * Create a Single Directory Component and map it to the `vehicle` content type
 
 ## Backend Drupal Tasks
 
-- [ ] Create a custom module that returns a 404 error for any vehicle with a release date in 2020
+- [X] Create a custom module that returns a 404 error for any vehicle with a release date in 2020
 
 ## Drupal Migrations
 

@@ -39,11 +39,11 @@
 
 - [X] Να κάνεις ένα subtheme του `bartik`
 - [X] Να κάνεις override το template του content type
-- [ ] * Να φτιάξεις ένα Single Directory Component και να το κάνεις map με το content type vehicle
+- [X] * Να φτιάξεις ένα Single Directory Component και να το κάνεις map με το content type vehicle
 
 ## Backend Drupal
   
-- [ ] Να φτιάξεις ένα custom module που θα δίνει 404 error σε κάθε αυτοκίνητο που έχει πρώτη κυκλοφορία το 2020
+- [X] Να φτιάξεις ένα custom module που θα δίνει 404 error σε κάθε αυτοκίνητο που έχει πρώτη κυκλοφορία το 2020
 
 ## Drupal Migrations
 
