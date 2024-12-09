@@ -30,7 +30,7 @@ If you are working on these tasks as part of an interview/hiring process, your w
 - [X] Add fields: `release date` (date) and `price` (float)
 - [X] Install the open-source theme named `bartik`
 - [X] Create a View displaying vehicles in a table sorted by release date
-- [ ] Add an exposed filter to the View to show vehicles newer than a user-specified date
+- [X] Add an exposed filter to the View to show vehicles newer than a user-specified date
 - [ ] Add images to the content type (bonus point if done with media)
 - [ ] Add taxonomy terms to the content type for the brand (e.g., Ferrari, Mercedes, McLaren) in a `brand` vocabulary
 
