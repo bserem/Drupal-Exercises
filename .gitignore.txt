@@ -3,16 +3,19 @@
 
 # Ignore Drupal core files (using Composer)
 /web/core/
-/web/modules/contrib/
+/web/modules
 /web/themes/contrib/
-/web/profiles/contrib/
+/web/profiles/
 /web/sites/*/files/
 /web/sites/*/private/
 /web/sites/simpletest/
 /web/sites/*/settings.php
 /web/sites/*/services*.yml
 
-# Ignore paths that contain user-generated content.
-web/sites/*/files
-web/sites/*/private
+# Ignore Drupal cache and temporary directories
+web/sites/default/files/css/
+web/sites/default/files/js/
+web/sites/default/files/php/
 
+# Provide example configuration files
+!.env.example
