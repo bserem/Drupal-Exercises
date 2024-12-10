@@ -171,11 +171,11 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: datetime
-          operator: '<'
+          operator: '>'
           value:
             min: ''
             max: ''
-            value: 12/12/2024
+            value: 01/01/2020
           group: 1
           exposed: true
           expose:

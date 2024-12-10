@@ -12,7 +12,6 @@ module:
   config: 0
   contact: 0
   contextual: 0
-  date_filter: 0
   datetime: 0
   datetime_range: 0
   dblog: 0
@@ -30,6 +29,7 @@ module:
   media_library: 0
   menu_link_content: 0
   menu_ui: 0
+  migrate: 0
   migrate_swapi: 0
   mysql: 0
   node: 0
