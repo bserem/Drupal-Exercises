@@ -1,7 +1,0 @@
-name: 'Migrate SWAPI'
-type: module
-description: 'Imports data from the SWAPI (Star Wars API).'
-core_version_requirement: ^10
-package: Custom
-dependencies:
-  - drupal:node
