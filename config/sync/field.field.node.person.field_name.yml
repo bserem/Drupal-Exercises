@@ -10,7 +10,7 @@ field_name: field_name
 entity_type: node
 bundle: person
 label: name
-description: ''
+description: "The character's full name"
 required: false
 translatable: false
 default_value: {  }

@@ -1,22 +1,47 @@
 id: swapi_people
-label: Migrate All SWAPI People
+label: 'Import Star Wars Characters'
 migration_group: default
 source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls:
-    - https://swapi.dev/api/people/?format=json
+  urls: 'https://swapi.dev/api/people/?format=json'
   item_selector: results
   fields:
     - name: name
-      label: Name
-      selector: name  # This directly maps to the `name` field inside each person object
+      label: 'Name'
+      selector: name
+    - name: height
+      label: 'Height'
+      selector: height
+    - name: eye_color
+      label: 'Eye Color'
+      selector: eye_color
+    - name: gender
+      label: 'Gender'
+      selector: gender
+    - name: hair_color
+      label: 'Hair Color'
+      selector: hair_color
+    - name: skin_color
+      label: 'Skin Color'
+      selector: skin_color
+
+
   ids:
     name:
       type: string
 process:
   title: name
+  field_name: name
+  field_eye_color: eye_color
+  field_gender: gender
+  field_hair_color: hair_color
+  field_skin_color: skin_color
+  submitted:
+    plugin: default_value
+    default_value: 1  # Mark the node as submitted (1 = true)
+  
 destination:
-  plugin: entity:node
+  plugin: 'entity:node'
   default_bundle: person

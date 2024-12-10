@@ -10,7 +10,7 @@ field_name: field_eye_color
 entity_type: node
 bundle: person
 label: eye_color
-description: ''
+description: 'The eye color of the character displayed'
 required: false
 translatable: false
 default_value: {  }

@@ -10,7 +10,7 @@ field_name: field_hair_color
 entity_type: node
 bundle: person
 label: hair_color
-description: ''
+description: 'The hair color of the character'
 required: false
 translatable: false
 default_value: {  }

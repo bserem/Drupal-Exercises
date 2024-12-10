@@ -48,7 +48,7 @@ If you are working on these tasks as part of an interview/hiring process, your w
 
 _The following tasks may require over 30 hours for an entry-level developer._
 
-- [ ] * Migrate a dataset (at least 5 items, titles only) from the JSON API of [stapi.co](https://stapi.co/) or [swapi.dev](https://swapi.dev/)
+- [X] * Migrate a dataset (at least 5 items, titles only) from the JSON API of [stapi.co](https://stapi.co/) or [swapi.dev](https://swapi.dev/)
 - [ ] * Enrich your migration with at least 3 fields
 - [ ] * One of the fields should be a multi-value reference field
 

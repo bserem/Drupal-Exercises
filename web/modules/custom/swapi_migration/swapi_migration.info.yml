@@ -1,7 +1,8 @@
-name: SWAPI Migration
+name: 'SWAPI Migration'
 type: module
-description: Migrates all person objects from the Star Wars API (SWAPI)
+description: 'Migrates Star Wars data from SWAPI.'
 core_version_requirement: ^11
+package: Custom
 dependencies:
   - drupal:migrate
   - drupal:migrate_plus

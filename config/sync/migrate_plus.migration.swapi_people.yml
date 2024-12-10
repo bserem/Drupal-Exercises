@@ -1,0 +1,33 @@
+uuid: a983748f-09ff-4cfe-a580-40c2b44cc80f
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 0z5Rq3UhMyhVfjRDdElPvh6tEzYcIBqqSQNy-3rE12c
+id: swapi_people
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: default
+label: 'Import Star Wars Characters'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls: 'https://swapi.dev/api/people/'
+  item_selector: results
+  fields:
+    -
+      name: name
+      label: Name
+      selector: name
+  ids:
+    name:
+      type: string
+process:
+  title: name
+destination:
+  plugin: 'entity:node'
+  default_bundle: character
+migration_dependencies: null

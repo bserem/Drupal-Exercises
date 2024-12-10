@@ -10,7 +10,7 @@ field_name: field_skin_color
 entity_type: node
 bundle: person
 label: skin_color
-description: ''
+description: 'The skin color of the character'
 required: false
 translatable: false
 default_value: {  }

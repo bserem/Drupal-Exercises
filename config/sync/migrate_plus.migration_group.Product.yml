@@ -1,0 +1,10 @@
+uuid: d2ef8fbf-b018-449a-839e-8b944ee6987d
+langcode: en
+status: true
+dependencies: {  }
+id: Product
+label: Product
+description: ''
+source_type: null
+module: null
+shared_configuration: null

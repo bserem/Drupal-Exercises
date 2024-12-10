@@ -10,7 +10,7 @@ field_name: field_height
 entity_type: node
 bundle: person
 label: height
-description: ''
+description: 'the height of the character'
 required: false
 translatable: false
 default_value: {  }
@@ -19,5 +19,5 @@ settings:
   min: null
   max: null
   prefix: ''
-  suffix: ''
+  suffix: cm
 field_type: float

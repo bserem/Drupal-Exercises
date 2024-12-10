@@ -10,7 +10,7 @@ field_name: field_gender
 entity_type: node
 bundle: person
 label: gender
-description: ''
+description: 'The gender of the character, if there is one..'
 required: false
 translatable: false
 default_value: {  }
