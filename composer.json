@@ -22,6 +22,7 @@
         "drupal/core-recommended": "^11",
         "drupal/date_filter": "^1.0",
         "drupal/migrate_plus": "^6.0",
+        "drupal/migrate_tools": "^6.0",
         "drush/drush": "^13"
     },
     "conflict": {
