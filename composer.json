@@ -16,7 +16,8 @@
     ],
     "require": {
         "composer/installers": "^2.0",
-        "drupal/bartik": "^1.0",
+        "cweagans/composer-patches": "^1.7",
+        "drupal/core": "^11",
         "drupal/core-composer-scaffold": "^11",
         "drupal/core-project-message": "^11",
         "drupal/core-recommended": "^11",
@@ -33,15 +34,21 @@
     "config": {
         "allow-plugins": {
             "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "phpstan/extension-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true
         },
         "sort-packages": true
     },
     "extra": {
+        "patches": {
+            "drupal/bartik":[
+                "https://git.drupalcode.org/project/bartik/-/merge_requests/8/diffs?commit_id=c5418f13d575777ca02e290d4f7b6dfad8ba9908"
+            ]
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
