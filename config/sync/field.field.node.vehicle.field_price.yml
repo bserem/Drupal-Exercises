@@ -1,0 +1,23 @@
+uuid: b962d3e9-bff5-4099-8cd0-4bf7b96377b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_price
+    - node.type.vehicle
+id: node.vehicle.field_price
+field_name: field_price
+entity_type: node
+bundle: vehicle
+label: Price
+description: 'Field to hold the price of the vehicle displayed'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: €
+  suffix: ''
+field_type: float

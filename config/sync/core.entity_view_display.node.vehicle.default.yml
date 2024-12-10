@@ -1,0 +1,70 @@
+uuid: 95f82275-c558-46a8-848b-0f8b1fef7ca3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.vehicle.body
+    - field.field.node.vehicle.field_brands
+    - field.field.node.vehicle.field_price
+    - field.field.node.vehicle.field_release_date
+    - field.field.node.vehicle.field_vehicle_image
+    - node.type.vehicle
+  module:
+    - datetime
+    - text
+    - user
+id: node.vehicle.default
+targetEntityType: node
+bundle: vehicle
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_brands:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_price:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_release_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_vehicle_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

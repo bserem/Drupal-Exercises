@@ -1,0 +1,14 @@
+<?php
+use Drupal\node\Entity\Node;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+function vehicle_404_node_view_alter(array &$build) {
+    
+    if ($build['#node']->getType() == 'vehicle') {
+        $release_date = $build['#node']->get('field_release_date')->value;
+        if (!empty($release_date) && date('Y', strtotime($release_date)) == '2020') 
+            if (\Drupal::routeMatch()->getRouteName() == 'entity.node.canonical') 
+                throw new NotFoundHttpException('404 Vehicle not Available.');
+    }
+}
+  

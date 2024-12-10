@@ -1,0 +1,38 @@
+uuid: 49d47c7b-b025-48be-8b2c-8b5af67ca28d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.vehicle.body
+    - field.field.node.vehicle.field_brands
+    - field.field.node.vehicle.field_price
+    - field.field.node.vehicle.field_release_date
+    - field.field.node.vehicle.field_vehicle_image
+    - node.type.vehicle
+  module:
+    - text
+    - user
+id: node.vehicle.teaser
+targetEntityType: node
+bundle: vehicle
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_brands: true
+  field_price: true
+  field_release_date: true
+  field_vehicle_image: true
