@@ -12,6 +12,7 @@ module:
   config: 0
   contact: 0
   contextual: 0
+  date_filter: 0
   datetime: 0
   datetime_range: 0
   dblog: 0
@@ -30,7 +31,6 @@ module:
   menu_link_content: 0
   menu_ui: 0
   migrate: 0
-  migrate_swapi: 0
   mysql: 0
   node: 0
   options: 0
@@ -47,7 +47,6 @@ module:
   toolbar: 0
   update: 0
   user: 0
-  vehicle_404: 0
   views_ui: 0
   views: 10
   standard: 1000

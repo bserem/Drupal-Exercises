@@ -1,4 +1,4 @@
-uuid: df62d849-f891-4f94-837b-b0308fbe6a13
+uuid: f7bbe60d-a64d-43f4-82a6-6019cd4bd63f
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ dependencies:
     - node
     - user
 id: vehicle_view
-label: 'Vehicle View'
+label: 'Vehicle view'
 module: views
 description: ''
 tag: ''
@@ -24,7 +24,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Vehicle View'
+      title: Vehicles
       fields:
         title:
           id: title
@@ -169,19 +169,20 @@ display:
           field: field_release_date_value
           relationship: none
           group_type: group
-          admin_label: ''
+          admin_label: "Shows car's with release date newer than date specified"
           plugin_id: datetime
           operator: '>'
           value:
             min: ''
             max: ''
             value: 01/01/2020
+            type: date
           group: 1
           exposed: true
           expose:
             operator_id: field_release_date_value_op
-            label: 'Release Date '
-            description: 'the preferred least release date for the car'
+            label: 'Release Date'
+            description: ''
             use_operator: false
             operator: field_release_date_value_op
             operator_limit_selection: false
@@ -195,9 +196,9 @@ display:
               anonymous: '0'
               content_editor: '0'
               administrator: '0'
-            min_placeholder: null
-            max_placeholder: null
-            placeholder: null
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -249,13 +250,9 @@ display:
       path: vehicles
       menu:
         type: normal
-        title: Vehicle
-        description: ''
-        weight: 0
-        expanded: false
+        title: 'Vehicle view'
         menu_name: main
         parent: ''
-        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
