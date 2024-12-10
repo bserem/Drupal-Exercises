@@ -1,1 +1,0 @@
-!function(i){const o=i.et=i.et||{};o.dictionary=Object.assign(o.dictionary||{},{"Show source":"Näita allikat",Source:"Allikas"})}(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

@@ -1,1 +1,0 @@
-!function(o){const i=o.bg=o.bg||{};i.dictionary=Object.assign(i.dictionary||{},{"Show source":"Показване на източника",Source:"Източник"})}(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

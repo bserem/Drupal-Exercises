@@ -1,1 +1,0 @@
-!function(n){const o=n.ja=n.ja||{};o.dictionary=Object.assign(o.dictionary||{},{"Code block":"コードブロック","Insert code block":"コードブロックの挿入","Plain text":"プレインテキスト"})}(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

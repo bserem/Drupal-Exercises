@@ -1,1 +1,0 @@
-!function(n){const o=n["de-ch"]=n["de-ch"]||{};o.dictionary=Object.assign(o.dictionary||{},{"Code block":"","Insert code block":"Code-Block einfügen","Plain text":"Nur Text"})}(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

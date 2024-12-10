@@ -1,1 +1,0 @@
-!function(o){const n=o.hu=o.hu||{};n.dictionary=Object.assign(n.dictionary||{},{"Show source":"Forrás megjelenítése",Source:"Forrás"})}(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

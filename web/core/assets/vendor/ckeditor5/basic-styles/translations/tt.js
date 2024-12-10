@@ -1,1 +1,0 @@
-!function(t){const i=t.tt=t.tt||{};i.dictionary=Object.assign(i.dictionary||{},{Bold:"Калын","Bold text":"",Code:"Код",Italic:"","Italic text":"","Move out of an inline code style":"",Strikethrough:"","Strikethrough text":"",Subscript:"",Superscript:"",Underline:"","Underline text":""})}(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

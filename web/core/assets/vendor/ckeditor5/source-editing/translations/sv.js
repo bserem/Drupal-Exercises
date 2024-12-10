@@ -1,1 +1,0 @@
-!function(i){const o=i.sv=i.sv||{};o.dictionary=Object.assign(o.dictionary||{},{"Show source":"Visa källa",Source:"Källa"})}(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

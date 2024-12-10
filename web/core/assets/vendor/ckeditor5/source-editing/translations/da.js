@@ -1,1 +1,0 @@
-!function(i){const o=i.da=i.da||{};o.dictionary=Object.assign(o.dictionary||{},{"Show source":"Vis kilde",Source:"Kilde"})}(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));
