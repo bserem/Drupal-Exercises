@@ -1,22 +1,24 @@
 id: swapi_people
-label: Migrate SWAPI People
+label: Migrate All SWAPI People
 migration_group: default
 source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 
-    - https://swapi.dev/api/people/
-  item_selector: $.results[*] #This uses JSONPath, a query language for JSON, to extract the items.
+  include_raw_data: true
+  urls:
+    - https://swapi.dev/api/people/ 
+  item_selector: results 
   fields:
-    - name: name
-      label: Name
+    -
+      name: name
+      label: "identifier"
+      selector: name
   ids:
     name:
       type: string
+process:
+  title: name 
 destination:
   plugin: entity:node
-  default_bundle: person
-process:
-  title: name
-  name: name
+  default_bundle: person  
