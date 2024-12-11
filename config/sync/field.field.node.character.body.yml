@@ -1,18 +1,18 @@
-uuid: 364d49ea-fcb8-4fa3-8d47-60905f7b012f
+uuid: 6385ba04-97f3-47c4-b87e-48600fa2c159
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.person
+    - node.type.character
   module:
     - text
-id: node.person.body
+id: node.character.body
 field_name: body
 entity_type: node
-bundle: person
+bundle: character
 label: Body
-description: 'Information about the character displayed'
+description: ''
 required: false
 translatable: true
 default_value: {  }

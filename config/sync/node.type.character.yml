@@ -1,4 +1,4 @@
-uuid: 7bd7098c-c83c-43de-beb8-42e8c746b4f3
+uuid: 9d476097-8007-4575-ad91-7c4f0c67768f
 langcode: en
 status: true
 dependencies:
@@ -9,10 +9,10 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
-name: Person
-type: person
-description: 'This content type will accept Star War Characters from the SWAPI migration module'
-help: 'A Star Wars character.'
+name: Character
+type: character
+description: 'A star wars character'
+help: 'Star wars Character'
 new_revision: true
 preview_mode: 1
 display_submitted: true

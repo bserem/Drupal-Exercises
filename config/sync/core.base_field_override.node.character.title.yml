@@ -1,14 +1,14 @@
-uuid: eaf2daba-1b3c-4dce-846f-1ccce9a92433
+uuid: ee98ca1f-bb24-4d1d-9f5d-6ad522765e46
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.person
-id: node.person.title
+    - node.type.character
+id: node.character.title
 field_name: title
 entity_type: node
-bundle: person
-label: 'Star War Character'
+bundle: character
+label: Character
 description: ''
 required: true
 translatable: true

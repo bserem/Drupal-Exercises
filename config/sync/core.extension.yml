@@ -31,6 +31,8 @@ module:
   menu_link_content: 0
   menu_ui: 0
   migrate: 0
+  migrate_drupal: 0
+  migrate_drupal_ui: 0
   migrate_plus: 0
   migrate_tools: 0
   mysql: 0
@@ -39,6 +41,7 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  phpass: 0
   sdc: 0
   search: 0
   serialization: 0
