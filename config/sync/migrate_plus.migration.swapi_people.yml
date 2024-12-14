@@ -1,9 +1,9 @@
-uuid: d4fc1fcb-1621-4302-a23b-418e5c1dfad7
+uuid: 2454fcb8-bca8-4296-ab7e-fbdbcce794f4
 langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: fJ7Z7OzULJwUuUboCjW_P5PPZq1Jpiih3ZfGXd3OYpY
+  default_config_hash: vy_wap2GkPd_fpHZDrvkp5-CUYe8UzuHKt5jpfaw_Ek
 id: swapi_people
 class: null
 field_plugin_method: null
@@ -30,6 +30,10 @@ source:
       name: skin_color
       label: 'Skin Color'
       selector: skin_color
+    -
+      name: films
+      label: Films
+      selector: films
   ids:
     name:
       type: string
@@ -37,6 +41,7 @@ process:
   title: name
   field_hair_color: hair_color
   field_skin_color: skin_color
+  field_films: films
 destination:
   plugin: 'entity:node'
   default_bundle: character

@@ -50,7 +50,7 @@
 _Τα παρακάτω tasks είναι λογικό να χρειαστούν άνω των 30 ωρών για κάποιον/α με entry level skills._
 
 - [X] * Να κάνεις migrate ένα dataset (τουλάχιστον 5 items, μόνο τον τίτλο) από το JSON API του https://stapi.co/ ή του https://swapi.dev/
-- [ ] * Να εμπλουτίσεις το migration σου με τουλάχιστον 3 fields
+- [X] * Να εμπλουτίσεις το migration σου με τουλάχιστον 3 fields
 - [ ] * Το ένα από τα fields να είναι multivalue reference field
 
 ---

@@ -1,0 +1,19 @@
+uuid: c9abb774-70ca-440e-93d3-cf97d179a7e0
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_films
+field_name: field_films
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

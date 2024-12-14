@@ -17,6 +17,9 @@ source:
     - name: skin_color
       label: 'Skin Color'
       selector: skin_color
+    - name: films
+      label: 'Films'
+      selector: films
 
   ids:
     name:
@@ -25,7 +28,7 @@ process:
   title: name
   field_hair_color: hair_color
   field_skin_color: skin_color
-
+  field_films: films
 destination:
   plugin: entity:node
   default_bundle: character

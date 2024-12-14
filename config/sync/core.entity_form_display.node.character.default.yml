@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.character.body
+    - field.field.node.character.field_films
     - field.field.node.character.field_hair_color
     - field.field.node.character.field_skin_color
     - node.type.character
   module:
+    - link
     - path
     - text
 id: node.character.default
@@ -30,6 +32,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_films:
+    type: link_default
+    weight: 124
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_hair_color:
     type: string_textfield
