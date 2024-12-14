@@ -8,5 +8,5 @@
     ii. field_hair_color
     iii. field_skin_color
 3. run the migration
-    ``` drush migrate:import swapi_people
+    ``` drush migrate:import swapi_characters
 

@@ -1,0 +1,7 @@
+<?php 
+/**
+* implements hook_uninstall()
+*/
+function swapi_migration_uninstall(){
+  shell_exec('drush config:delete migrate_plus.migration.swapi_characters');
+}

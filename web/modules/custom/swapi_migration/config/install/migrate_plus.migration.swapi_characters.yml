@@ -1,4 +1,4 @@
-id: swapi_people
+id: swapi_characters
 label: 'Import Star Wars Characters'
 migration_group: default
 source:
