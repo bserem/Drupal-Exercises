@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.character.body
+    - field.field.node.character.field_hair_color
+    - field.field.node.character.field_skin_color
     - node.type.character
   module:
     - path
@@ -28,6 +30,22 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_hair_color:
+    type: string_textfield
+    weight: 122
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_skin_color:
+    type: string_textfield
+    weight: 123
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path

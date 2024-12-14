@@ -5,35 +5,27 @@ source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://swapi.dev/api/people/?format=json'
+  urls: 'https://swapi.dev/api/people'
   item_selector: results
   fields:
     - name: name
       label: 'Name'
       selector: name
-    # - name: height
-    #   label: 'Height'
-    #   selector: height
-    # - name: eye_color
-    #   label: 'Eye Color'
-    #   selector: eye_color
-    # - name: gender
-    #   label: 'Gender'
-    #   selector: gender
-    # - name: hair_color
-    #   label: 'Hair Color'
-    #   selector: hair_color
-    # - name: skin_color
-    #   label: 'Skin Color'
-    #   selector: skin_color
-
+    - name: hair_color
+      label: 'Hair Color'
+      selector: hair_color
+    - name: skin_color
+      label: 'Skin Color'
+      selector: skin_color
 
   ids:
     name:
       type: string
 process:
-  nid: name
   title: name
+  field_hair_color: hair_color
+  field_skin_color: skin_color
+
 destination:
   plugin: entity:node
   default_bundle: character

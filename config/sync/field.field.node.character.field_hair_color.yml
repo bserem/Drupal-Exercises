@@ -1,0 +1,19 @@
+uuid: 43e90e40-507a-472d-9603-8b2f2ba8e1bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hair_color
+    - node.type.character
+id: node.character.field_hair_color
+field_name: field_hair_color
+entity_type: node
+bundle: character
+label: 'Hair Color'
+description: "Character's Hair Color"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

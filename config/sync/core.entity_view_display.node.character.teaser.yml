@@ -5,6 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.character.body
+    - field.field.node.character.field_hair_color
+    - field.field.node.character.field_skin_color
     - node.type.character
   module:
     - text
@@ -27,4 +29,6 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_hair_color: true
+  field_skin_color: true
