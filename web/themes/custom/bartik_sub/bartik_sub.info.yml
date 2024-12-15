@@ -2,7 +2,7 @@ name: 'Bartik Sub-theme'
 type: theme
 base theme: bartik
 description: 'A sub-theme of Bartik.'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 package: Custom
 
 libraries:
@@ -11,6 +11,7 @@ libraries:
 regions:
   header: 'Header'
   primary_menu: 'Primary menu'
+  body: 'Body'
   secondary_menu: 'Secondary menu'
   page_top: 'Page top'
   page_bottom: 'Page bottom'

@@ -1,0 +1,57 @@
+{# Attach libraries for styling and JavaScript behavior (adjust for your theme). #}
+{{ attach_library('bartik/classy.node') }}
+
+{# Dynamically set classes based on node properties. #}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+  {# Metadata section: Add header if needed. #}
+  <header>
+    {{ title_prefix }}
+      {% if label and not page %}
+        <h2{{ title_attributes.addClass('node__title') }}>
+          <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        </h2>
+      {% elseif label and page %}
+        <h1{{ title_attributes.addClass('node__title') }}>{{ label }}</h1>
+      {% endif %}
+    {{ title_suffix }}
+
+    {# Display submitted information (e.g., author and date). #}
+    {% if display_submitted %}
+      <div class="node__meta">
+        {{ author_picture }}
+        <span{{ author_attributes }}>
+          {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+        </span>
+        {{ metadata }}
+      </div>
+    {% endif %}
+  </header>
+
+  {# Content section with content-specific classes. #}
+  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    {{ content }}
+  </div>
+
+  {# Optional footer for additional node information. #}
+  <footer>
+    {% if node.getType() == 'article' %}
+      <div class="node__tags">
+        {% if content.field_tags %}
+          {{ content.field_tags }}
+        {% endif %}
+      </div>
+    {% endif %}
+  </footer>
+</article>

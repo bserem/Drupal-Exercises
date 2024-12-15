@@ -1,0 +1,57 @@
+
+body {
+  background-image: url('images/Background-website-01.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.vehicle-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #54a3ec;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-title {
+  font-size: 1.5em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.vehicle-meta {
+  font-size: 0.9em;
+  color: #777;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.vehicle-content {
+  font-size: 1em;
+  color: #444;
+}
+
+.vehicle-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+}
+
+p {
+  margin: 10px 0;
+}
+
+#header {
+  height: auto; /* Adjust height */
+  margin: 0; /* Remove unintended margins */
+}
+
+#header-wrapper {
+  background-color: blueviolet; /* Your desired color */
+  height: auto; /* Adjust to content */
+  padding: 10px; /* Optional padding */
+  margin: 0; /* Ensure no unintended margin */
+}

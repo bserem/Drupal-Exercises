@@ -1,0 +1,12 @@
+features:
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 1
+  path: 'public://Background-website-01_0.jpg'
+favicon:
+  use_default: 1
+  path: 'public://Background-website-01_1.jpg'
+  mimetype: image/jpeg

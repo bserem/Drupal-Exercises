@@ -1,0 +1,23 @@
+uuid: 84f2dd43-b0f1-4a9a-90c7-96da601d4dd3
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  theme:
+    - bartik_sub
+_core:
+  default_config_hash: 0gq3VPg-_UM69FCCWurLFIrrnIjC2HLKhwo9iQNtcUo
+id: bartik_sub_syndicate
+theme: bartik_sub
+region: header
+weight: 0
+provider: null
+plugin: node_syndicate_block
+settings:
+  id: node_syndicate_block
+  label: 'RSS feed'
+  label_display: '0'
+  provider: node
+  block_count: 10
+visibility: {  }

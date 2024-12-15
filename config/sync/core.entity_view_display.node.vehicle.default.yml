@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.vehicle.body
+    - field.field.node.vehicle.field_brand
     - field.field.node.vehicle.field_price
     - field.field.node.vehicle.field_release_date
     - node.type.vehicle
@@ -22,6 +23,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_brand:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
     region: content
   field_price:
     type: number_decimal
