@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.character.field_films
     - field.field.node.character.field_hair_color
     - field.field.node.character.field_skin_color
+    - field.field.node.character.field_species
     - node.type.character
   module:
     - text
@@ -34,3 +35,4 @@ hidden:
   field_films: true
   field_hair_color: true
   field_skin_color: true
+  field_species: true

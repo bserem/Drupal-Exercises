@@ -1,0 +1,9 @@
+uuid: 3aff6d82-cd08-4123-b44d-7995e345958d
+langcode: en
+status: true
+dependencies: {  }
+name: Species
+vid: species
+description: "The character's species"
+weight: 0
+new_revision: false

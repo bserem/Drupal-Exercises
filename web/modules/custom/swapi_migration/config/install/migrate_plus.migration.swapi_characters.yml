@@ -5,7 +5,7 @@ source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://swapi.dev/api/people'
+  urls: 'https://swapi.py4e.com/api/people/'
   item_selector: results
   fields:
     - name: name
@@ -20,7 +20,10 @@ source:
     - name: films
       label: 'Films'
       selector: films
-
+    - name: species
+      label: 'Species'
+      selector: species
+    
   ids:
     name:
       type: string
@@ -29,6 +32,15 @@ process:
   field_hair_color: hair_color
   field_skin_color: skin_color
   field_films: films
+  field_species:
+    -
+      plugin: explode
+      source: species
+    -
+      plugin: migration_lookup
+      migration: swapi_species
+      source: '@value'
+      no_stub: true
 destination:
   plugin: entity:node
   default_bundle: character

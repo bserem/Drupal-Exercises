@@ -1,0 +1,33 @@
+id: swapi_species
+label: Import Species from SWAPI
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls:
+    - https://swapi.py4e.com/api/species/?format=json&page=1
+    - https://swapi.py4e.com/api/species/?format=json&page=2
+    - https://swapi.py4e.com/api/species/?format=json&page=3
+    - https://swapi.py4e.com/api/species/?format=json&page=4
+  item_selector: '/results' # Path to the array in JSON response
+  fields:
+    -
+      name: name
+      label: 'Species Name'
+      selector: name
+    -
+      name: url
+      label: 'Source'
+      selector: url
+  ids:
+    name:
+      type: string
+  
+process:
+  name: name
+  field_species_url: url
+
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: species
+

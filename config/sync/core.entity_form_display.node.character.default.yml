@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.character.field_films
     - field.field.node.character.field_hair_color
     - field.field.node.character.field_skin_color
+    - field.field.node.character.field_species
     - node.type.character
   module:
     - link
@@ -54,6 +55,16 @@ content:
     weight: 123
     region: content
     settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_species:
+    type: entity_reference_autocomplete
+    weight: 125
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }

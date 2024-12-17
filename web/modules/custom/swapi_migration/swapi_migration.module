@@ -4,4 +4,5 @@
 */
 function swapi_migration_uninstall(){
   shell_exec('drush config:delete migrate_plus.migration.swapi_characters');
+  shell_exec('drush config:delete migrate_plus.migration.swapi_species');
 }

@@ -1,0 +1,35 @@
+uuid: aa9e276a-64c3-4372-b3a9-e378137a20e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.species.field_species_url
+    - taxonomy.vocabulary.species
+  module:
+    - link
+    - text
+id: taxonomy_term.species.default
+targetEntityType: taxonomy_term
+bundle: species
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_species_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }
