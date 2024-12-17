@@ -33,14 +33,11 @@ process:
   field_skin_color: skin_color
   field_films: films
   field_species:
-    -
-      plugin: explode
-      source: species
-    -
-      plugin: migration_lookup
-      migration: swapi_species
-      source: '@value'
-      no_stub: true
+    plugin: migration_lookup
+    migration: swapi_species
+    source: species
+    no_stub: true
+    field: field_species_url
 destination:
   plugin: entity:node
   default_bundle: character
