@@ -1,7 +1,7 @@
 name: 'Bartik Subtheme'
 type: theme
 description: 'A subtheme of Bartik.'
-core_version_requirement: ^10
+core_version_requirement: ^10 || ^11
 base theme: bartik
 package: Custom
 dependencies:
