@@ -1,0 +1,11 @@
+uuid: 45ea8261-aceb-4d16-89cf-5141b71e9499
+langcode: el
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.brand
+id: taxonomy_term.brand
+target_entity_type_id: taxonomy_term
+target_bundle: brand
+default_langcode: site_default
+language_alterable: false

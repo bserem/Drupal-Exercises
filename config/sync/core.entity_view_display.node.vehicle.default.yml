@@ -3,6 +3,7 @@ langcode: el
 status: true
 dependencies:
   config:
+    - field.field.node.vehicle.field_brand
     - field.field.node.vehicle.field_images
     - field.field.node.vehicle.field_price
     - field.field.node.vehicle.field_release_date
@@ -15,6 +16,14 @@ targetEntityType: node
 bundle: vehicle
 mode: default
 content:
+  field_brand:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
   field_images:
     type: entity_reference_entity_view
     label: above
