@@ -1,0 +1,22 @@
+uuid: 09bf68bc-4f3a-421e-97e0-b9fb14b79358
+langcode: el
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bartik
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: bartik_content
+theme: bartik
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Περιεχόμενο κεντρικής σελίδας'
+  label_display: '0'
+  provider: system
+visibility: {  }

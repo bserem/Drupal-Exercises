@@ -26,6 +26,8 @@ module:
   language: 0
   link: 0
   locale: 0
+  media: 0
+  media_library: 0
   menu_link_content: 0
   menu_ui: 0
   mysql: 0
@@ -48,4 +50,5 @@ module:
 theme:
   olivero: 0
   claro: 0
+  bartik: 0
 profile: standard

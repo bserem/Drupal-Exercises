@@ -1,0 +1,11 @@
+uuid: ee2351a9-1c61-44e2-8c2b-bc652e0ffc40
+langcode: el
+status: true
+dependencies:
+  config:
+    - node.type.vehicle
+id: node.vehicle
+target_entity_type_id: node
+target_bundle: vehicle
+default_langcode: site_default
+language_alterable: false

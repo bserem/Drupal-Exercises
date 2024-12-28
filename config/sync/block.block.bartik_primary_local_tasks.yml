@@ -1,0 +1,22 @@
+uuid: a7c88cf6-9db4-42e6-bc0e-894db9d0db14
+langcode: el
+status: true
+dependencies:
+  theme:
+    - bartik
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: bartik_primary_local_tasks
+theme: bartik
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Πρωτεύουσες καρτέλες'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }
