@@ -1,4 +1,4 @@
-uuid: 8250b46f-08d7-45e2-9b0f-833082ad3099
+uuid: 104e4607-4bb3-4263-91a8-5636eff7752d
 langcode: el
 status: true
 dependencies:
@@ -10,7 +10,7 @@ id: node.vehicle.field_images
 field_name: field_images
 entity_type: node
 bundle: vehicle
-label: Images
+label: images
 description: ''
 required: false
 translatable: false
