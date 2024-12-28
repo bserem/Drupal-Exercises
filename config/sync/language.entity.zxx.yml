@@ -1,0 +1,11 @@
+uuid: cfc4375c-01ed-41fa-b08e-b5328b75f640
+langcode: el
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 35CefWbnzaiytcg3acexxz_GTvuwIjYd_ZTcmmR-tXA
+id: zxx
+label: 'Μη εφαρμόσιμο'
+direction: ltr
+weight: 3
+locked: true

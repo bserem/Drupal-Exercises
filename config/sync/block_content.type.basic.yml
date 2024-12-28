@@ -1,0 +1,10 @@
+uuid: 5953f2e8-8cf0-445b-a776-d7711a2b8b72
+langcode: el
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: pQP5iQy4SdhAMVcjDUncCfkJmTofnHVtXrsMzx4k6Yk
+id: basic
+label: 'Βασικό μπλοκ'
+revision: false
+description: 'Ένα βασικό μπλοκ περιέχει έναν τίτλο και ένα κυρίως κείμενο.'

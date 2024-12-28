@@ -1,0 +1,22 @@
+uuid: 6c1e22c8-d151-486e-9147-269e488a5ef7
+langcode: el
+status: true
+dependencies:
+  theme:
+    - olivero
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: olivero_primary_local_tasks
+theme: olivero
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Πρωτεύουσες καρτέλες'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

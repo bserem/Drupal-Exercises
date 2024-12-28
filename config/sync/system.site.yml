@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
+langcode: el
+uuid: 8ab5fe85-4162-4865-9480-efcfccaa6a6f
+name: Drupal
+mail: spiridoyla.n1@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: el
+mail_notification: null

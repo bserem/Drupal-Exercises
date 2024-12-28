@@ -1,0 +1,11 @@
+uuid: 53fa3c13-9c7a-4064-b3b0-2c32927576c5
+langcode: el
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: eNX6lLCKDaY83nCMh20My---y03KbiFlv802DKCCpvg
+id: und
+label: 'Δεν προσδιορίζεται'
+direction: ltr
+weight: 2
+locked: true

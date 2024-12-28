@@ -1,0 +1,13 @@
+uuid: 797ce628-e635-4a0e-94a1-15a10c221cc7
+langcode: el
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: lDM9mvIGAu8Sw8rt-uCO4Sr7yX5VPrDPxYcawkbKd6k
+id: node_make_unsticky_action
+label: 'Κάνετε το περιεχόμενο μη καρφιτσωμένο'
+type: node
+plugin: node_make_unsticky_action
+configuration: {  }
