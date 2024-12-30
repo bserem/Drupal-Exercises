@@ -44,6 +44,7 @@ module:
   toolbar: 0
   update: 0
   user: 0
+  vehicle_404: 0
   views_ui: 0
   views: 10
   standard: 1000
