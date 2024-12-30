@@ -5,6 +5,7 @@
 web/core/
 
 !web/core/themes/bartik
+!web/core/themes/custom
 
 
 vendor/
