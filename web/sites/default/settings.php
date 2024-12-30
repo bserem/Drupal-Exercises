@@ -899,3 +899,7 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && file_exists(__DIR__ . '/settings.ddev
 # }
 
 $config_directories['sync'] = '../config/sync';
+
+$settings['component_paths'] = [
+  'themes/custom/bartik_subtheme/components',
+];

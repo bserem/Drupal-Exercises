@@ -8,3 +8,9 @@ function bartik_subtheme_theme_suggestions_node_alter(array &$suggestions, array
     $suggestions[] = 'node__vehicle';
   }
 }
+
+function bartik_subtheme_preprocess_node(&$variables) {
+  if ($variables['node']->bundle() === 'vehicle') {
+    $variables['theme_hook_suggestions'][] = 'vehicle';
+  }
+}
