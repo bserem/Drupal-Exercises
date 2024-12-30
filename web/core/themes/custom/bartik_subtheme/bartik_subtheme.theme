@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for node templates.
+ */
+function bartik_subtheme_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  if ($variables['node']->bundle() === 'vehicle') {
+    $suggestions[] = 'node__vehicle';
+  }
+}
