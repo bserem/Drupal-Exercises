@@ -1,8 +1,11 @@
 .ddev/
+!.ddev/config.yaml
 
 # Drupal core files 
 web/core/
-!web/core/themes/bartik/
+
+!web/core/themes/bartik
+
 
 vendor/
 
