@@ -23,7 +23,7 @@ web/sites/default/private/
 web/sites/default/files/php/
 web/sites/default/files/.htaccess
 
-# Configuration overrides (προαιρετικά, αν περιέχουν ευαίσθητα δεδομένα)
+# Configuration overrides
 web/sites/default/settings.local.php
 
 
@@ -33,6 +33,6 @@ web/sites/default/settings.local.php
 .DS_Store
 Thumbs.db
 
-# Composer lock file (προαιρετικά)
+# Composer lock file
 composer.lock
 "web/sites/default/settings.php" 
