@@ -8,7 +8,10 @@ web/core/
 
 !web/core/themes/bartik
 !web/core/themes/custom
+!web/modules/custom/starwars_migration
+!web/modules/custom/vehicle_404
 
+!web/modules/contrib/migrate_plus/config/schema/migrate_plus.migration.star_wars_titles.yml
 
 vendor/
 

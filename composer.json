@@ -19,6 +19,8 @@
         "drupal/core-composer-scaffold": "^11.1",
         "drupal/core-project-message": "^11.1",
         "drupal/core-recommended": "^11.1",
+        "drupal/migrate_plus": "6.0",
+        "drupal/migrate_tools": "6.0",
         "drush/drush": "^13.3"
     },
     "conflict": {

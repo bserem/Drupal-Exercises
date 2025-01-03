@@ -1,0 +1,27 @@
+id: star_wars_titles
+label: 'Star Wars Titles Migration'
+migration_group: default
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  url: 'https://swapi.dev/api/films/'  # here API URL from swapi.dev
+  item_selector: '/results'  # data is located
+  fields:
+    - name: 'title'
+      label: 'Title'
+process:
+  title: 'title'
+destination:
+  plugin: 'entity:node'
+  default_bundle: 'article'  # or any type of content it wants to transfer
+
+process:
+  title: 'title'
+  field_date: 'release_date'  # Release date from API
+  field_description: 'opening_crawl'  # Description from API
+  field_related_actors:
+    plugin: migration_lookup
+    source: 'characters'
+    migration: 'actor_migration'  #
+    no_stub: true
