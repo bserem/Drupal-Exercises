@@ -1,6 +1,8 @@
 .ddev/
 !.ddev/config.yaml
 
+recipes/
+
 # Drupal core files 
 web/core/
 
