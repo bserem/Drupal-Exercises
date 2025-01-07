@@ -1,0 +1,13 @@
+uuid: 44956f6b-1a70-4c60-8e4e-7124c4fe4a48
+langcode: el
+status: true
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: vpBH8OmL4sdesCdeZLsW8KOutB5gkbreWJbfjhfFKaQ
+id: comment_delete_action
+label: 'Διαγραφή σχολίου'
+type: comment
+plugin: 'entity:delete_action:comment'
+configuration: {  }

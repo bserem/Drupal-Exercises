@@ -1,0 +1,22 @@
+uuid: 241d8d82-5547-485d-a5bb-069cfea47f6d
+langcode: el
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - claro
+_core:
+  default_config_hash: jccFSSVqV0WCDb6NtML1VWAWTtDbZ-zn5YgTRMgMrIM
+id: claro_help
+theme: claro
+region: help
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Βοήθεια
+  label_display: '0'
+  provider: help
+visibility: {  }

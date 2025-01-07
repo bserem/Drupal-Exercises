@@ -1,0 +1,38 @@
+.ddev/
+!.ddev/config.yaml
+
+recipes/
+
+# Drupal core files 
+web/core/
+
+!web/core/themes/bartik
+!web/core/themes/custom
+!web/modules/custom/starwars_migration
+!web/modules/custom/vehicle_404
+
+!web/modules/contrib/migrate_plus/config/schema/migrate_plus.migration.star_wars_titles.yml
+
+vendor/
+
+# Uploaded files
+web/sites/default/files/
+
+# Temporary files
+web/sites/default/private/
+web/sites/default/files/php/
+web/sites/default/files/.htaccess
+
+# Configuration overrides
+web/sites/default/settings.local.php
+
+
+# System files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Composer lock file
+composer.lock
+"web/sites/default/settings.php" 

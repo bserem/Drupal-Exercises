@@ -1,0 +1,13 @@
+uuid: 7272331e-5851-4b67-bb2f-f7aa639b86d7
+langcode: el
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: jonvgt3CkUM2eMLTFwWfHileWWDC4YtXCuIlCahTk_I
+id: personal
+label: 'Προσωπική φόρμα επικοινωνίας'
+recipients: {  }
+reply: ''
+weight: 0
+message: 'Το μήνυμά σας στάλθηκε.'
+redirect: ''

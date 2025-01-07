@@ -1,0 +1,13 @@
+uuid: 261d8338-3ca6-47e3-a302-c143e899eaed
+langcode: el
+status: false
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: N4mUjXpPckUkVRY1PbKw4GGoL1i2ECU7PL3EreiKStk
+id: comment.full
+label: 'Πλήρες σχόλιο'
+description: ''
+targetEntityType: comment
+cache: true

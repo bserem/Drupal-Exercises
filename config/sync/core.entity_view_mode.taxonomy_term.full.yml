@@ -1,0 +1,13 @@
+uuid: b8c390bc-36d1-417a-bf00-7c4567217122
+langcode: el
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: iukUENpf8CFvjZbGGacKX_Ges0-lU9z6zvsd32P6kbo
+id: taxonomy_term.full
+label: 'Σελίδα όρων ταξινόμησης'
+description: ''
+targetEntityType: taxonomy_term
+cache: true

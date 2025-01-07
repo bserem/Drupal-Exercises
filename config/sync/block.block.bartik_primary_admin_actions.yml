@@ -1,0 +1,20 @@
+uuid: 3bd78ca3-c44f-4cd4-a3d8-4fa0924b5691
+langcode: el
+status: true
+dependencies:
+  theme:
+    - bartik
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: bartik_primary_admin_actions
+theme: bartik
+region: highlighted
+weight: -5
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Πρωτεύουσες ενέργειες διαχείρισης'
+  label_display: '0'
+  provider: core
+visibility: {  }

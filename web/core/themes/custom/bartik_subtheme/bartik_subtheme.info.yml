@@ -1,0 +1,6 @@
+name: Bartik Subtheme
+type: theme
+base theme: bartik
+description: 'A subtheme of Bartik.'
+package: Custom
+core_version_requirement: ^10 || ^11

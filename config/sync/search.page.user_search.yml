@@ -1,0 +1,14 @@
+uuid: 0b26dfb7-d9ab-4801-a34a-c22a39873299
+langcode: el
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: k3aUaZXGDuhkek2TZIee0PApOPTvYZLadziekdyHA5A
+id: user_search
+label: Χρήστες
+path: user
+weight: 0
+plugin: user_search
+configuration: {  }

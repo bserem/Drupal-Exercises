@@ -1,0 +1,20 @@
+uuid: de2f39fe-697e-4e04-8c72-12a2f9fb9c3f
+langcode: el
+status: true
+dependencies:
+  theme:
+    - olivero
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: olivero_page_title
+theme: olivero
+region: content_above
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Τίτλος σελίδας'
+  label_display: '0'
+  provider: core
+visibility: {  }

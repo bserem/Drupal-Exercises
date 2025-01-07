@@ -1,0 +1,10 @@
+uuid: 2d03bb1d-30f5-4a68-87e0-3c4a35f329ff
+langcode: el
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5B4_r5Vd0_9UaJwtAC5yFCm9-k8NNvp1xiQNhFFkknU
+id: long
+label: 'Προκαθορισμένη πλήρης ημερομηνία'
+locked: false
+pattern: 'l, j F Y - H:i'

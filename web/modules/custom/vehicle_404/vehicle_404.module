@@ -1,0 +1,38 @@
+<?php
+
+use Drupal\node\Entity\Node;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function vehicle_404_theme() {
+  return [];
+}
+
+/**
+ * Implements hook_node_access().
+ * Prevents access to vehicles from 2020 by returning 403 (Access Denied).
+ */
+function vehicle_404_node_access(Node $node, $op) {
+  // Check if the node is of type "vehicle".
+  if ($node->getType() === 'vehicle') {
+    // Get the release date field (assuming it's named field_release_date).
+    $release_date = $node->get('field_release_date')->value;
+    
+    // Check if the release date is in 2020.
+    if (substr($release_date, 0, 4) == '2020') {
+      // Return 404 if the release year is 2020.
+      return AccessResult::forbidden();
+    }
+  }
+
+  return AccessResult::allowed();
+}
+
+/**
+ * Implements hook_menu().
+ */
+function vehicle_404_menu() {
+  return [];
+}

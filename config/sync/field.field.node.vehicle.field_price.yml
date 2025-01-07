@@ -1,0 +1,23 @@
+uuid: f877a710-419c-4229-b281-a29519fdd9a4
+langcode: el
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_price
+    - node.type.vehicle
+id: node.vehicle.field_price
+field_name: field_price
+entity_type: node
+bundle: vehicle
+label: price
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

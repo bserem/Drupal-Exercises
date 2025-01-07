@@ -1,0 +1,15 @@
+uuid: 6b5d1cca-8553-433c-b428-54c224a1bd0d
+langcode: el
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 97tvtzGOa8_flb22CzSjgtm_YkiGMHvEBO-6q2K9V_U
+id: node_search
+label: Περιεχόμενο
+path: node
+weight: -10
+plugin: node_search
+configuration:
+  rankings: {  }
